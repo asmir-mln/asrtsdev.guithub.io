@@ -1,0 +1,98 @@
+﻿<!-- AsArt'sDev | Signature invisible | ASmir Milia | ASARTSDEV_SIGNATURE_INVISIBLE -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement sécurisé – AsArt'sDev</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="paiement-styles.css">
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <header>
+        <h1>Paiement sécurisé</h1>
+        <p>Finalisez votre commande en toute sécurité</p>
+    </header>
+
+    <main class="paiement-container">
+        <div class="order-summary">
+            <h2>Récapitulatif de votre commande</h2>
+            <div class="promo-global">🎉 Promo mise en ligne : <strong>-5%</strong> sur le panier total.</div>
+            <div id="order-details">
+                <!-- Détails de la commande affichés dynamiquement -->
+            </div>
+            <div class="pricing-breakdown">
+                <p><span>Sous-total</span> <strong id="subtotal-amount">0,00 €</strong></p>
+                <p class="discount-line"><span>Remise en ligne (-5%)</span> <strong id="discount-amount">-0,00 €</strong></p>
+            </div>
+            <div class="total-section">
+                <p class="total-label">Total à payer :</p>
+                <p class="total-amount" id="total-amount">0,00 €</p>
+            </div>
+        </div>
+
+        <div class="payment-form-container">
+            <h2>Informations de paiement</h2>
+            
+            <form id="payment-form">
+                <div class="form-group">
+                    <label for="cardholder-name">Nom sur la carte *</label>
+                    <input type="text" id="cardholder-name" name="cardholder-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email de confirmation *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="card-element">Informations de la carte *</label>
+                    <div id="card-element">
+                        <!-- Stripe Card Element sera inséré ici -->
+                    </div>
+                    <div id="card-errors" role="alert"></div>
+                </div>
+
+                <div class="security-badges">
+                    <div class="badge">🔒 Paiement 100% sécurisé</div>
+                    <div class="badge">💳 Stripe</div>
+                    <div class="badge">✓ SSL</div>
+                </div>
+
+                <button type="submit" id="submit-button" class="btn-primary btn-payment">
+                    <span id="button-text">Valider l'achat</span>
+                    <span id="spinner" class="spinner hidden"></span>
+                </button>
+
+                <p class="payment-note">
+                    En cliquant sur "Payer maintenant", vous acceptez nos 
+                    <a href="LivresAsArtsDev/cgv.html" target="_blank">Conditions Générales de Vente</a>
+                </p>
+                <p class="payment-note">Pour un don ou un achat par virement avec formulaire d'envoi: <a href="donation.php">accéder au formulaire dédié</a>.</p>
+            </form>
+
+            <div id="payment-message" class="hidden"></div>
+            <div class="contact-apres-achat">
+                Après validation d'achat, contactez-nous si besoin de suivi :
+                <a href="mailto:asartdev.contact@gmail.com">asartdev.contact@gmail.com</a> —
+                <a href="tel:0781586882">0781586882</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <nav>
+            <a href="index.html">Accueil</a> |
+            <a href="LivresAsArtsDev/cgv.html">CGV</a> |
+            <a href="contact.html">Contact</a> |
+            <a href="tel:0781586882">📱 0781586882</a> |
+            <a href="mailto:asartdev.contact@gmail.com">📧 asartdev.contact@gmail.com</a>
+        </nav>
+        <p>© 2026 AsArt'sDev – créé par ASmir Milia. Tous droits réservés.</p>
+    </footer>
+
+    <script src="paiement.js"></script>
+</body>
+</html>
+

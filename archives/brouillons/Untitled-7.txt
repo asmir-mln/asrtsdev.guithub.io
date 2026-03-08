@@ -1,0 +1,5 @@
+<footer>
+<p>© AsArt'sDev créé par ASmir mln – Tous droits réservés</p>
+<a href="/ecom/cgv.html">Conditions Générales de Vente</a> |
+<a href="/contact.html">Contact</a>
+</footer>

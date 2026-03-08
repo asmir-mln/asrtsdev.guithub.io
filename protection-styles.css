@@ -1,0 +1,371 @@
+﻿/* AsArt'sDev | Signature invisible | ASmir Milia | ASARTSDEV_SIGNATURE_INVISIBLE */
+/**
+ * CSS Protection des Droits AsArt'sDev
+ * Styles pour les images protégées et alertes
+ */
+
+/* Images protégées */
+img[data-protected="true"] {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+    pointer-events: all;
+    cursor: default;
+}
+
+/* Indicateur visuel d'image protégée (optionnel) */
+img[data-protected="true"]::after {
+    /* Filigrane transparent */
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 35px,
+            rgba(0, 0, 0, 0.02) 35px,
+            rgba(0, 0, 0, 0.02) 70px
+        );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Conteneur d'image avec bordure subtile */
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.image-container img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Badge de protection (optionnel) */
+.protected-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(211, 47, 47, 0.9);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 10;
+    backdrop-filter: blur(4px);
+}
+
+.protected-badge::before {
+    content: '🔒';
+}
+
+/* Overlay de protection au hover */
+.image-container:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.05);
+    border: 2px solid rgba(211, 47, 47, 0.3);
+    border-radius: 4px;
+    pointer-events: none;
+    z-index: 9;
+    transition: all 0.3s ease;
+}
+
+/* Boîte d'alerte de protection */
+.protection-alert {
+    background: white;
+    border: 2px solid #d32f2f;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 15px 0;
+    box-shadow: 0 4px 12px rgba(211, 47, 47, 0.15);
+    position: relative;
+}
+
+.protection-alert::before {
+    content: '⚠️';
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    font-size: 24px;
+}
+
+.protection-alert h4 {
+    margin-left: 40px;
+    color: #d32f2f;
+    font-size: 16px;
+    margin-top: 0;
+}
+
+.protection-alert p {
+    margin-left: 40px;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Boîte d'information sur les droits */
+.rights-info {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.rights-info h3 {
+    margin-top: 0;
+    font-size: 18px;
+}
+
+.rights-info p {
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.rights-info a {
+    color: #fff;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* Boîte de cas d'usage autorisés */
+.authorized-uses {
+    background: #e8f5e9;
+    border-left: 4px solid #4caf50;
+    padding: 15px 20px;
+    border-radius: 4px;
+    margin: 15px 0;
+}
+
+.authorized-uses h4 {
+    color: #2e7d32;
+    margin-top: 0;
+    font-size: 14px;
+}
+
+.authorized-uses ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.authorized-uses li {
+    color: #2e7d32;
+    margin: 5px 0;
+    font-size: 13px;
+}
+
+.authorized-uses li::before {
+    content: '✓ ';
+    color: #4caf50;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+/* Boîte de violation interdite */
+.unauthorized-uses {
+    background: #ffebee;
+    border-left: 4px solid #d32f2f;
+    padding: 15px 20px;
+    border-radius: 4px;
+    margin: 15px 0;
+}
+
+.unauthorized-uses h4 {
+    color: #b71c1c;
+    margin-top: 0;
+    font-size: 14px;
+}
+
+.unauthorized-uses ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.unauthorized-uses li {
+    color: #c62828;
+    margin: 5px 0;
+    font-size: 13px;
+}
+
+.unauthorized-uses li::before {
+    content: '✕ ';
+    color: #d32f2f;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+/* Boutons d'action */
+.btn-protection {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white !important;
+    padding: 12px 25px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.btn-protection:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+}
+
+.btn-protection:active {
+    transform: translateY(0);
+}
+
+/* Pop-up overlay background */
+.popup-overlay {
+    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Animation d'apparition */
+@keyframes popupAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.popup-content {
+    animation: popupAppear 0.3s ease-out;
+}
+
+/* Animation de clic */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+img[data-protected="true"]:active {
+    animation: shake 0.3s;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .protection-alert {
+        padding: 15px;
+        margin: 10px 0;
+    }
+
+    .protection-alert::before {
+        left: 10px;
+        top: 10px;
+        font-size: 20px;
+    }
+
+    .protection-alert h4,
+    .protection-alert p {
+        margin-left: 35px;
+    }
+
+    .rights-info {
+        padding: 15px;
+    }
+
+    .rights-info h3 {
+        font-size: 16px;
+    }
+
+    .btn-protection {
+        width: 100%;
+        text-align: center;
+        padding: 12px 15px;
+    }
+}
+
+/* Impression - masquer les panneaux d'alerte */
+@media print {
+    .protection-alert,
+    .protected-badge,
+    .cgv-popup-overlay,
+    [data-no-print] {
+        display: none !important;
+    }
+
+    img[data-protected="true"] {
+        opacity: 0.8;
+        border: 1px dotted #999;
+    }
+}
+
+/* Mode sombre (dark mode) */
+@media (prefers-color-scheme: dark) {
+    .protection-alert {
+        background: #1e1e1e;
+        border-color: #ff5252;
+    }
+
+    .protection-alert h4 {
+        color: #ff5252;
+    }
+
+    .protection-alert p {
+        color: #b0b0b0;
+    }
+
+    .authorized-uses {
+        background: #1b5e20;
+        color: #a5d6a7;
+    }
+
+    .unauthorized-uses {
+        background: #b71c1c;
+        color: #ffcdd2;
+    }
+}
+
+/* Contraste élevé pour accessibilité */
+@media (prefers-contrast: more) {
+    img[data-protected="true"] {
+        border: 2px solid #000;
+    }
+
+    .protected-badge {
+        background: #000;
+        color: #fff;
+    }
+
+    .protection-alert {
+        border-width: 3px;
+    }
+}
+
+/* Préférence réduite pour mouvement */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0s !important;
+        transition-duration: 0s !important;
+    }
+}
+
+

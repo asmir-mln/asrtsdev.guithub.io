@@ -1,0 +1,164 @@
+﻿<!-- AsArt'sDev | Signature invisible | ASmir Milia | ASARTSDEV_SIGNATURE_INVISIBLE -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commander – AsArt'sDev</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Passer une commande</h1>
+        <p>Commandez vos livres et créations personnalisées</p>
+    </header>
+
+    <main>
+        <section class="page-main-banner">
+            <h2>Rubrique Produits & Commande</h2>
+            <p>Interface harmonisée AsArt'sDev — sélection des produits, formulaire et suivi de commande.</p>
+        </section>
+
+        <section class="commande-intro">
+            <h2>Comment commander ?</h2>
+            <p>Vous souhaitez obtenir l'un de nos livres ou commander une création personnalisée ? Suivez les étapes ci-dessous pour passer votre commande.</p>
+        </section>
+
+        <section class="produits-disponibles">
+            <h2>Nos Produits</h2>
+            <div class="livres-grid">
+                <article class="livre-card">
+                    <h3>Max et Milla - version finale enfant</h3>
+                    <p><strong>Sous-titre :</strong> Le secret du cycle des dix ans</p>
+                    <p><strong>Format :</strong> Précommande</p>
+                    <p><strong>Prix :</strong> 15,00 € + devis offert</p>
+                    <p>Histoire vraie - version lancement.</p>
+                    <a href="#formulaire" class="btn">Commander</a>
+                </article>
+
+                <article class="livre-card">
+                    <h3>Biographie des Asmir mln</h3>
+                    <p><strong>Sous-titre :</strong> La fin du cycle des 10 ans</p>
+                    <p><strong>Format :</strong> Impression + envoi</p>
+                    <p><strong>Prix :</strong> selon impression et expédition</p>
+                    <p>Commande traitée après formulaire d'envoi complet.</p>
+                    <a href="#formulaire" class="btn">Commander</a>
+                </article>
+
+                <article class="livre-card">
+                    <object data="MemoLivreAutobiographique/pdf_version.pdf" type="application/pdf" style="width:100%; height:220px; border-radius:8px; margin-bottom:12px;"></object>
+                    <h3>Les trois vies d'Asmir — La fin du cycle des dix ans</h3>
+                    <p><strong>Statut :</strong> Version en évolution (manuscrit non finalisé)</p>
+                    <p><strong>Prix :</strong> 39,99 €</p>
+                    <p>Option formule dédicacée disponible.</p>
+                    <p><a href="MemoLivreAutobiographique/pdf_version.pdf" target="_blank">Ouvrir l'aperçu PDF adulte</a></p>
+                    <a href="#formulaire" class="btn">Commander</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="formulaire" class="formulaire-commande">
+            <h2>Formulaire de commande</h2>
+            <form action="donation.php" method="POST">
+                <div class="form-group">
+                    <label for="nom">Nom complet *</label>
+                    <input type="text" id="nom" name="nom" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telephone">Téléphone</label>
+                    <input type="tel" id="telephone" name="telephone">
+                </div>
+
+                <div class="form-group">
+                    <label for="produit">Produit souhaité *</label>
+                    <select id="produit" name="produit" required>
+                        <option value="">-- Sélectionnez un produit --</option>
+                        <option value="max-milla">Max et Milla - version finale enfant (15,00 €)</option>
+                        <option value="biographie-cycle">Biographie des Asmir mln - La fin du cycle des 10 ans (impression + envoi)</option>
+                        <option value="autobiographie-adulte">Les trois vies d'Asmir — La fin du cycle des dix ans (39,99 €)</option>
+                        <option value="don">Don libre (montant au choix)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantite">Quantité</label>
+                    <input type="number" id="quantite" name="quantite" min="1" value="1">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message / Détails de votre demande</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet si c'est une création personnalisée..."></textarea>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="cgv" name="cgv" required>
+                    <label for="cgv">J'accepte les <a href="LivresAsArtsDev/cgv.html" target="_blank">Conditions Générales de Vente</a> *</label>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="newsletter" name="newsletter">
+                    <label for="newsletter">Je souhaite recevoir la newsletter et les offres spéciales</label>
+                </div>
+
+                <button type="submit" class="btn-primary">Envoyer ma commande</button>
+            </form>
+
+            <p class="form-note">* Champs obligatoires</p>
+        </section>
+
+        <section class="info-paiement">
+            <h2>Modalités de paiement</h2>
+            <div class="promo-global">🎉 Promo mise en ligne : <strong>-5%</strong> appliqué sur le panier total lors de la validation d'achat.</div>
+            <p>Après réception de votre commande, nous vous contacterons pour finaliser le paiement selon les modalités suivantes :</p>
+            <ul>
+                <li>Virement bancaire</li>
+                <li>PayPal</li>
+                <li>Carte bancaire (paiement sécurisé)</li>
+            </ul>
+            <p>Pour don ou achat avec coordonnées d'envoi: utilisez aussi le formulaire dédié <a href="donation.php">donation.php</a>.</p>
+            <p>Les produits numériques sont livrés sous 48h après confirmation du paiement.</p>
+        </section>
+
+        <section class="commande-intro">
+            <h2>Aperçu visuel — version adulte</h2>
+            <object data="MemoLivreAutobiographique/pdf_version.pdf" type="application/pdf" style="width:100%; max-width:980px; height:560px; border-radius:10px; display:block; margin:10px auto 0 auto;"></object>
+            <p style="text-align:center; margin-top:10px;"><a href="MemoLivreAutobiographique/pdf_version.pdf" target="_blank">Voir le PDF adulte en plein écran</a></p>
+        </section>
+
+        <section class="contact-info">
+            <h2>Besoin d'aide ?</h2>
+            <p>Pour toute question concernant votre commande, n'hésitez pas à nous contacter :</p>
+            <p><strong>📧 Email :</strong> <a href="mailto:asartdev.contact@gmail.com">asartdev.contact@gmail.com</a></p>
+            <p><strong>📱 Téléphone :</strong> <a href="tel:0781586882">0781586882</a></p>
+            <p><a href="contact.html" class="btn-contact">Contactez-nous</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <nav>
+            <a href="index.html">Accueil</a> |
+            <a href="LivresAsArtsDev/cgv.html">CGV</a> |
+            <a href="contact.html">Contact</a> |
+            <a href="tel:0781586882">📱 0781586882</a> |
+            <a href="mailto:asartdev.contact@gmail.com">📧 asartdev.contact@gmail.com</a>
+        </nav>
+        <p>© 2026 AsArt'sDev – créé par ASmir Milia. Tous droits réservés.</p>
+    </footer>
+
+    <script src="commande.js"></script>
+    <script src="api/orders-client.js"></script>
+    <script>
+        // Intégration API commandes
+        const ordersAPI = new AsartsdevOrders('/api/orders.php');
+        ordersAPI.attachToForm('form');
+    </script>
+</body>
+</html>
+
+

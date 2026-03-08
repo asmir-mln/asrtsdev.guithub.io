@@ -1,0 +1,19 @@
+body {
+font-family: Arial;
+background: #f4f4f4;
+margin: 40px;
+}
+
+h1 {
+color: #222;
+}
+
+a {
+color: blue;
+text-decoration: none;
+}
+
+footer {
+margin-top: 50px;
+font-size: 14px;
+}

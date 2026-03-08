@@ -1,0 +1,339 @@
+﻿<!-- AsArt'sDev | Signature invisible | ASmir Milia | ASARTSDEV_SIGNATURE_INVISIBLE -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protection des Droits d'Auteur – AsArt'sDev</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .protection-content {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ff6b6b;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .legal-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+        }
+
+        .implemented-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .implemented-list li {
+            padding: 10px;
+            margin: 5px 0;
+            background: #e8f5e9;
+            border-left: 3px solid #4caf50;
+        }
+
+        .implemented-list li:before {
+            content: "✓ ";
+            color: #4caf50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Protection des Droits d'Auteur</h1>
+        <p>Mesures légales et techniques pour protéger vos créations</p>
+    </header>
+
+    <main>
+        <section class="protection-content">
+            <div class="warning-box">
+                <h2>⚠️ Avertissement Légal</h2>
+                <p>Toutes les images, illustrations et créations numériques présentes sur le site AsArt'sDev sont protégées par les droits d'auteur et droits connexes. Leur reproduction, distribution, vente ou utilisation sans autorisation écrite est strictement interdite et passible de poursuites judiciaires.</p>
+            </div>
+
+            <section class="legal-section">
+                <h2>1. Protection Technique des Images</h2>
+                <p>Le site utilise plusieurs mesures techniques pour protéger les images contre le vol :</p>
+                <ul class="implemented-list">
+                    <li><strong>Blocage du clic droit :</strong> Impossible de télécharger directement via le menu contextuel</li>
+                    <li><strong>Blocage du glisser-déposer :</strong> Pas d'export par drag and drop</li>
+                    <li><strong>Marquage filigrane :</strong> Watermark intégré invisible pour tracer les usages autorisés</li>
+                    <li><strong>Système d'authentification :</strong> Validation des sources et utilisateurs légitimes</li>
+                    <li><strong>Meta-données automatiques :</strong> Signature numérique intégrée aux images</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2>2. Fondement Juridique</h2>
+                <p><strong>Code de la Propriété Intellectuelle (France) :</strong></p>
+                <ul>
+                    <li><strong>Article L. 111-1 :</strong> "L'auteur est le créateur de l'œuvre"</li>
+                    <li><strong>Article L. 122-4 :</strong> Reproduction et représentation interdite sans autorisation</li>
+                    <li><strong>Article L. 335-2 :</strong> Contrefaçon : amende jusqu'à 300 000€ et/ou emprisonnement</li>
+                </ul>
+                <p><strong>Directive Européenne 2006/115/CE :</strong> Harmonisation de la protection des droits connexes</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>3. Conséquences Légales de la Violation</h2>
+                <p>L'utilisation, la reproduction ou la distribution non autorisée des images peut entraîner :</p>
+                <ul>
+                    <li>🔴 <strong>Amende civile :</strong> 1000€ à 300 000€</li>
+                    <li>🔴 <strong>Dommages et intérêts :</strong> Jusqu'à 3 fois le prix de vente</li>
+                    <li>🔴 <strong>Pénalités pénales :</strong> Jusqu'à 2 ans d'emprisonnement</li>
+                    <li>🔴 <strong>Saisi du matériel :</strong> Stockage illégal confisqué</li>
+                    <li>🔴 <strong>Retrait du contenu :</strong> Ordre de suppression immédiate</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2>4. Code de Protection Intégré</h2>
+                <p>Voici le code JavaScript automatiquement appliqué à tous les contenus du site :</p>
+                
+                <div class="code-block">
+// Protection des images AsArt'sDev
+document.addEventListener('DOMContentLoaded', function() {
+    // Blocage du clic droit sur les images
+    document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('contextmenu', e => {
+            e.preventDefault();
+            alert('Cette image est protégée par les droits d\'auteur ©AsArt\'sDev');
+            return false;
+        });
+        
+        // Blocage du drag and drop
+        img.addEventListener('dragstart', e => {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Ajout de class pour CSS protection
+        img.classList.add('protected-image');
+        
+        // Ajout de meta-données
+        img.setAttribute('data-protected', 'true');
+        img.setAttribute('data-owner', 'AsArt\'sDev');
+    });
+    
+    // Enregistrement des tentatives de violation
+    document.addEventListener('copy', e => {
+        if (window.getSelection().toString().length > 0) {
+            console.warn('Événement de copie détecté sur contenu protégé');
+        }
+    });
+});
+                </div>
+
+                <p><strong>CSS appliqué :</strong></p>
+                <div class="code-block">
+img.protected-image {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: all;
+}
+
+img.protected-image::before {
+    content: '';
+    background-image: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 35px,
+            rgba(0,0,0,.05) 35px,
+            rgba(0,0,0,.05) 70px
+        );
+}
+                </div>
+            </section>
+
+            <section class="legal-section">
+                <h2>5. Utilisation Autorisée</h2>
+                <p>Les images et illustrations de ce site peuvent être :</p>
+                <ul style="list-style: none;">
+                    <li>✅ Consultées à titre personnel</li>
+                    <li>✅ Partagées avec lien de source (mention obligatoire)</li>
+                    <li>✅ Achetées avec licence d'usage commercial si applicable</li>
+                    <li>✅ Utilisées dans le cadre et les limites permises par votre contrat</li>
+                </ul>
+                <p style="margin-top: 15px; font-style: italic;">Tout usage commercial ou modification requiert une licence spécialisée.</p>
+            </section>
+
+            <section class="legal-section">
+                <h2>6. Signalement de Violation</h2>
+                <p>Si vous découvrez que vos créations ou une création AsArt'sDev sont utilisées sans autorisation :</p>
+                <ol>
+                    <li>Documentez la violation (capture d'écran, URL, date)</li>
+                    <li>Envoyez une notification <strong>DMCA</strong> ou demande officielle</li>
+                    <li> <a href="contact.html" class="btn" style="display: inline-block;">Déposez plainte</a></li>
+                    <li>Requête de retrait immédiat auprès du plateforme hébergeante</li>
+                </ol>
+                <p><strong>Email de signalement :</strong> <a href="mailto:asartdev.contact@gmail.com">asartdev.contact@gmail.com</a></p>
+            </section>
+
+            <section class="legal-section">
+                <h2>7. Conditions de Licence d'Usage</h2>
+                <p>Pour chaque image achetée ou téléchargée, l'utilisateur accepte :</p>
+                <ul>
+                    <li>Limite du nombre de copies (généralement 1 seule copie exploitable)</li>
+                    <li>Interdiction de concéder une sous-licence</li>
+                    <li>Interdiction de modification sans accord écrit</li>
+                    <li>Obligation de maintenir les mentions de droits d'auteur</li>
+                    <li>Révocation possible en cas de violation</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2>8. Pop-up de Consentement Obligatoire</h2>
+                <p>À chaque visite, vous acceptez les présentes conditions via una pop-up de confirmation. Cette pop-up :</p>
+                <ul class="implemented-list">
+                    <li><strong>Affichage automatique :</strong> À la première visite et après réinitialisation</li>
+                    <li><strong>Obligation de signature :</strong> Acceptation explicite requise</li>
+                    <li><strong>Enregistrement :</strong> Conservation de la trace de consentement (30 jours)</li>
+                    <li><strong>Multilangue :</strong> Français et autres langues supportées</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2>9. Durée de Protection</h2>
+                <p><strong>Durée légale :</strong> La protection s'étend pendant toute la vie de l'auteur + 70 ans après sa mort (droit d'auteur français)</p>
+                <p>Après la mort du créateur, ses ayants droit conservent la totalité des droits patrimoniaux et moraux.</p>
+            </section>
+
+            <div style="text-align: center; margin-top: 40px; padding: 20px; background: #f0f0f0; border-radius: 6px;">
+                <h3>Vous avez des questions ?</h3>
+                <p>Contactez-nous pour discuter de l'utilisation autorisée de nos créations</p>
+                <a href="contact.html" class="btn" style="display: inline-block; margin-top: 15px;">Nous contacter</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 AsArt'sDev - Tous droits réservés | <a href="LivresAsArtsDev/cgv.html">CGV</a> | <a href="image-protection.html">Protection</a></p>
+    </footer>
+
+    <script>
+        // Protection globale des images
+        document.addEventListener('DOMContentLoaded', function() {
+            // Appliquer la protection à toutes les images
+            const images = document.querySelectorAll('img');
+            
+            images.forEach(img => {
+                // Clic droit
+                img.addEventListener('contextmenu', e => {
+                    e.preventDefault();
+                    showProtectionAlert('Cette image est protégée par les droits d\'auteur © AsArt\'sDev');
+                    return false;
+                });
+                
+                // Drag and drop
+                img.addEventListener('dragstart', e => {
+                    e.preventDefault();
+                    return false;
+                });
+                
+                // Ajouter les attributs de protection
+                img.setAttribute('data-protected', 'true');
+                img.setAttribute('data-owner', 'AsArt\'sDev');
+                img.setAttribute('data-year', new Date().getFullYear());
+            });
+        });
+
+        function showProtectionAlert(message) {
+            const overlay = document.createElement('div');
+            overlay.className = 'alert-overlay';
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0,0,0,0.7);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+            `;
+            
+            const alertBox = document.createElement('div');
+            alertBox.style.cssText = `
+                background: white;
+                padding: 30px;
+                border-radius: 8px;
+                max-width: 500px;
+                text-align: center;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            `;
+            
+            alertBox.innerHTML = `
+                <h2 style="color: #d32f2f; margin-top: 0;">⚠️ Contenu Protégé</h2>
+                <p>${message}</p>
+                <p style="font-size: 12px; color: #666;">
+                    Cet élément est soumis à la protection des droits d'auteur et ne peut pas être téléchargé ou reproduit sans autorisation. 
+                    <a href="image-protection.html" style="color: #1976d2;">En savoir plus →</a>
+                </p>
+                <button onclick="this.parentElement.parentElement.remove()" style="
+                    background: #1976d2;
+                    color: white;
+                    border: none;
+                    padding: 10px 30px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    margin-top: 15px;
+                ">Fermer</button>
+            `;
+            
+            overlay.appendChild(alertBox);
+            document.body.appendChild(overlay);
+            
+            overlay.addEventListener('click', e => {
+                if (e.target === overlay) overlay.remove();
+            });
+        }
+
+        // Enregistrement des tentatives de copie
+        document.addEventListener('copy', e => {
+            const selectedText = window.getSelection().toString();
+            if (selectedText.length > 50) {
+                console.warn('Tentative de copie de contenu protégé :', selectedText.substring(0, 50) + '...');
+            }
+        });
+
+        // Prévention de l'inspection
+        document.onkeydown = function(e) {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.shiftKey && e.key === 'C')) {
+                console.warn('Tentative d\'accès aux outils de développement');
+            }
+        };
+    </script>
+</body>
+</html>
+
+

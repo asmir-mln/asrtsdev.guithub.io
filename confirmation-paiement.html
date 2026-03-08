@@ -1,0 +1,117 @@
+<!-- AsArt'sDev | Signature invisible | ASmir Milia | ASARTSDEV_SIGNATURE_INVISIBLE -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation d'achat – AsArt'sDev</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .confirmation-wrap {
+            max-width: 920px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .confirmation-card {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+            padding: 2rem;
+        }
+
+        .confirmation-success {
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            color: #1f5b3e;
+            background: #f4fbf7;
+            border: 1px solid #b8e7cd;
+            border-radius: 10px;
+            padding: 0.9rem 1rem;
+        }
+
+        .confirmation-details {
+            margin: 1rem 0;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1rem;
+        }
+
+        .confirmation-details p {
+            margin: 0.4rem 0;
+        }
+
+        .cta-row {
+            margin-top: 1.4rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Confirmation d'achat</h1>
+        <p>Votre validation a bien été prise en compte</p>
+    </header>
+
+    <main class="confirmation-wrap">
+        <section class="page-main-banner">
+            <h2>Merci pour votre achat</h2>
+            <p>Promo en ligne appliquée : <strong>-5%</strong> sur le panier total.</p>
+        </section>
+
+        <section class="confirmation-card">
+            <div class="confirmation-success">✅ Achat validé avec succès.</div>
+
+            <div id="confirmation-details" class="confirmation-details">
+                <p><strong>Produit :</strong> En cours de récupération...</p>
+                <p><strong>Total payé :</strong> En cours de récupération...</p>
+                <p><strong>Date :</strong> En cours de récupération...</p>
+            </div>
+
+            <div class="contact-apres-achat">
+                Après achat, contactez-nous pour tout suivi de commande :
+                <a href="mailto:asartdev.contact@gmail.com">asartdev.contact@gmail.com</a> —
+                <a href="tel:0781586882">0781586882</a>
+            </div>
+
+            <div class="cta-row">
+                <a href="commande.html" class="btn">Nouvelle commande</a>
+                <a href="index.html" class="btn-contact">Retour accueil</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <nav>
+            <a href="index.html">Accueil</a> |
+            <a href="commande.html">Commande</a> |
+            <a href="contact.html">Contact</a> |
+            <a href="tel:0781586882">📱 0781586882</a> |
+            <a href="mailto:asartdev.contact@gmail.com">📧 asartdev.contact@gmail.com</a>
+        </nav>
+        <p>© 2026 AsArt'sDev – créé par ASmir Milia. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        const paymentDataRaw = localStorage.getItem('paymentSuccess');
+        const detailsEl = document.getElementById('confirmation-details');
+
+        if (paymentDataRaw && detailsEl) {
+            const paymentData = JSON.parse(paymentDataRaw);
+            const dateText = paymentData.date
+                ? new Date(paymentData.date).toLocaleString('fr-FR')
+                : 'Non renseignée';
+
+            detailsEl.innerHTML = `
+                <p><strong>Produit :</strong> ${paymentData.produit || 'Non renseigné'}</p>
+                <p><strong>Total payé :</strong> ${(paymentData.amount || 0).toFixed(2)} €</p>
+                <p><strong>Email :</strong> ${paymentData.email || 'Non renseigné'}</p>
+                <p><strong>Date :</strong> ${dateText}</p>
+                <p><strong>Référence paiement :</strong> ${paymentData.paymentIntentId || 'Non renseignée'}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

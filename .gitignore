@@ -1,0 +1,31 @@
+# Fichiers à ignorer pour Git
+*.log
+*.tmp
+*~
+.DS_Store
+Thumbs.db
+node_modules/
+.vscode/
+.idea/
+*.bak
+
+# Fichiers de configuration avec clés API (IMPORTANT !)
+api/config.php
+config.php
+.env
+
+# Logs de paiement et transactions
+logs/
+*.log
+
+# Dépendances Stripe PHP
+api/vendor/
+api/composer.lock
+vendor/
+
+# Fichiers de test avec vraies données
+test-data/
+
+# Données de commandes sensibles
+api/data/
+api/data/*.json

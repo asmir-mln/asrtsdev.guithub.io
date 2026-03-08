@@ -1,0 +1,421 @@
+﻿<!-- AsArt'sDev | Signature invisible | ASmir Milia | ASARTSDEV_SIGNATURE_INVISIBLE -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Musée Virtuel 3D - AsArt'sDev</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #12355f 0%, #1e4f86 100%);
+      color: white;
+      overflow-x: hidden;
+      perspective: 1000px;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(10px);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      text-shadow: 0 0 20px rgba(255,255,255,0.3);
+      letter-spacing: 3px;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      opacity: 0.8;
+    }
+
+    #museum {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 60px 20px;
+      gap: 80px;
+      perspective: 1500px;
+    }
+
+    #museum::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    #museum::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.1);
+    }
+
+    #museum::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.3);
+      border-radius: 10px;
+    }
+
+    .tableau-container {
+      min-width: 400px;
+      scroll-snap-align: center;
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease;
+    }
+
+    .tableau-container:hover {
+      transform: rotateY(5deg) scale(1.05);
+    }
+
+    .tableau {
+      background: linear-gradient(145deg, #2a2a3e, #1f1f2e);
+      border: 3px solid #d4af37;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 
+        0 20px 60px rgba(0,0,0,0.5),
+        0 0 30px rgba(212, 175, 55, 0.2);
+      position: relative;
+    }
+
+    .tableau::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      background: linear-gradient(45deg, transparent, rgba(212,175,55,0.1), transparent);
+      border-radius: 15px;
+      z-index: -1;
+    }
+
+    .tableau img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .info {
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 10px;
+    }
+
+    .info h3 {
+      color: #d4af37;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(212,175,55,0.5);
+    }
+
+    .info p {
+      line-height: 1.8;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 15px;
+    }
+
+    .prix {
+      display: inline-block;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #d4af37, #f4d03f);
+      color: #1a1a2e;
+      font-weight: bold;
+      font-size: 1.3rem;
+      border-radius: 8px;
+      margin: 15px 0;
+      box-shadow: 0 5px 15px rgba(212,175,55,0.4);
+    }
+
+    .edition {
+      font-size: 0.9rem;
+      color: #d4af37;
+      font-style: italic;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    .edition strong {
+      color: #f4d03f;
+      font-weight: bold;
+      text-shadow: 0 0 8px rgba(244,208,63,0.5);
+    }
+
+    .signature {
+      font-family: 'Brush Script MT', cursive;
+      font-size: 1.5rem;
+      color: #d4af37;
+      margin-top: 15px;
+      text-align: right;
+      text-shadow: 0 0 5px rgba(212,175,55,0.3);
+    }
+
+    .btn-audio {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 30px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(102,126,234,0.4);
+    }
+
+    .btn-audio:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(102,126,234,0.6);
+    }
+
+    .btn-audio:active {
+      transform: translateY(0);
+    }
+
+    .navigation {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 20px;
+      z-index: 1000;
+    }
+
+    .nav-btn {
+      width: 60px;
+      height: 60px;
+      background: rgba(212,175,55,0.2);
+      border: 2px solid #d4af37;
+      border-radius: 50%;
+      color: #d4af37;
+      font-size: 1.5rem;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .nav-btn:hover {
+      background: rgba(212,175,55,0.4);
+      transform: scale(1.1);
+    }
+
+    .rubrique-tech {
+      max-width: 1100px;
+      margin: 20px auto 0 auto;
+      padding: 16px 20px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .rubrique-tech h2 {
+      color: #f4d03f;
+      margin-bottom: 8px;
+      font-size: 1.4rem;
+    }
+
+    .rubrique-tech p {
+      margin: 0;
+      opacity: 0.95;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: rgba(0,0,0,0.5);
+      margin-top: 60px;
+    }
+
+    footer a {
+      color: #d4af37;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .tableau-container {
+        min-width: 320px;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎨 Musée Virtuel AsArt'sDev</h1>
+    <p>Galerie d'œuvres numériques — Édition limitée et signée</p>
+  </header>
+
+  <section class="rubrique-tech">
+    <h2>Rubrique Objet Tech du mois</h2>
+    <p><strong>Vision Technologique</strong> : innovation inclusive, IA éthique et solutions open-source au service de tous.</p>
+  </section>
+
+  <div id="museum">
+    <!-- Tableaux générés dynamiquement -->
+  </div>
+
+    <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">
+      💼 <strong>Demande de partenariat ou preuve de sérieux :</strong> Acompte 30% prévisionnel requis<br>
+      📧 <a href="mailto:asartdev.contact@gmail.com" style="color: #d4af37;">asartdev.contact@gmail.com</a> | 
+      📱 <a href="tel:0781586882" style="color: #d4af37;">0781586882</a>
+    </p>
+  <div class="navigation">
+    <button class="nav-btn" onclick="scrollMuseum(-1)">◀</button>
+    <button class="nav-btn" onclick="scrollMuseum(1)">▶</button>
+  </div>
+
+  <footer>
+    <p>© 2026 AsArt'sDev — Asmir Milianni | <a href="index.html">Retour à l'accueil</a></p>
+    
+    <div style="margin-top: 20px; padding: 20px; background: rgba(212,175,55,0.1); border-radius: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
+      <p style="font-size: 1.1rem; margin-bottom: 15px; color: #d4af37;">
+        <strong>💳 Modalités de paiement :</strong>
+      </p>
+      <p style="font-size: 0.95rem; line-height: 1.8; opacity: 0.9;">
+        ⚠️ <strong>Aucun paiement en ligne accepté directement sur ce site.</strong><br>
+        <br>
+        ✅ <strong>Paiements acceptés :</strong><br>
+        • Virement bancaire (coordonnées complètes sur demande par email)<br>
+        • Chèque à l'ordre de : <strong>Asmir Milianni</strong><br>
+        <br>
+        📮 <strong>Adresse postale pour courrier/chèque :</strong><br>
+        Asmir Milianni<br>
+        Rue Léon Bourgeois<br>
+        Paris, France<br>
+        <br>
+        📧 Contact : <a href="mailto:asartdev.contact@gmail.com" style="color: #d4af37; text-decoration: none;">asartdev.contact@gmail.com</a><br>
+        📱 Téléphone : <a href="tel:0781586882" style="color: #d4af37; text-decoration: none;">0781586882</a>
+      </p>
+      <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.7;">
+        💼 <strong>Demande de partenariat :</strong> Acompte 30% prévisionnel requis (preuve de sérieux)
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Collection de tableaux avec descriptions complètes
+    const tableaux = [
+      {
+        nom: "Max et Milla — Le Cycle des 10 Ans",
+        img: "ChatGPT%20Image%208%20mars%202026,%2020_29_29.png",
+        description: "Histoire vraie d'un parcours d'enfance marqué par l'autodidaxie et la dyslexie, transformée en force mentale. Cette œuvre illustre le début d'un cycle de résilience et de reconstruction.",
+        prix: "15,00 €",
+        edition: "Édition limitée : 1000 exemplaires",
+        numero: "001"
+      },
+      {
+        nom: "Les Trois Vies d'Asmir",
+        img: "ChatGPT%20Image%208%20mars%202026,%2020_29_29.png",
+        description: "Autobiographie adulte en trois actes : l'enfance dans la rue, la survie par hypervigilance, et la reconstruction par l'écriture. Version manuscrite signée de la main de l'auteur dyslexique.",
+        prix: "39,99 €",
+        edition: "Édition limitée : 500 exemplaires | <strong>Acompte 30%</strong> requis",
+        numero: "002"
+      },
+      {
+        nom: "Vision Technologique",
+        img: "ChatGPT%20Image%208%20mars%202026,%2020_29_29.png",
+        description: "Représentation de l'innovation inclusive : IA éthique, accessibilité pour malvoyants, solutions médicales open-source. Cette œuvre symbolise le labo de demain à Paris.",
+        prix: "Sur devis — Partenariat",
+        edition: "Édition limitée : 300 exemplaires | <strong>Acompte 30%</strong> (preuve de sérieux)",
+        numero: "003"
+      }
+    ];
+
+    const museumDiv = document.getElementById('museum');
+    const synth = window.speechSynthesis;
+
+    // Générer les tableaux
+    tableaux.forEach((tableau, index) => {
+      const container = document.createElement('div');
+      container.className = 'tableau-container';
+      
+      container.innerHTML = `
+        <div class="tableau">
+          <img src="${tableau.img}" alt="${tableau.nom}" loading="lazy">
+          <div class="info">
+            <h3>${tableau.nom}</h3>
+            <p id="desc-${index}">${tableau.description}</p>
+            <div class="prix">${tableau.prix}</div>
+            <p class="edition">${tableau.edition}<br>Exemplaire n° <strong>${tableau.numero}/∞</strong></p>
+            <p class="signature">Asmir Milianni ✍️</p>
+            <button class="btn-audio" onclick="lireDescription(${index})">
+              🔊 Écouter la description
+            </button>
+          </div>
+        </div>
+      `;
+      
+      museumDiv.appendChild(container);
+    });
+
+    // Fonction de lecture audio (synthèse vocale IA)
+    function lireDescription(index) {
+      const texte = document.getElementById(`desc-${index}`).innerText;
+      
+      if (synth.speaking) {
+        synth.cancel();
+      }
+      
+      const utterance = new SpeechSynthesisUtterance(texte);
+      utterance.lang = 'fr-FR';
+      utterance.rate = 0.9;
+      utterance.pitch = 1.0;
+      utterance.volume = 1.0;
+      
+      synth.speak(utterance);
+    }
+
+    // Navigation horizontale fluide
+    function scrollMuseum(direction) {
+      const scrollAmount = 500;
+      museumDiv.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+
+    // Navigation clavier
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') scrollMuseum(1);
+      if (e.key === 'ArrowLeft') scrollMuseum(-1);
+      if (e.key === 'Escape' && synth.speaking) synth.cancel();
+    });
+
+    // Effet de rotation 3D au mouvement de la souris
+    document.addEventListener('mousemove', (e) => {
+      const containers = document.querySelectorAll('.tableau-container');
+      
+      containers.forEach(container => {
+        const rect = container.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+          const rotateY = ((x / rect.width) - 0.5) * 20;
+          const rotateX = ((y / rect.height) - 0.5) * -20;
+          
+          container.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(1.05)`;
+        } else {
+          container.style.transform = 'rotateY(0deg) rotateX(0deg) scale(1)';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

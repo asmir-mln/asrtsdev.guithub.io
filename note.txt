@@ -1,0 +1,42 @@
+AsArt'sDev — Domaine gratuit (guide rapide)
+
+Objectif : avoir une adresse web gratuite pour ton site.
+
+Option 1 (le plus simple, immédiat)
+- Plateforme : Cloudflare Pages
+- Domaine gratuit fourni : tonprojet.pages.dev
+- Avantage : SSL HTTPS automatique, rapide, pro
+
+Étapes :
+1) Crée un compte Cloudflare
+2) Va sur Pages > Create project
+3) Import ton dossier/site
+4) Choisis un nom : asartsdev
+5) Ton lien sera : https://asartsdev.pages.dev
+
+Option 2 (très simple aussi)
+- Plateforme : GitHub Pages
+- Domaine gratuit : tonpseudo.github.io
+- Exemple : https://asmirmln.github.io
+
+Étapes :
+1) Mets ton site sur un repo GitHub
+2) Settings > Pages
+3) Source : Deploy from branch (main / root)
+4) URL générée automatiquement
+
+Option 3 (nom de domaine “vrai” gratuit, plus long)
+- Extension : .eu.org
+- Exemple possible : asartsdev.eu.org
+- Attention : validation manuelle, délai possible de plusieurs jours/semaines
+
+Recommandation pro immédiate :
+- Lance d’abord avec Cloudflare Pages (pages.dev),
+- puis ajoute un domaine personnalisé plus tard.
+
+Nom conseillé pour ton lancement :
+- maxetmilla.pages.dev
+ou
+- asartsdev.pages.dev
+
+Tu veux que je te prépare aussi un fichier pas-à-pas pour publier ton dossier actuel sur Cloudflare Pages en 10 minutes ?

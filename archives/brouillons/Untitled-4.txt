@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Conditions Générales de Vente - AsArt'sDev</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<h1>Conditions Générales de Vente</h1>
+
+<p><strong>Éditeur :</strong> AsArt'sDev créé par ASmir mln</p>
+
+<h2>Article 1 – Objet</h2>
+<p>Les présentes Conditions Générales de Vente régissent la vente des livres et produits numériques proposés sur le site AsArt'sDev.</p>
+
+<h2>Article 2 – Produits</h2>
+<p>Les livres proposés sont des œuvres originales protégées par le droit d’auteur.</p>
+
+<h2>Article 3 – Prix</h2>
+<p>Les prix sont indiqués en euros (€). Le vendeur se réserve le droit de modifier les prix à tout moment.</p>
+
+<h2>Article 4 – Commande</h2>
+<p>Toute commande implique l’acceptation des présentes CGV.</p>
+
+<h2>Article 5 – Livraison</h2>
+<p>Les produits numériques sont livrés par téléchargement ou email.</p>
+
+<h2>Article 6 – Contact</h2>
+<p>Email : contact@asartsdev.com</p>
+
+<h2>Article 7 – Droits d’auteur</h2>
+<p>Tous droits réservés © AsArt'sDev. Toute reproduction est interdite sans autorisation.</p>
+
+</body>
+<footer>
+<p>© AsArt'sDev créé par ASmir mln – Tous droits réservés</p>
+<a href="/ecom/cgv.html">Conditions Générales de Vente</a> |
+<a href="/contact.html">Contact</a>
+</footer>
+
+</html>

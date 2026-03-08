@@ -1,0 +1,34 @@
+{
+  "name": "asartsdev-orders-api",
+  "version": "1.0.0",
+  "description": "API open-source de gestion de commandes sans paiement en ligne pour AsArt'sDev",
+  "main": "api/cli-orders.js",
+  "bin": {
+    "asartsdev-orders": "api/cli-orders.js"
+  },
+  "scripts": {
+    "start": "php -S localhost:8000",
+    "cli": "node api/cli-orders.js",
+    "test": "node api/cli-orders.js create && node api/cli-orders.js list"
+  },
+  "keywords": [
+    "orders",
+    "api",
+    "ecommerce",
+    "manual-payment",
+    "open-source",
+    "asartsdev"
+  ],
+  "author": "Asmir Milianni <asartdev.contact@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asartsdev/asartsdev.github.io.git"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "php": ">=7.4.0"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

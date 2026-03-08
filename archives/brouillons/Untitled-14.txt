@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CGV AsArt'sDev</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<h1>Conditions Générales de Vente</h1>
+
+<p>AsArt'sDev créé par ASmir mln</p>
+
+<p>Tous les livres sont protégés.</p>
+
+<p>Toute reproduction interdite.</p>
+
+<p>Email contact : contact@asartsdev.com</p>
+
+<footer>
+<p>© AsArt'sDev – Tous droits réservés</p>
+</footer>
+
+</body>
+</html>

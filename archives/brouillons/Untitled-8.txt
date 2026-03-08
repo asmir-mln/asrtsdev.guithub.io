@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>AsArt'sDev Boutique</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Bienvenue sur AsArt'sDev</h1>
+
+<h2>Livres disponibles</h2>
+
+<a href="ecom/livres/souvenir-enfance/index.html">
+Voir le livre Souvenir d'enfance
+</a>
+
+<br><br>
+
+<a href="contact.html">Contact</a>
+
+<footer>
+<p>© AsArt'sDev créé par ASmir mln – Tous droits réservés</p>
+<a href="ecom/cgv.html">CGV</a>
+</footer>
+
+</body>
+</html>
