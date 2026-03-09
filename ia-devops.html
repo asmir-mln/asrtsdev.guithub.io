@@ -231,6 +231,268 @@
             font-weight: bold;
             box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
         }
+
+        /* Section Visuelle IA Futuriste */
+        .ia-vision-section {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0d1b2a 100%);
+            padding: 60px 20px;
+            margin: 40px 0;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ia-vision-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, rgba(0, 243, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(rgba(0, 243, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            animation: gridFlow 8s linear infinite;
+        }
+
+        @keyframes gridFlow {
+            0% { background-position: 0 0; }
+            100% { background-position: 50px 50px; }
+        }
+
+        .ia-vision-container {
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .ia-vision-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        /* Lettre E coupée */
+        .e-cut {
+            font-size: 12em;
+            font-weight: 900;
+            color: transparent;
+            background: linear-gradient(180deg, #00f3ff 0%, #667eea 50%, transparent 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            position: relative;
+            text-align: center;
+            animation: eFloat 4s ease-in-out infinite;
+        }
+
+        .e-cut::before {
+            content: 'E';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 60%;
+            height: 52%;
+            overflow: hidden;
+            font-size: 12em;
+            font-weight: 900;
+            color: #00f3ff;
+            transform: translateX(-50%);
+            filter: drop-shadow(0 0 20px rgba(0, 243, 255, 0.8));
+            animation: eFloatTop 4s ease-in-out infinite;
+        }
+
+        .e-cut::after {
+            content: 'E';
+            position: absolute;
+            left: 50%;
+            top: 52%;
+            width: 60%;
+            height: 48%;
+            overflow: hidden;
+            font-size: 12em;
+            font-weight: 900;
+            color: #764ba2;
+            transform: translateX(-50%);
+            filter: drop-shadow(0 0 20px rgba(118, 75, 162, 0.8));
+            animation: eFloatBottom 4s ease-in-out infinite;
+        }
+
+        @keyframes eFloatTop {
+            0%, 100% { transform: translateX(-50%) translateY(-10px); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        @keyframes eFloatBottom {
+            0%, 100% { transform: translateX(-50%) translateY(10px); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* Câbles bleus montants */
+        .cables-container {
+            position: relative;
+            height: 300px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .cable {
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(180deg, #00f3ff 0%, #667eea 100%);
+            transform-origin: bottom;
+            border-radius: 2px;
+            filter: drop-shadow(0 0 10px rgba(0, 243, 255, 0.8));
+        }
+
+        .cable-1 {
+            height: 250px;
+            left: 35%;
+            animation: cableFlow 3s linear infinite;
+        }
+
+        .cable-2 {
+            height: 280px;
+            left: 50%;
+            animation: cableFlow 3.5s linear infinite 0.5s;
+        }
+
+        .cable-3 {
+            height: 260px;
+            left: 65%;
+            animation: cableFlow 3.2s linear infinite 1s;
+        }
+
+        @keyframes cableFlow {
+            0% {
+                background-position: 0 0;
+                filter: drop-shadow(0 0 10px rgba(0, 243, 255, 0.8));
+            }
+            50% {
+                filter: drop-shadow(0 0 20px rgba(102, 126, 234, 1));
+            }
+            100% {
+                filter: drop-shadow(0 0 10px rgba(0, 243, 255, 0.8));
+            }
+        }
+
+        /* Cerveau NIA */
+        .nia-brain {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: brainPulse 2s ease-in-out infinite;
+        }
+
+        .brain-core {
+            width: 120px;
+            height: 120px;
+            border: 3px solid #00f3ff;
+            border-radius: 50%;
+            position: relative;
+            background: radial-gradient(circle at 30% 30%, rgba(0, 243, 255, 0.3), transparent);
+            box-shadow: 
+                inset 0 0 20px rgba(0, 243, 255, 0.5),
+                0 0 30px rgba(102, 126, 234, 0.8),
+                0 0 60px rgba(0, 243, 255, 0.4);
+        }
+
+        .brain-inner {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.8);
+        }
+
+        .brain-pulse {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            border: 2px solid #00f3ff;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            animation: brainRipple 2s ease-out infinite;
+            filter: drop-shadow(0 0 10px rgba(0, 243, 255, 0.6));
+        }
+
+        @keyframes brainPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes brainRipple {
+            0% {
+                width: 140px;
+                height: 140px;
+                opacity: 0.8;
+            }
+            100% {
+                width: 200px;
+                height: 200px;
+                opacity: 0;
+            }
+        }
+
+        /* Texte En cours */
+        .ia-development {
+            text-align: center;
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+        }
+
+        .ia-development h2 {
+            color: #00f3ff;
+            font-size: 2em;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: glow 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(0, 243, 255, 0.8));
+        }
+
+        .ia-development p {
+            color: #667eea;
+            font-size: 1.2em;
+            margin: 10px 0 0 0;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 10px rgba(0, 243, 255, 0.5); }
+            50% { text-shadow: 0 0 30px rgba(0, 243, 255, 1), 0 0 60px rgba(102, 126, 234, 0.8); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
     </style>
 </head>
 <body>
@@ -249,6 +511,43 @@
     </header>
 
     <main>
+        <!-- Section Vision IA Futuriste -->
+        <div class="ia-vision-section">
+            <div class="ia-development">
+                <h2>MODULE IA FUTURISTE</h2>
+                <p>🔧 En cours de développement</p>
+            </div>
+
+            <div class="ia-vision-container">
+                <!-- Lettre E coupée -->
+                <div class="e-cut"></div>
+
+                <!-- Câbles et Cerveau NIA -->
+                <div>
+                    <div class="cables-container">
+                        <div class="cable cable-1"></div>
+                        <div class="cable cable-2"></div>
+                        <div class="cable cable-3"></div>
+
+                        <!-- Cerveau NIA -->
+                        <div class="nia-brain">
+                            <div class="brain-pulse"></div>
+                            <div class="brain-core">
+                                <div class="brain-inner"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="text-align: center; color: #00f3ff; font-size: 1.3em; margin-top: 30px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px;">
+                        🧠 NIA
+                    </p>
+                    <p style="text-align: center; color: #667eea; font-size: 0.95em; margin-top: 10px;">
+                        Neurone Intelligence Adaptative<br>
+                        <em>Intelligence Artificielle Inclusive</em>
+                    </p>
+                </div>
+            </div>
+        </div>
+
         <!-- CV Section -->
         <div class="cv-header">
             <h1>Curriculum Vitae — Profil Technique</h1>
