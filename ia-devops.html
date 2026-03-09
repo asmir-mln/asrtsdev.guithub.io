@@ -1,0 +1,416 @@
+<!-- AsArt'sDev | IA DevOps - CV & Partenariats | ASmir Milia -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA & DevOps - CV & Partenariats - AsArt'sDev</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="logo-style.css">
+    <style>
+        .cv-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .cv-header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .cv-header p {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+
+        .cv-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        @media (max-width: 768px) {
+            .cv-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cv-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .cv-section h3 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .cv-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cv-item:last-child {
+            border-bottom: none;
+        }
+
+        .cv-item strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .cv-item em {
+            color: #764ba2;
+            font-style: italic;
+        }
+
+        .btn-download-cv {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 20px 0;
+            transition: background 0.3s;
+            font-weight: bold;
+        }
+
+        .btn-download-cv:hover {
+            background: #764ba2;
+        }
+
+        .investors-section {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 40px 0;
+        }
+
+        .investors-section h2 {
+            color: #856404;
+            margin-top: 0;
+        }
+
+        .contract-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .contract-card {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contract-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.5);
+        }
+
+        .contract-card h4 {
+            margin-top: 0;
+            font-size: 1.3em;
+        }
+
+        .contract-card p {
+            margin: 10px 0;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+
+        .btn-view-contract {
+            display: inline-block;
+            background: white;
+            color: #e74c3c;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+
+        .btn-view-contract:hover {
+            background: #f0f0f0;
+        }
+
+        .rights-section {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 40px 0;
+        }
+
+        .rights-section h2 {
+            margin-top: 0;
+        }
+
+        .rights-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .rights-list li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .rights-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .partnership-section {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .partnership-section h2 {
+            margin-top: 0;
+        }
+
+        .btn-partnership {
+            display: inline-block;
+            background: white;
+            color: #3498db;
+            padding: 15px 40px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 15px 10px;
+            transition: background 0.3s;
+            border: 2px solid white;
+        }
+
+        .btn-partnership:hover {
+            background: transparent;
+            color: white;
+        }
+
+        .tech-skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .skill-badge {
+            background: #667eea;
+            color: white;
+            padding: 12px 15px;
+            border-radius: 25px;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo AsArt'sDev -->
+    <a href="index.html" class="asartsdev-logo" aria-label="AsArt'sDev, retour à l'accueil du site">
+        <div class="asartsdev-logo-icon"><span>A</span></div>
+        <div class="asartsdev-logo-text">
+            <span class="asartsdev-logo-brand">AsArt'sDev</span>
+            <span class="asartsdev-logo-tagline">IA & DevOps</span>
+        </div>
+    </a>
+
+    <header>
+        <h1>IA & DevOps — Asmir Milianni (ASmir Mln)</h1>
+        <p>Solutions technologiques innovantes • DevOps en continu • IA inclusive & éthique</p>
+    </header>
+
+    <main>
+        <!-- CV Section -->
+        <div class="cv-header">
+            <h1>Curriculum Vitae — Profil Technique</h1>
+            <p>Développeur Full-Stack | DevOps | IA & Machine Learning | Accessibilité Numérique</p>
+            <a href="cv dev web2024/Fiche candidat 25-26 - MS REIMS.pdf" class="btn-download-cv" download>
+                📥 Télécharger le CV Complet (PDF)
+            </a>
+        </div>
+
+        <!-- CV Grid -->
+        <div class="cv-container">
+            <!-- Compétences Techniques -->
+            <div class="cv-section">
+                <h3>🛠️ Compétences Techniques</h3>
+                <div class="cv-item">
+                    <strong>DevOps & Infrastructure</strong>
+                    <p>Docker • Kubernetes • CI/CD (GitHub Actions, GitLab CI) • Linux • AWS / GCP / Azure</p>
+                </div>
+                <div class="cv-item">
+                    <strong>Programmation & Backend</strong>
+                    <p>Python • PHP • JavaScript/Node.js • SQL / NoSQL • Symfony • Express.js</p>
+                </div>
+                <div class="cv-item">
+                    <strong>IA & Machine Learning</strong>
+                    <p>TensorFlow • PyTorch • NLP • Computer Vision • APIs LLM (OpenAI, Claude)</p>
+                </div>
+                <div class="cv-item">
+                    <strong>Frontend & Web</strong>
+                    <p>React • Vue.js • HTML5 • CSS3 • Accessibilité WCAG 2.1 • Responsive Design</p>
+                </div>
+            </div>
+
+            <!-- Expériences & Projets -->
+            <div class="cv-section">
+                <h3>📚 Formation & Expériences</h3>
+                <div class="cv-item">
+                    <strong>Autodidacte Technologue</strong>
+                    <em>Parcours personnel d'innovation</em>
+                    <p>Apprentissage continu en DevOps, IA et développement full-stack depuis 2020</p>
+                </div>
+                <div class="cv-item">
+                    <strong>Projets Opensource</strong>
+                    <em>Contributions communautaires</em>
+                    <p>AsArt'sDev: plateforme accessible, API Symfony, solutions IA inclusives</p>
+                </div>
+                <div class="cv-item">
+                    <strong>Certification Visée</strong>
+                    <em>Masterclass Reims 2026</em>
+                    <p>MS DevOps Engineer Expert, Certification Cloud AWS</p>
+                </div>
+                <div class="cv-item">
+                    <strong>Spécialisation Accessibilité</strong>
+                    <em>Tech for Good</em>
+                    <p>Solutions IA pour malvoyants, malentendants, mobilité réduite</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Investisseurs & Partenaires -->
+        <div class="investors-section">
+            <h2>👥 Pour les Investisseurs & Partenaires</h2>
+            <p><strong>Asmir Milianni</strong> offre un profil d'entrepreneur technologue avec expertise DevOps, IA éthique et accessibilité numérique. 
+            Ses solutions combinent innovation technique et impact social, créant un avantage concurrentiel durable.</p>
+            <p><strong>Modèle commercial :</strong> Licensing technologique + Services DevOps + Consulting IA inclusive</p>
+        </div>
+
+        <!-- Exemples de Contrats -->
+        <section>
+            <h2>📋 Cadre Contractuel & Protection des Droits</h2>
+            <p>Tous les partenariats AsArt'sDev reposent sur des contrats clairs stipulant la protection des brevets et la propriété intellectuelle.</p>
+
+            <div class="contract-grid">
+                <!-- Contrat 1 -->
+                <div class="contract-card">
+                    <h4>📜 Contrat Partenariat Tech</h4>
+                    <p><strong>Clause clé :</strong> L'auteur conserve tous les droits, brevets et propriété intellectuelle. Le partenaire obtient une licence d'exploitation.</p>
+                    <p><strong>Durée :</strong> Négociable (1-5 ans) avec renégociation possible.</p>
+                    <a href="#" class="btn-view-contract">Voir modèle</a>
+                </div>
+
+                <!-- Contrat 2 -->
+                <div class="contract-card">
+                    <h4>🤝 Accord d'Association</h4>
+                    <p><strong>Clause clé :</strong> Droit à l'usage de la marque AsArt'sDev lors du lancement ou en futur partenariat, avec co-branding optionnel.</p>
+                    <p><strong>Avantage :</strong> Visibilité mutual, légitimité partagée.</p>
+                    <a href="#" class="btn-view-contract">Voir modèle</a>
+                </div>
+
+                <!-- Contrat 3 -->
+                <div class="contract-card">
+                    <h4>⚖️ Brevet & Propriété</h4>
+                    <p><strong>Clause clé :</strong> Tous les brevets et innovations restent à Asmir Milianni. Les partenaires acquièrent droit de licence limitée.</p>
+                    <p><strong>Protection :</strong> INPI + Enregistrement international.</p>
+                    <a href="#" class="btn-view-contract">Voir modèle</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Droits & Brevets -->
+        <div class="rights-section">
+            <h2>🛡️ Protections Légales & Droits Garantis</h2>
+            <ul class="rights-list">
+                <li><strong>Propriété Intellectuelle :</strong> Tous les développements techniques restent propriété d'Asmir Milianni</li>
+                <li><strong>Brevets :</strong> Dépôts INPI pour innovations majeures (IA accessible, DevOps inclusif)</li>
+                <li><strong>Marque AsArt'sDev :</strong> Enregistrement international, usage autorisé en co-branding</li>
+                <li><strong>Code Source :</strong> Options Open-Source (license selective) ou Source Privée selon accord</li>
+                <li><strong>Confidentialité :</strong> Protocole 7-étapes d'ouverture sécurisée (voir charte confidentialité)</li>
+                <li><strong>Royalties & Revenus :</strong> Modèle de partage des revenus selon accord</li>
+            </ul>
+        </div>
+
+        <!-- Modèles de Partenariat -->
+        <section>
+            <h2>🚀 Types de Partenariat Disponibles</h2>
+            
+            <div class="cv-container">
+                <div class="cv-section">
+                    <h3>💼 Partenaire Technologique</h3>
+                    <ul>
+                        <li>Intégration de solutions DevOps AsArt'sDev</li>
+                        <li>Support & maintenance inclus</li>
+                        <li>Droit à co-branding (logo+label)</li>
+                        <li>Pas de droits d'IP transfert</li>
+                        <li>Contrat: 2-5 ans renouvelable</li>
+                    </ul>
+                </div>
+
+                <div class="cv-section">
+                    <h3>🏢 Investisseur / Business Angel</h3>
+                    <ul>
+                        <li>Capital pour développement IA/DevOps</li>
+                        <li>Equity % selon apport</li>
+                        <li>Siège conseil / board optionnel</li>
+                        <li>Droit prioritaire futurs produits</li>
+                        <li>ROI documenté, exit strategy</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Partenariat -->
+        <div class="partnership-section">
+            <h2>Intéressé par un partenariat ?</h2>
+            <p>Contactez Asmir pour discuter d'une collaboration sur mesure</p>
+            <a href="contact.html" class="btn-partnership">📧 Me Contacter</a>
+            <a href="donation.html" class="btn-partnership">💼 Proposer un Partenariat</a>
+        </div>
+
+    </main>
+
+    <footer>
+        <nav>
+            <a href="index.html">Accueil</a> |
+            <a href="bibliotheque.html">Bibliothèque</a> |
+            <a href="musee.html">Musée</a> |
+            <a href="contact.html">Contact</a> |
+            <a href="tel:0781586882">📱 0781586882</a> |
+            <a href="mailto:asartdev.contact@gmail.com">📧 asartdev.contact@gmail.com</a>
+        </nav>
+        <p>© 2026 AsArt'sDev – créé par ASmir Milia. Tous droits réservés.</p>
+    </footer>
+
+    <script src="milian-nia.js"></script>
+</body>
+</html>
