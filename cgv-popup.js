@@ -142,7 +142,7 @@ class CGVPopup {
                 <div style="background: #e8f5e9; padding: 12px; border-radius: 4px; margin-top: 20px; border-left: 3px solid #4caf50;">
                     <p style="margin: 0; font-size: 13px; color: #2e7d32;">
                         <strong>✓ Version complète disponible :</strong> 
-                        <a href="ecom/cgv.html" target="_blank" style="color: #1976d2;">Lire les CGV intégrales →</a>
+                        <a href="LivresAsArtsDev/cgv.html" target="_blank" style="color: #1976d2;">Lire les CGV intégrales →</a>
                     </p>
                 </div>
             </div>
