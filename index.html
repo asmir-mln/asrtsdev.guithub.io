@@ -6,9 +6,360 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AsArt'sDev – Créations numériques et livres pour enfants</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="logo-style.css">
+    <style>
+        /* Styles pour le blason */
+        .blason-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 20px 60px;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0d1b2a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blason-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(0, 243, 255, 0.1) 0%, transparent 50%),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 50px 50px, 50px 50px;
+            pointer-events: none;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { background-position: 0% 0%, 0 0, 0 0; }
+            100% { background-position: 0% 0%, 50px 50px, 50px 50px; }
+        }
+
+        .blason-container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            animation: blasonAppear 2s ease-out;
+        }
+
+        @keyframes blasonAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) translateY(-50px);
+            }
+            60% {
+                transform: scale(1.1) translateY(0);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .blason-shield {
+            width: 200px;
+            height: 240px;
+            filter: drop-shadow(0 0 30px rgba(0, 243, 255, 0.6));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .shield-path {
+            animation: shieldPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes shieldPulse {
+            0%, 100% { 
+                stroke-width: 3;
+                filter: drop-shadow(0 0 10px rgba(0, 243, 255, 0.5));
+            }
+            50% { 
+                stroke-width: 4;
+                filter: drop-shadow(0 0 20px rgba(0, 243, 255, 0.9));
+            }
+        }
+
+        .brain-outline {
+            animation: brainGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes brainGlow {
+            0%, 100% { stroke-width: 2; opacity: 1; }
+            50% { stroke-width: 3; opacity: 0.7; }
+        }
+
+        .neuron {
+            animation: neuronPulse 1.5s ease-in-out infinite;
+        }
+
+        .n1 { animation-delay: 0s; }
+        .n2 { animation-delay: 0.3s; }
+        .n3 { animation-delay: 0.6s; }
+        .n4 { animation-delay: 0.9s; }
+        .n5 { animation-delay: 1.2s; }
+
+        @keyframes neuronPulse {
+            0%, 100% { opacity: 1; r: 2.5; }
+            50% { opacity: 0.4; r: 1.5; }
+        }
+
+        .synapse {
+            animation: synapseFlow 2s linear infinite;
+        }
+
+        @keyframes synapseFlow {
+            0%, 100% { 
+                stroke-dasharray: 0 100; 
+                opacity: 0.3; 
+            }
+            50% { 
+                stroke-dasharray: 100 0; 
+                opacity: 0.8; 
+            }
+        }
+
+        .star {
+            animation: starTwinkle 3s ease-in-out infinite;
+        }
+
+        .s1 { animation-delay: 0s; }
+        .s2 { animation-delay: 0.5s; }
+        .s3 { animation-delay: 1s; }
+        .s4 { animation-delay: 1.5s; }
+
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.5); }
+        }
+
+        .blason-title {
+            margin-top: 20px;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #00f3ff 0%, #0099ff 50%, #00f3ff 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+            letter-spacing: 3px;
+            font-weight: 700;
+            text-shadow: 0 0 30px rgba(0, 243, 255, 0.5);
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .blason-subtitle {
+            margin-top: 10px;
+            color: #00d4ff;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            opacity: 0.9;
+            animation: subtitleFade 2s ease-in-out infinite;
+        }
+
+        @keyframes subtitleFade {
+            0%, 100% { opacity: 0.9; }
+            50% { opacity: 0.6; }
+        }
+
+        @media (max-width: 768px) {
+            .blason-shield {
+                width: 150px;
+                height: 180px;
+            }
+
+            .blason-title {
+                font-size: 2rem;
+            }
+
+            .blason-subtitle {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Logo Milian-NIA dans les headers */
+        .main-header-with-logo {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 40px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        .logo-mark {
+            flex-shrink: 0;
+        }
+
+        .logo-nia {
+            width: 50px;
+            height: 50px;
+            animation: logoFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .logo-nia:hover {
+            animation: logoPulse 0.6s ease-in-out;
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        .logo {
+            flex: 1;
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo .tagline {
+            margin: 5px 0 0 0;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Headers avec logo pour musée et bibliothèque */
+        .header-with-logo {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            text-align: left;
+            padding: 30px 40px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(15px);
+            border-bottom: 2px solid #00f3ff;
+            box-shadow: 0 5px 30px rgba(0, 243, 255, 0.15);
+        }
+
+        .logo-mark-header {
+            flex-shrink: 0;
+        }
+
+        .logo-nia-small {
+            width: 45px;
+            height: 45px;
+            filter: drop-shadow(0 0 10px rgba(0, 243, 255, 0.6));
+            animation: logoFloat 4s ease-in-out infinite;
+        }
+
+        .header-with-logo h1 {
+            margin: 0;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            background: linear-gradient(135deg, #00f3ff 0%, #0099ff 50%, #00f3ff 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+            letter-spacing: 2px;
+        }
+
+        .header-with-logo p {
+            margin: 5px 0 0 0;
+            color: #00d4ff;
+            opacity: 0.85;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-header-with-logo {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+                padding: 20px;
+            }
+
+            .header-with-logo {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .logo-nia {
+                width: 40px;
+                height: 40px;
+            }
+
+            .logo-nia-small {
+                width: 35px;
+                height: 35px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
+    <!-- Logo AsArt'sDev - Discret mais visible au 1er coup d'œil -->
+    <a href="index.html" class="asartsdev-logo" title="Retour à l'accueil AsArt'sDev">
+        <div class="asartsdev-logo-icon">
+            <span>A</span>
+        </div>
+        <div class="asartsdev-logo-text">
+            <span class="asartsdev-logo-brand">AsArt'sDev</span>
+            <span class="asartsdev-logo-tagline">Créations artistiques</span>
+        </div>
+    </a>
+
+    <header class="main-header-with-logo">
+        <!-- Logo Milian-NIA discret -->
+        <div class="logo-mark">
+            <svg class="logo-nia" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00f3ff;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#0099ff;stop-opacity:1" />
+                    </linearGradient>
+                    <filter id="logoGlow">
+                        <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                <!-- Cercle extérieur -->
+                <circle cx="30" cy="30" r="28" fill="none" stroke="url(#logoGradient)" stroke-width="1.5" opacity="0.7"/>
+                <!-- Cerveau miniature -->
+                <path d="M18 25 Q15 25 14 28 Q13 32 14 35 Q15 38 18 38 Q21 38 22 35 Q23 32 22 28 Q21 25 18 25" 
+                      fill="none" stroke="url(#logoGradient)" stroke-width="1" filter="url(#logoGlow)"/>
+                <path d="M42 25 Q39 25 38 28 Q37 32 38 35 Q39 38 42 38 Q45 38 46 35 Q47 32 46 28 Q45 25 42 25" 
+                      fill="none" stroke="url(#logoGradient)" stroke-width="1" filter="url(#logoGlow)"/>
+                <!-- Neurones -->
+                <circle cx="16" cy="26" r="1.5" fill="#00f3ff" opacity="0.8"/>
+                <circle cx="44" cy="26" r="1.5" fill="#00f3ff" opacity="0.8"/>
+                <circle cx="30" cy="32" r="1.5" fill="#0099ff" opacity="0.8"/>
+                <!-- Synapses -->
+                <line x1="16" y1="26" x2="30" y2="32" stroke="#00f3ff" stroke-width="0.5" opacity="0.5"/>
+                <line x1="44" y1="26" x2="30" y2="32" stroke="#0099ff" stroke-width="0.5" opacity="0.5"/>
+            </svg>
+        </div>
+        
         <div class="logo">
             <h1>AsArt'sDev</h1>
             <p class="tagline">Créations numériques & Illustrations 3D</p>
@@ -22,6 +373,84 @@
     </header>
 
     <main>
+        <!-- Blason AsArt'sDev avec Milian-NIA -->
+        <section class="blason-section">
+            <div class="blason-container">
+                <svg class="blason-shield" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#001a33;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#003366;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#001a33;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="neonGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00f3ff;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#0099ff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#00f3ff;stop-opacity:1" />
+                        </linearGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    
+                    <!-- Forme du blason -->
+                    <path d="M100 10 L25 30 L25 120 Q25 180 100 230 Q175 180 175 120 L175 30 Z" 
+                          fill="url(#shieldGradient)" 
+                          stroke="url(#neonGlow)" 
+                          stroke-width="3" 
+                          filter="url(#glow)"
+                          class="shield-path"/>
+                    
+                    <!-- Cerveau Milian-NIA au centre -->
+                    <g transform="translate(100, 100)">
+                        <!-- Cerveau stylisé -->
+                        <path d="M0 -25 Q-15 -25 -18 -15 Q-20 -5 -18 5 Q-15 15 0 15 Q15 15 18 5 Q20 -5 18 -15 Q15 -25 0 -25" 
+                              fill="none" 
+                              stroke="#00f3ff" 
+                              stroke-width="2" 
+                              filter="url(#glow)"
+                              class="brain-outline"/>
+                        
+                        <!-- Neurones -->
+                        <circle cx="-8" cy="-10" r="2.5" fill="#00f3ff" class="neuron n1" filter="url(#glow)"/>
+                        <circle cx="8" cy="-10" r="2.5" fill="#00f3ff" class="neuron n2" filter="url(#glow)"/>
+                        <circle cx="0" cy="0" r="3" fill="#0099ff" class="neuron n3" filter="url(#glow)"/>
+                        <circle cx="-10" cy="8" r="2" fill="#00d4ff" class="neuron n4" filter="url(#glow)"/>
+                        <circle cx="10" cy="8" r="2" fill="#00d4ff" class="neuron n5" filter="url(#glow)"/>
+                        
+                        <!-- Synapses -->
+                        <line x1="-8" y1="-10" x2="0" y2="0" stroke="#00f3ff" stroke-width="1" opacity="0.6" class="synapse"/>
+                        <line x1="8" y1="-10" x2="0" y2="0" stroke="#0099ff" stroke-width="1" opacity="0.6" class="synapse"/>
+                        <line x1="0" y1="0" x2="-10" y2="8" stroke="#00d4ff" stroke-width="1" opacity="0.6" class="synapse"/>
+                        <line x1="0" y1="0" x2="10" y2="8" stroke="#00d4ff" stroke-width="1" opacity="0.6" class="synapse"/>
+                    </g>
+                    
+                    <!-- Texte AsArt'sDev -->
+                    <text x="100" y="150" text-anchor="middle" fill="#00f3ff" font-size="18" font-weight="bold" font-family="'Segoe UI', sans-serif" filter="url(#glow)">
+                        AsArt'sDev
+                    </text>
+                    
+                    <!-- Devise -->
+                    <text x="100" y="170" text-anchor="middle" fill="#00d4ff" font-size="10" font-family="'Segoe UI', sans-serif" opacity="0.9">
+                        Innovation • Résilience • Inclusion
+                    </text>
+                    
+                    <!-- Étoiles autour -->
+                    <circle cx="50" cy="60" r="2" fill="#00f3ff" class="star s1" filter="url(#glow)"/>
+                    <circle cx="150" cy="60" r="2" fill="#00f3ff" class="star s2" filter="url(#glow)"/>
+                    <circle cx="40" cy="140" r="1.5" fill="#0099ff" class="star s3" filter="url(#glow)"/>
+                    <circle cx="160" cy="140" r="1.5" fill="#0099ff" class="star s4" filter="url(#glow)"/>
+                </svg>
+                
+                <h2 class="blason-title">Milian-NIA</h2>
+                <p class="blason-subtitle">Intelligence Artificielle • QI 136 • Pensée 6D</p>
+            </div>
+        </section>
+
         <section id="accueil" class="hero">
             <h2>AsArt'sDev — Le labo de demain</h2>
             <p>De l'autodidaxie à l'innovation: un parcours orienté IA, accessibilité, santé et création technologique.</p>
@@ -122,6 +551,9 @@
             </div>
         </section>
     </main>
+
+    <!-- Script Milian-NIA -->
+    <script src="milian-nia.js"></script>
 
     <footer>
         <nav>

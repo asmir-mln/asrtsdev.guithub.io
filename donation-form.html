@@ -1,0 +1,753 @@
+<!-- 
+  💰 AsArt'sDev | Formulaire de Donation
+  =====================================
+  Exemple HTML/CSS/JS complet
+  
+  À intégrer dans donation.html ou créer une nouvelle page
+  Date: 9 mars 2026
+-->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💰 Soutenir AsArt'sDev - Donations</title>
+    <link rel="stylesheet" href="logo-style.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #ccc;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        /* Ajustement pour le logo en mode dark */
+        .asartsdev-logo.dark-mode {
+            background: rgba(26, 26, 46, 0.95);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(26, 31, 58, 0.8);
+            border: 2px solid #00f3ff;
+            border-radius: 12px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #00f3ff;
+            padding-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #00f3ff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            color: #00d4ff;
+        }
+
+        .form-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(0, 31, 63, 0.5);
+            border-left: 4px solid #00f3ff;
+            border-radius: 8px;
+        }
+
+        .form-section h3 {
+            color: #00f3ff;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .form-group {
+            margin: 15px 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #00d4ff;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #003366;
+            border-radius: 6px;
+            color: #ccc;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #00f3ff;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+            background: rgba(0, 31, 63, 0.8);
+        }
+
+        .input-help {
+            font-size: 0.85em;
+            color: #00d4ff;
+            margin-top: 5px;
+            opacity: 0.8;
+        }
+
+        /* Type de donation - Radio buttons stylisés */
+        .donation-types {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .radio-option {
+            position: relative;
+            padding: 15px;
+            background: rgba(0, 51, 102, 0.3);
+            border: 2px solid #003366;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .radio-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .radio-option input[type="radio"]:checked + label {
+            color: #00f3ff;
+        }
+
+        .radio-option input[type="radio"]:checked ~ .radio-content {
+            color: #00f3ff;
+        }
+
+        .radio-option:has(input:checked) {
+            background: rgba(0, 99, 204, 0.2);
+            border-color: #00f3ff;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+        }
+
+        .radio-content {
+            margin-top: 10px;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        /* Montant - Slider visuel */
+        .montant-slider {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .montant-preset {
+            padding: 10px 15px;
+            background: rgba(0, 51, 102, 0.5);
+            border: 2px solid #003366;
+            border-radius: 6px;
+            color: #ccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .montant-preset:hover {
+            border-color: #00f3ff;
+            background: rgba(0, 99, 204, 0.3);
+        }
+
+        .montant-preset.active {
+            background: rgba(0, 99, 204, 0.6);
+            border-color: #00f3ff;
+            color: #00f3ff;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+        }
+
+        /* Champs dynamiques */
+        .dynamic-field {
+            max-height: 500px;
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.3s ease;
+            opacity: 1;
+        }
+
+        .dynamic-field.hidden {
+            max-height: 0;
+            opacity: 0;
+        }
+
+        /* Checkboxes */
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #00f3ff;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            cursor: pointer;
+            display: inline;
+        }
+
+        /* Alertes */
+        .alert {
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-weight: 500;
+        }
+
+        .alert-warning {
+            background: rgba(255, 193, 7, 0.1);
+            border-left: 4px solid #ffc107;
+            color: #ffc107;
+        }
+
+        .alert-info {
+            background: rgba(0, 243, 255, 0.1);
+            border-left: 4px solid #00f3ff;
+            color: #00f3ff;
+        }
+
+        .alert-success {
+            background: rgba(76, 175, 80, 0.1);
+            border-left: 4px solid #4caf50;
+            color: #4caf50;
+        }
+
+        /* Boutons */
+        button {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #00f3ff 0%, #0099ff 100%);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Réponse */
+        .form-response {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .form-response.show {
+            display: block;
+        }
+
+        /* Loading */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0, 243, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #00f3ff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .donation-types {
+                grid-template-columns: 1fr;
+            }
+
+            .montant-slider {
+                justify-content: space-between;
+            }
+
+            .montant-preset {
+                flex: 1;
+                min-width: 60px;
+                padding: 8px 5px;
+                font-size: 0.85em;
+            }
+        }
+
+        /* Animation fade-in */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            animation: fadeIn 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo AsArt'sDev - Mode dark -->
+    <a href="index.html" class="asartsdev-logo dark-mode" title="Retour à l'accueil AsArt'sDev">
+        <div class="asartsdev-logo-icon">
+            <span>A</span>
+        </div>
+        <div class="asartsdev-logo-text">
+            <span class="asartsdev-logo-brand">AsArt'sDev</span>
+            <span class="asartsdev-logo-tagline">Soutenir</span>
+        </div>
+    </a>
+
+    <div class="container">
+        <!-- EN-TÊTE -->
+        <div class="header">
+            <h1>💰 Soutenir AsArt'sDev</h1>
+            <p>Chaque donation soutient l'innovation créative et l'accessibilité</p>
+        </div>
+
+        <!-- FORMULAIRE -->
+        <form id="donationForm" method="POST">
+            <!-- SECTION 1: TYPE DE DONATION -->
+            <div class="form-section">
+                <h3>👤 Type de donation</h3>
+
+                <div class="alert alert-info">
+                    <strong>ℹ️ Important:</strong> 
+                    <strong>Donation Complète</strong> = Infos personnelles + Cadeau possible
+                    <br>
+                    <strong>Donation Anonyme</strong> = Pas d'infos personnelles, pas de cadeau (mais suivi possible)
+                </div>
+
+                <div class="donation-types">
+                    <!-- DONATION COMPLÈTE -->
+                    <div class="radio-option">
+                        <input type="radio" id="complete" name="typeDonation" value="complete" checked>
+                        <label for="complete">✅ Donation Complète</label>
+                        <div class="radio-content">Avec infos personnelles<br>Eligibilité cadeau</div>
+                    </div>
+
+                    <!-- DONATION ANONYME -->
+                    <div class="radio-option">
+                        <input type="radio" id="anonyme" name="typeDonation" value="anonyme">
+                        <label for="anonyme">🔒 Donation Anonyme</label>
+                        <div class="radio-content">Sans infos<br>Pas de cadeau</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: MONTANT -->
+            <div class="form-section">
+                <h3>💸 Montant de la donation</h3>
+
+                <div class="montant-slider" id="montantPresets">
+                    <button type="button" class="montant-preset" data-montant="5">5€</button>
+                    <button type="button" class="montant-preset" data-montant="25">25€</button>
+                    <button type="button" class="montant-preset" data-montant="50">50€</button>
+                    <button type="button" class="montant-preset" data-montant="100">100€</button>
+                    <button type="button" class="montant-preset" data-montant="500">500€</button>
+                    <button type="button" class="montant-preset" data-montant="5000">5000€</button>
+                </div>
+
+                <div class="form-group">
+                    <label for="montant">Ou entrer un montant personnalisé</label>
+                    <input type="number" id="montant" name="montant" min="5" step="1" 
+                           placeholder="50" required>
+                    <div class="input-help">Minimum 5€</div>
+                </div>
+
+                <!-- Affichage cadeau correspondant -->
+                <div id="cadeauInfo" class="alert alert-warning" style="display: none;">
+                    <strong>🎁 Cadeau correspondant:</strong> <span id="cadeauName"></span>
+                </div>
+            </div>
+
+            <!-- SECTION 3: INFORMATIONS PERSONNELLES (Visible si Complète) -->
+            <div id="donationCompleteSection" class="form-section">
+                <h3>👤 Vos informations</h3>
+
+                <div class="alert alert-warning">
+                    <strong>⚠️ Données personnelles:</strong> 
+                    Vos informations restent confidentielles et ne seront utilisées 
+                    que pour envoyer votre cadeau et vous notifier du suivi.
+                </div>
+
+                <!-- Nom -->
+                <div class="form-group dynamic-field" data-type="complete">
+                    <label for="nom">👤 Nom complet *</label>
+                    <input type="text" id="nom" name="nomDonateur" 
+                           placeholder="Jean Dupont" 
+                           data-required="complete">
+                </div>
+
+                <!-- Email -->
+                <div class="form-group dynamic-field" data-type="complete">
+                    <label for="email">✉️ Email *</label>
+                    <input type="email" id="email" name="emailDonateur" 
+                           placeholder="votre@email.com"
+                           data-required="complete">
+                    <div class="input-help">Pour confirmation et suivi</div>
+                </div>
+
+                <!-- Téléphone -->
+                <div class="form-group dynamic-field" data-type="complete">
+                    <label for="tel">📞 Téléphone (optionnel)</label>
+                    <input type="tel" id="tel" name="telephoneDonateur" 
+                           placeholder="+33 7 XX XX XX XX">
+                </div>
+
+                <!-- Adresse -->
+                <div class="form-group dynamic-field" data-type="complete">
+                    <label for="adresse">📮 Adresse (requise pour l'envoi du cadeau) *</label>
+                    <textarea id="adresse" name="adresseDonateur" rows="3"
+                              placeholder="Numéro, rue&#10;Code postal, ville&#10;Pays"
+                              data-required="complete"></textarea>
+                    <div class="input-help">⚠️ Requise pour recevoir votre contrepartie</div>
+                </div>
+
+                <!-- Type de cadeau -->
+                <div class="form-group dynamic-field" data-type="complete">
+                    <label for="cadeau">🎁 Contrepartie souhaitée *</label>
+                    <select id="cadeau" name="typeCadeau" data-required="complete">
+                        <option value="">-- Choisir une contrepartie --</option>
+                        <option value="remerciement">👤 Remerciement personnel (5€+)</option>
+                        <option value="bibliotheque">📚 Bibliothèque numérique 1 an (25€+)</option>
+                        <option value="oeuvre">🎨 Œuvre numérique exclusive (50€+)</option>
+                        <option value="vip">💝 Pack VIP donateur (100€+)</option>
+                        <option value="reconnaissance">🏆 Reconnaissance publique (500€+)</option>
+                        <option value="partenariat">👑 Partenariat stratégique (5000€+)</option>
+                    </select>
+                    <div class="input-help">Disponibilité selon votre montant</div>
+                </div>
+            </div>
+
+            <!-- SECTION 4: MESSAGE -->
+            <div class="form-section">
+                <h3>💬 Message (optionnel)</h3>
+                <div class="form-group">
+                    <textarea id="notes" name="notes" rows="3"
+                              placeholder="Laissez-nous un message! (sera publié si anonyme = non)"
+                              maxlength="500"></textarea>
+                    <div class="input-help" id="charCount">0 / 500</div>
+                </div>
+            </div>
+
+            <!-- SECTION 5: CONDITIONS -->
+            <div class="form-section">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="conditions" name="accepteConditions" required>
+                    <label for="conditions">
+                        ✅ J'accepte les <a href="#" style="color: #00f3ff;">conditions d'utilisation</a> 
+                        et la <a href="#" style="color: #00f3ff;">politique de confidentialité</a>
+                    </label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="marketing" name="accepteMarketing">
+                    <label for="marketing">
+                        📧 M'informer des nouvelles donations/projets (désinscription facile)
+                    </label>
+                </div>
+            </div>
+
+            <!-- SOUMETTRE -->
+            <button type="submit" id="submitBtn">
+                💳 Confirmer la donation
+            </button>
+
+            <!-- Réponse -->
+            <div class="form-response" id="formResponse"></div>
+        </form>
+    </div>
+
+    <script>
+        // ========================================
+        // GESTION DU FORMULAIRE
+        // ========================================
+
+        const form = document.getElementById('donationForm');
+        const typeRadios = document.querySelectorAll('input[name="typeDonation"]');
+        const montantInput = document.getElementById('montant');
+        const notesInput = document.getElementById('notes');
+        const submitBtn = document.getElementById('submitBtn');
+        const completeSection = document.getElementById('donationCompleteSection');
+        const cadeauInfo = document.getElementById('cadeauInfo');
+        const charCount = document.getElementById('charCount');
+        const formResponse = document.getElementById('formResponse');
+
+        // Montants & cadeaux mapping
+        const cadeauxMap = {
+            5: '👤 Remerciement personnel',
+            25: '📚 Bibliothèque numérique',
+            50: '🎨 Œuvre numérique exclusive',
+            100: '💝 Pack VIP donateur',
+            500: '🏆 Reconnaissance publique',
+            5000: '👑 Partenariat stratégique'
+        };
+
+        // ========================================
+        // Événement: Changement type donation
+        // ========================================
+        typeRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                const isComplete = this.value === 'complete';
+                
+                // Afficher/masquer section infos
+                const fields = document.querySelectorAll('[data-type="complete"]');
+                fields.forEach(field => {
+                    if (isComplete) {
+                        field.classList.remove('hidden');
+                    } else {
+                        field.classList.add('hidden');
+                    }
+                });
+
+                // Gérer les validations
+                const requiredFields = document.querySelectorAll('[data-required="complete"]');
+                requiredFields.forEach(field => {
+                    field.required = isComplete;
+                });
+
+                // Mettre à jour le message
+                updateFeedback();
+            });
+        });
+
+        // ========================================
+        // Événement: Changement montant
+        // ========================================
+        montantInput.addEventListener('input', function() {
+            const montant = parseInt(this.value) || 0;
+            
+            // Afficher cadeau correspondant
+            let cadeauText = '';
+            for (const [min, nom] of Object.entries(cadeauxMap)) {
+                if (montant >= parseInt(min)) {
+                    cadeauText = nom;
+                }
+            }
+
+            if (cadeauText) {
+                cadeauInfo.style.display = 'block';
+                document.getElementById('cadeauName').textContent = cadeauText;
+            } else {
+                cadeauInfo.style.display = 'none';
+            }
+
+            // Preset selection
+            document.querySelectorAll('.montant-preset').forEach(btn => {
+                btn.classList.toggle('active', parseInt(btn.dataset.montant) === montant);
+            });
+
+            // Mettre à jour sélection cadeau si complète
+            if (document.getElementById('complete').checked) {
+                const cadeauSelect = document.getElementById('cadeau');
+                if (montant >= 5000) {
+                    cadeauSelect.value = 'partenariat';
+                } else if (montant >= 500) {
+                    cadeauSelect.value = 'reconnaissance';
+                } else if (montant >= 100) {
+                    cadeauSelect.value = 'vip';
+                } else if (montant >= 50) {
+                    cadeauSelect.value = 'oeuvre';
+                } else if (montant >= 25) {
+                    cadeauSelect.value = 'bibliotheque';
+                } else if (montant >= 5) {
+                    cadeauSelect.value = 'remerciement';
+                }
+            }
+        });
+
+        // ========================================
+        // Présets montant
+        // ========================================
+        document.querySelectorAll('.montant-preset').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                montantInput.value = this.dataset.montant;
+                montantInput.dispatchEvent(new Event('input'));
+            });
+        });
+
+        // ========================================
+        // Compteur caractères
+        // ========================================
+        notesInput.addEventListener('input', function() {
+            charCount.textContent = this.value.length + ' / 500';
+        });
+
+        // ========================================
+        // Soumission du formulaire
+        // ========================================
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Validation basique
+            if (!form.checkValidity()) {
+                alert('❌ Veuillez remplir tous les champs obligatoires');
+                return;
+            }
+
+            // Bloquer le bouton
+            submitBtn.disabled = true;
+            const originalText = submitBtn.textContent;
+            submitBtn.innerHTML = '<span class="loading"></span> Traitement...';
+
+            try {
+                // Préparer les données
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+
+                // Envoyer
+                const response = await fetch('/donation/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showSuccess(result);
+                } else {
+                    showError(result.errors || result.error);
+                }
+            } catch (error) {
+                showError('❌ Erreur réseau: ' + error.message);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
+        });
+
+        // ========================================
+        // Affichage résultats
+        // ========================================
+        function showSuccess(data) {
+            formResponse.className = 'form-response show alert alert-success';
+            formResponse.innerHTML = `
+                <h3>✅ Donation réussie!</h3>
+                <p><strong>${data.message}</strong></p>
+                <p style="margin-top: 10px; font-size: 0.9em;">
+                    Référence: <code>${data.code_suivi}</code>
+                </p>
+                ${data.type_donation === 'complete' ? `
+                    <p style="margin-top: 10px;">
+                        Vous recevrez un email de confirmation sur <strong>${data.email}</strong>
+                    </p>
+                ` : `
+                    <p style="margin-top: 10px;">
+                        <a href="${data.url_track}" target="_blank" style="color: #00f3ff;">
+                        → Suivre votre donation anonyme</a>
+                    </p>
+                `}
+            `;
+            
+            // Scroll vers réponse
+            setTimeout(() => {
+                formResponse.scrollIntoView({ behavior: 'smooth' });
+            }, 300);
+        }
+
+        function showError(errors) {
+            formResponse.className = 'form-response show alert alert-warning';
+            if (typeof errors === 'object') {
+                const errorList = Object.entries(errors)
+                    .map(([field, msg]) => `<li>${field}: ${msg}</li>`)
+                    .join('');
+                formResponse.innerHTML = `<h3>⚠️ Erreurs:</h3><ul>${errorList}</ul>`;
+            } else {
+                formResponse.innerHTML = `<h3>⚠️ Erreur:</h3><p>${errors}</p>`;
+            }
+        }
+
+        function updateFeedback() {
+            // Mise à jour des messages d'aide selon le type
+            const isComplete = document.getElementById('complete').checked;
+            const infoBox = document.querySelector('.alert-warning');
+            if (infoBox && !isComplete) {
+                infoBox.textContent = '🔒 Donation anonyme: Vos données ne seront pas collectées';
+            }
+        }
+
+        // Init
+        montantInput.dispatchEvent(new Event('input'));
+        updateFeedback();
+    </script>
+</body>
+</html>

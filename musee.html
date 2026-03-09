@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Musée Virtuel 3D - AsArt'sDev</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="logo-style.css">
   <style>
     * {
       margin: 0;
@@ -19,6 +20,11 @@
       color: white;
       overflow-x: hidden;
       perspective: 1000px;
+    }
+
+    /* Ajustement pour le logo fixe */
+    .asartsdev-logo.dark-mode {
+      background: rgba(26, 26, 46, 0.95);
     }
 
     header {
@@ -253,10 +259,97 @@
         font-size: 2rem;
       }
     }
+
+    /* Logo Milian-NIA */
+    header.header-with-logo {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      text-align: left;
+      padding: 30px 40px;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(15px);
+      border-bottom: 2px solid #00f3ff;
+      box-shadow: 0 5px 30px rgba(0, 243, 255, 0.15);
+    }
+
+    .logo-mark-header {
+      flex-shrink: 0;
+    }
+
+    .logo-nia-small {
+      width: 45px;
+      height: 45px;
+      filter: drop-shadow(0 0 10px rgba(0, 243, 255, 0.6));
+      animation: logoFloat 4s ease-in-out infinite;
+    }
+
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    header.header-with-logo h1 {
+      margin: 0;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      background: linear-gradient(135deg, #00f3ff 0%, #0099ff 50%, #00f3ff 100%);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 3s ease infinite;
+      letter-spacing: 2px;
+      text-shadow: none;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    header.header-with-logo p {
+      margin: 5px 0 0 0;
+      color: #00d4ff;
+      opacity: 0.85;
+      font-size: 0.95rem;
+    }
   </style>
 </head>
 <body>
-  <header>
+  <!-- Logo AsArt'sDev - Visible au 1er coup d'œil -->
+  <a href="index.html" class="asartsdev-logo dark-mode" title="Retour à l'accueil AsArt'sDev">
+    <div class="asartsdev-logo-icon">
+      <span>A</span>
+    </div>
+    <div class="asartsdev-logo-text">
+      <span class="asartsdev-logo-brand">AsArt'sDev</span>
+      <span class="asartsdev-logo-tagline">Musée virtuel</span>
+    </div>
+  </a>
+
+  <header class="header-with-logo">
+    <div class="logo-mark-header">
+      <svg class="logo-nia-small" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="logoGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#00f3ff;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#0099ff;stop-opacity:1" />
+          </linearGradient>
+          <filter id="logoG1">
+            <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+            <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <circle cx="30" cy="30" r="28" fill="none" stroke="url(#logoGrad1)" stroke-width="1.5" opacity="0.7"/>
+        <path d="M18 25 Q15 25 14 28 Q13 32 14 35 Q15 38 18 38 Q21 38 22 35 Q23 32 22 28 Q21 25 18 25" fill="none" stroke="url(#logoGrad1)" stroke-width="1" filter="url(#logoG1)"/>
+        <path d="M42 25 Q39 25 38 28 Q37 32 38 35 Q39 38 42 38 Q45 38 46 35 Q47 32 46 28 Q45 25 42 25" fill="none" stroke="url(#logoGrad1)" stroke-width="1" filter="url(#logoG1)"/>
+        <circle cx="16" cy="26" r="1.5" fill="#00f3ff" opacity="0.8"/>
+        <circle cx="44" cy="26" r="1.5" fill="#00f3ff" opacity="0.8"/>
+        <circle cx="30" cy="32" r="1.5" fill="#0099ff" opacity="0.8"/>
+        <line x1="16" y1="26" x2="30" y2="32" stroke="#00f3ff" stroke-width="0.5" opacity="0.5"/>
+        <line x1="44" y1="26" x2="30" y2="32" stroke="#0099ff" stroke-width="0.5" opacity="0.5"/>
+      </svg>
+    </div>
     <h1>🎨 Musée Virtuel AsArt'sDev</h1>
     <p>Galerie d'œuvres numériques — Édition limitée et signée</p>
   </header>
@@ -266,7 +359,7 @@
     <p><strong>Vision Technologique</strong> : innovation inclusive, IA éthique et solutions open-source au service de tous.</p>
   </section>
 
-  <div id="museum">
+  <div id="museum-collection" data-type="oeuvre-resilience">
     <!-- Tableaux générés dynamiquement -->
   </div>
 
@@ -281,7 +374,19 @@
   </div>
 
   <footer>
-    <p>© 2026 AsArt'sDev — Asmir Milianni | <a href="index.html">Retour à l'accueil</a></p>
+    <p>© 2026 AsArt'sDev — Asmir Milianni | <a href="index.html">Retour à l'accueil</a> | <a href="bibliotheque.html">Bibliothèque Dynamique</a></p>
+    
+    <!-- Code de page -->
+    <div style="margin-top: 30px; padding: 20px; background: rgba(0, 0, 0, 0.6); border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.85rem; color: #d4af37; max-width: 600px; margin-left: auto; margin-right: auto; text-align: left; border-left: 4px solid #d4af37;">
+      <strong style="color: #f4d03f;">📜 CODE PAGE:</strong><br>
+      <span style="color: #00ff88;">musee.html</span> v3.2<br>
+      <span style="color: #d4af37;">▪ ID:</span> museum-collection-resilience<br>
+      <span style="color: #d4af37;">▪ Œuvres:</span> oeuvre-enfance-cycle | oeuvre-reconstruction-vie | oeuvre-vision-tech-inclusive<br>
+      <span style="color: #d4af37;">▪ Gallery:</span> Éditions limitées signées<br>
+      <span style="color: #d4af37;">▪ Audio:</span> Descriptions avec synthèse vocale<br>
+      <span style="color: #d4af37;">▪ Build:</span> 09.03.2026<br>
+      <span style="color: #d4af37;">▪ Author:</span> Asmir Milianni | Museum Curator<br>
+    </div>
     
     <div style="margin-top: 20px; padding: 20px; background: rgba(212,175,55,0.1); border-radius: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
       <p style="font-size: 1.1rem; margin-bottom: 15px; color: #d4af37;">
@@ -308,10 +413,14 @@
     </div>
   </footer>
 
+  <!-- Script Milian-NIA -->
+  <script src="milian-nia.js"></script>
+
   <script>
     // Collection de tableaux avec descriptions complètes
     const tableaux = [
       {
+        id: "oeuvre-enfance-cycle",
         nom: "Max et Milla — Le Cycle des 10 Ans",
         img: "ChatGPT%20Image%208%20mars%202026,%2020_29_29.png",
         description: "Histoire vraie d'un parcours d'enfance marqué par l'autodidaxie et la dyslexie, transformée en force mentale. Cette œuvre illustre le début d'un cycle de résilience et de reconstruction.",
@@ -320,6 +429,7 @@
         numero: "001"
       },
       {
+        id: "oeuvre-reconstruction-vie",
         nom: "Les Trois Vies d'Asmir",
         img: "ChatGPT%20Image%208%20mars%202026,%2020_29_29.png",
         description: "Autobiographie adulte en trois actes : l'enfance dans la rue, la survie par hypervigilance, et la reconstruction par l'écriture. Version manuscrite signée de la main de l'auteur dyslexique.",
@@ -328,6 +438,7 @@
         numero: "002"
       },
       {
+        id: "oeuvre-vision-tech-inclusive",
         nom: "Vision Technologique",
         img: "ChatGPT%20Image%208%20mars%202026,%2020_29_29.png",
         description: "Représentation de l'innovation inclusive : IA éthique, accessibilité pour malvoyants, solutions médicales open-source. Cette œuvre symbolise le labo de demain à Paris.",
@@ -337,24 +448,26 @@
       }
     ];
 
-    const museumDiv = document.getElementById('museum');
+    const museumDiv = document.getElementById('museum-collection');
     const synth = window.speechSynthesis;
 
     // Générer les tableaux
     tableaux.forEach((tableau, index) => {
       const container = document.createElement('div');
       container.className = 'tableau-container';
+      container.id = tableau.id;
+      container.dataset.index = index;
       
       container.innerHTML = `
-        <div class="tableau">
+        <div class="tableau" data-oeuvre="${tableau.id}">
           <img src="${tableau.img}" alt="${tableau.nom}" loading="lazy">
           <div class="info">
             <h3>${tableau.nom}</h3>
-            <p id="desc-${index}">${tableau.description}</p>
+            <p id="desc-${tableau.id}">${tableau.description}</p>
             <div class="prix">${tableau.prix}</div>
             <p class="edition">${tableau.edition}<br>Exemplaire n° <strong>${tableau.numero}/∞</strong></p>
             <p class="signature">Asmir Milianni ✍️</p>
-            <button class="btn-audio" onclick="lireDescription(${index})">
+            <button class="btn-audio" onclick="lireDescription('${tableau.id}')">
               🔊 Écouter la description
             </button>
           </div>
@@ -365,8 +478,8 @@
     });
 
     // Fonction de lecture audio (synthèse vocale IA)
-    function lireDescription(index) {
-      const texte = document.getElementById(`desc-${index}`).innerText;
+    function lireDescription(oeuvreId) {
+      const texte = document.getElementById(`desc-${oeuvreId}`).innerText;
       
       if (synth.speaking) {
         synth.cancel();
@@ -395,6 +508,14 @@
       if (e.key === 'ArrowRight') scrollMuseum(1);
       if (e.key === 'ArrowLeft') scrollMuseum(-1);
       if (e.key === 'Escape' && synth.speaking) synth.cancel();
+    });
+
+    // Console - Code de page
+    console.log('%c🎨 MUSÉE VIRTUEL', 'color: #d4af37; font-size: 16px; font-weight: bold;');
+    console.log('%cmuseum-resilience v3.2', 'color: #f4d03f; font-size: 14px;');
+    console.log('Œuvres:', tableaux.map(t => `[${t.id}]`).join(' → '));
+    console.log('Author: Asmir Milianni | Gallery Curator');
+    console.log('Build: 09.03.2026');
     });
 
     // Effet de rotation 3D au mouvement de la souris

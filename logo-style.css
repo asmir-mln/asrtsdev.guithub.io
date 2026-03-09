@@ -1,0 +1,208 @@
+/* ============================================
+   LOGO ASART'SDEV - STYLE UNIFIÉ
+   À inclure sur toutes les pages
+   ============================================ */
+
+.asartsdev-logo {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50px;
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.1),
+        0 0 20px rgba(212, 175, 55, 0.2);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+}
+
+.asartsdev-logo:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 6px 25px rgba(0, 0, 0, 0.15),
+        0 0 30px rgba(212, 175, 55, 0.4);
+    border-color: rgba(212, 175, 55, 0.6);
+}
+
+.asartsdev-logo-icon {
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: #1a1a2e;
+    box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+    position: relative;
+}
+
+/* Effet de brillance sur l'icône */
+.asartsdev-logo-icon::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.asartsdev-logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.asartsdev-logo-brand {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a1a2e;
+    letter-spacing: 0.5px;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.asartsdev-logo-tagline {
+    font-size: 10px;
+    color: #666;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Animation d'apparition au chargement */
+@keyframes logoAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.asartsdev-logo {
+    animation: logoAppear 0.6s ease-out;
+}
+
+/* Version mobile - logo plus compact */
+@media (max-width: 768px) {
+    .asartsdev-logo {
+        top: 10px;
+        left: 10px;
+        padding: 8px 15px;
+        gap: 8px;
+    }
+    
+    .asartsdev-logo-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
+    
+    .asartsdev-logo-brand {
+        font-size: 14px;
+    }
+    
+    .asartsdev-logo-tagline {
+        font-size: 9px;
+    }
+}
+
+/* Version alternative - Logo blanc sur fond sombre */
+.asartsdev-logo.dark-mode {
+    background: rgba(26, 26, 46, 0.95);
+    border-color: rgba(212, 175, 55, 0.5);
+}
+
+.asartsdev-logo.dark-mode .asartsdev-logo-brand {
+    color: #ffffff;
+}
+
+.asartsdev-logo.dark-mode .asartsdev-logo-tagline {
+    color: #d4af37;
+}
+
+/* Logo version minimaliste (petite taille) */
+.asartsdev-logo.minimal {
+    padding: 8px 12px;
+}
+
+.asartsdev-logo.minimal .asartsdev-logo-tagline {
+    display: none;
+}
+
+/* Logo version complète (grande taille) */
+.asartsdev-logo.full {
+    padding: 12px 25px;
+}
+
+/* Effet "signature" discret en bas de page */
+.asartsdev-signature {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    font-size: 11px;
+    color: rgba(212, 175, 55, 0.5);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    z-index: 9998;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.asartsdev-signature:hover {
+    opacity: 1;
+}
+
+/* Blason alternatif (cerveau stylisé) */
+.asartsdev-blason {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 3px 12px rgba(212, 175, 55, 0.3);
+}
+
+.asartsdev-blason svg {
+    width: 24px;
+    height: 24px;
+    fill: #1a1a2e;
+}
+
+/* Logo header pour les pages */
+.page-header-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.page-header-logo .asartsdev-logo-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+}
+
+.page-header-logo .asartsdev-logo-brand {
+    font-size: 28px;
+}
+
+.page-header-logo .asartsdev-logo-tagline {
+    font-size: 12px;
+}
