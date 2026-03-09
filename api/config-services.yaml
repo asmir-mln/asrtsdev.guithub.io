@@ -1,0 +1,100 @@
+# Configuration des services Symfony
+# À ajouter/vérifier dans config/services.yaml
+
+services:
+  # ========================================
+  # SERVICES
+  # ========================================
+
+  App\Service\ReminderService:
+    arguments:
+      - '@doctrine.orm.entity_manager'
+      - '@mailer'
+      - '%env(MAILER_FROM)%'
+
+  App\Service\NotificationService:
+    arguments:
+      - '@mailer'
+      - '@parameter_bag'
+      - '@logger'
+    calls:
+      - setAdminEmail: ['%env(ADMIN_EMAIL)%']
+
+  App\Service\ClientService:
+    arguments:
+      - '@doctrine.orm.entity_manager'
+      - '@parameter_bag'
+      - '@slugger'
+
+  # ========================================
+  # REPOSITORIES
+  # ========================================
+
+  App\Repository\ClientRepository:
+    factory: ['@doctrine.orm.entity_manager', getRepository]
+    arguments:
+      - 'App\Entity\Client'
+
+  App\Repository\DonationRepository:
+    factory: ['@doctrine.orm.entity_manager', getRepository]
+    arguments:
+      - 'App\Entity\Donation'
+
+  App\Repository\ReminderCommandeRepository:
+    factory: ['@doctrine.orm.entity_manager', getRepository]
+    arguments:
+      - 'App\Entity\ReminderCommande'
+
+  App\Repository\CommandeRepository:
+    factory: ['@doctrine.orm.entity_manager', getRepository]
+    arguments:
+      - 'App\Entity\Commande'
+
+  # ========================================
+  # FORM TYPES
+  # ========================================
+
+  App\Form\ClientFormType:
+    tags:
+      - 'form.type'
+
+  App\Form\DonationFormType:
+    tags:
+      - 'form.type'
+
+  # ========================================
+  # CONTROLLERS
+  # ========================================
+
+  App\Controller\ClientController:
+    arguments:
+      - '@doctrine.orm.entity_manager'
+      - '@App\Service\ClientService'
+    tags:
+      - 'controller.service_arguments'
+
+  App\Controller\DonationController:
+    arguments:
+      - '@doctrine.orm.entity_manager'
+      - '@App\Service\ReminderService'
+      - '@App\Service\NotificationService'
+    tags:
+      - 'controller.service_arguments'
+
+  App\Controller\AdminController:
+    arguments:
+      - '@doctrine.orm.entity_manager'
+      - '@App\Service\ReminderService'
+      - '@App\Service\NotificationService'
+    tags:
+      - 'controller.service_arguments'
+
+  # ========================================
+  # BINDINGS (Injection de dépendances)
+  # ========================================
+
+  Symfony\Component\String\Slugger\SluggerInterface:
+    alias: 'slugger'
+
+  Symfony\Component\Mailer\MailerInterface:
+    alias: 'mailer'

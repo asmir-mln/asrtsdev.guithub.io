@@ -1,0 +1,34 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+    bind:
+      $projectDir: '%kernel.project_dir%'
+
+  # Services personnalisés AsArt'sDev
+  App\Service\ClientService:
+    arguments:
+      $em: '@doctrine.orm.entity_manager'
+      $params: '@parameter_bag'
+      $slugger: '@Symfony\Component\String\Slugger\SluggerInterface'
+
+  # Contrôleurs
+  App\Controller\ClientController:
+    arguments:
+      $em: '@doctrine.orm.entity_manager'
+      $clientRepository: '@App\Repository\ClientRepository'
+
+  # Repositories
+  App\Repository\ClientRepository:
+    factory: ['@doctrine.orm.entity_manager', getRepository]
+    arguments: ['App\Entity\Client']
+
+  # Forms
+  App\Form\ClientFormType:
+    tags:
+      - { name: form.type }
+
+  # Librairies
+  Symfony\Component\String\Slugger\SluggerInterface:
+    class: Symfony\Component\String\Slugger\AsciiSlugger

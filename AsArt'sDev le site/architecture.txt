@@ -1,0 +1,19 @@
+asartsdev-musee/
+
+backend/
+    api.py
+    requirements.txt
+
+frontend/
+    package.json
+    src/
+        App.js
+        Etage.js
+        Livre.js
+
+symfony_api/
+    src/
+    config/
+
+cli/
+    museum_cli.py

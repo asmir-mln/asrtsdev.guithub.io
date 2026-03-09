@@ -317,7 +317,7 @@
 </head>
 <body>
   <!-- Logo AsArt'sDev - Visible au 1er coup d'œil -->
-  <a href="index.html" class="asartsdev-logo dark-mode" title="Retour à l'accueil AsArt'sDev">
+  <a href="index.html" class="asartsdev-logo dark-mode" title="Retour à l'accueil AsArt'sDev" aria-label="AsArt'sDev, retour à l'accueil du site">
     <div class="asartsdev-logo-icon">
       <span>A</span>
     </div>
@@ -369,8 +369,8 @@
       📱 <a href="tel:0781586882" style="color: #d4af37;">0781586882</a>
     </p>
   <div class="navigation">
-    <button class="nav-btn" onclick="scrollMuseum(-1)">◀</button>
-    <button class="nav-btn" onclick="scrollMuseum(1)">▶</button>
+    <button class="nav-btn" onclick="scrollMuseum(-1)" aria-label="Voir l'œuvre précédente" title="Œuvre précédente">◀</button>
+    <button class="nav-btn" onclick="scrollMuseum(1)" aria-label="Voir l'œuvre suivante" title="Œuvre suivante">▶</button>
   </div>
 
   <footer>
@@ -422,7 +422,7 @@
       {
         id: "oeuvre-enfance-cycle",
         nom: "Max et Milla — Le Cycle des 10 Ans",
-        img: "ChatGPT%20Image%208%20mars%202026,%2020_29_29.png",
+        img: "images/session-mars-2026/placeholder-original.png",
         description: "Histoire vraie d'un parcours d'enfance marqué par l'autodidaxie et la dyslexie, transformée en force mentale. Cette œuvre illustre le début d'un cycle de résilience et de reconstruction.",
         prix: "15,00 €",
         edition: "Édition limitée : 1000 exemplaires",
@@ -431,7 +431,7 @@
       {
         id: "oeuvre-reconstruction-vie",
         nom: "Les Trois Vies d'Asmir",
-        img: "ChatGPT%20Image%208%20mars%202026,%2020_29_29.png",
+        img: "images/session-mars-2026/placeholder-original.png",
         description: "Autobiographie adulte en trois actes : l'enfance dans la rue, la survie par hypervigilance, et la reconstruction par l'écriture. Version manuscrite signée de la main de l'auteur dyslexique.",
         prix: "39,99 €",
         edition: "Édition limitée : 500 exemplaires | <strong>Acompte 30%</strong> requis",
@@ -440,7 +440,7 @@
       {
         id: "oeuvre-vision-tech-inclusive",
         nom: "Vision Technologique",
-        img: "ChatGPT%20Image%208%20mars%202026,%2020_29_29.png",
+        img: "images/session-mars-2026/placeholder-original.png",
         description: "Représentation de l'innovation inclusive : IA éthique, accessibilité pour malvoyants, solutions médicales open-source. Cette œuvre symbolise le labo de demain à Paris.",
         prix: "Sur devis — Partenariat",
         edition: "Édition limitée : 300 exemplaires | <strong>Acompte 30%</strong> (preuve de sérieux)",
@@ -460,14 +460,14 @@
       
       container.innerHTML = `
         <div class="tableau" data-oeuvre="${tableau.id}">
-          <img src="${tableau.img}" alt="${tableau.nom}" loading="lazy">
+          <img src="${tableau.img}" alt="${tableau.nom}. ${tableau.description}" loading="lazy">
           <div class="info">
             <h3>${tableau.nom}</h3>
             <p id="desc-${tableau.id}">${tableau.description}</p>
             <div class="prix">${tableau.prix}</div>
             <p class="edition">${tableau.edition}<br>Exemplaire n° <strong>${tableau.numero}/∞</strong></p>
             <p class="signature">Asmir Milianni ✍️</p>
-            <button class="btn-audio" onclick="lireDescription('${tableau.id}')">
+            <button class="btn-audio" onclick="lireDescription('${tableau.id}')" aria-label="Écouter la description audio de l'œuvre ${tableau.nom}">
               🔊 Écouter la description
             </button>
           </div>

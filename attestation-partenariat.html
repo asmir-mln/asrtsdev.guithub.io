@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 Attestation de Partenariat - AsArt'sDev 2026-2036</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&family=EB+Garamond:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: linear-gradient(135deg, #2c2416 0%, #4a3f35 50%, #2c2416 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* ========================================
+           FOND PARCHEMIN
+           ======================================== */
+
+        .parchemin-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(255,200,0,0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(139,69,19,0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #f4ede4 0%, #e8dcc8 50%, #f4ede4 100%);
+            box-shadow: 
+                0 0 60px rgba(0,0,0,0.5),
+                inset 0 0 100px rgba(0,0,0,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+            border: 3px solid #8b6914;
+            border-radius: 2px;
+            padding: 60px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Texture parchemin */
+        .parchemin-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(210,180,140,0.03) 2px,
+                    rgba(210,180,140,0.03) 4px
+                ),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(139,69,19,0.02) 2px,
+                    rgba(139,69,19,0.02) 4px
+                );
+            pointer-events: none;
+        }
+
+        .parchemin-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 0% 0%, rgba(255,255,255,0.5) 0%, transparent 50%),
+                radial-gradient(ellipse at 100% 100%, rgba(0,0,0,0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ========================================
+           TYPOGRAPHIE MANUSCRITE
+           ======================================== */
+
+        .title {
+            font-family: 'Tangerine', cursive;
+            font-size: 4.5em;
+            font-weight: 700;
+            text-align: center;
+            color: #3d2817;
+            margin-bottom: 10px;
+            text-shadow: 
+                1px 1px 0 rgba(255,255,255,0.5),
+                2px 2px 4px rgba(0,0,0,0.1);
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.1em;
+            text-align: center;
+            color: #5d4e37;
+            font-style: italic;
+            margin-bottom: 40px;
+            letter-spacing: 3px;
+        }
+
+        .decoration-line {
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #8b6914, transparent);
+            margin: 20px auto;
+        }
+
+        /* ========================================
+           CONTENU PRINCIPAL
+           ======================================== */
+
+        .intro {
+            font-size: 1.1em;
+            line-height: 2;
+            text-align: center;
+            color: #3d2817;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .section {
+            margin: 35px 0;
+            text-align: justify;
+            line-height: 1.9;
+            color: #4a3f35;
+        }
+
+        .section h2 {
+            font-family: 'Tangerine', cursive;
+            font-size: 2.2em;
+            color: #8b6914;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        .section p {
+            margin: 12px 0;
+            text-indent: 2em;
+        }
+
+        .section p:first-child {
+            text-indent: 0;
+        }
+
+        /* Accent décoratif au début du paragraphe */
+        .section p::first-letter {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #8b6914;
+        }
+
+        .highlight {
+            color: #8b6914;
+            font-weight: 700;
+        }
+
+        .vision {
+            background: rgba(255,255,255,0.3);
+            padding: 25px;
+            border-left: 4px solid #8b6914;
+            margin: 30px 0;
+            font-style: italic;
+            line-height: 2;
+        }
+
+        /* ========================================
+           SIGNATURE & DATE
+           ======================================== */
+
+        .signature-section {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 2px double #8b6914;
+        }
+
+        .signatures {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 40px;
+        }
+
+        .signature-block {
+            text-align: center;
+        }
+
+        .signature-line {
+            border-top: 2px solid #3d2817;
+            width: 100%;
+            margin-bottom: 10px;
+            min-height: 60px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .signature-line input {
+            width: 100%;
+            height: 50px;
+            border: none;
+            background: transparent;
+            font-family: 'Tangerine', cursive;
+            font-size: 2.5em;
+            text-align: center;
+            color: #3d2817;
+            outline: none;
+        }
+
+        .signature-line input::placeholder {
+            color: #bfb5a7;
+            opacity: 0.5;
+        }
+
+        .signature-label {
+            font-size: 0.9em;
+            color: #5d4e37;
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .date-section {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .date-label {
+            font-style: italic;
+            color: #5d4e37;
+            margin: 10px 0;
+        }
+
+        .date-line {
+            width: 300px;
+            margin: 10px auto;
+            border-bottom: 1px solid #3d2817;
+            min-height: 30px;
+        }
+
+        /* ========================================
+           SCEAU & AUTHENTIFICATION
+           ======================================== */
+
+        .seal {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 3em;
+            opacity: 0.3;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px dotted #8b6914;
+            font-size: 0.85em;
+            color: #5d4e37;
+        }
+
+        /* ========================================
+           ACTIONS BOUTONS
+           ======================================== */
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px dotted #8b6914;
+        }
+
+        button {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #8b6914 0%, #a0791f 100%);
+            color: white;
+            border: 2px solid #5d4e37;
+            border-radius: 4px;
+            font-family: 'EB Garamond', serif;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #a0791f 0%, #8b6914 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
+        @media (max-width: 768px) {
+            .parchemin-wrapper {
+                padding: 40px;
+            }
+
+            .title {
+                font-size: 3em;
+            }
+
+            .signatures {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .section {
+                font-size: 0.95em;
+                line-height: 1.7;
+            }
+        }
+
+        /* ========================================
+           IMPRESSION (PDF)
+           ======================================== */
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .action-buttons {
+                display: none;
+            }
+
+            button {
+                display: none;
+            }
+
+            .parchemin-wrapper {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="parchemin-wrapper">
+        <div class="content">
+            <!-- TITRE -->
+            <div class="title">Attestation de Partenariat</div>
+            <div class="subtitle">2026 - 2036</div>
+            <div class="decoration-line"></div>
+
+            <!-- INTRODUCTION -->
+            <div class="intro">
+                <em>Engagement conjoint pour l'innovation créative et l'inclusion technologique</em>
+            </div>
+
+            <!-- CORPS PRINCIPAL -->
+            <div class="section">
+                <h2>Par la présente</h2>
+                <p>
+                    Nous, représentants d'<span class="highlight">AsArt'sDev</span>, solennellement témoignons de l'engagement commun 
+                    pour bâtir une <span class="highlight">vision partagée de l'innovation inclusive</span>. Cette attestation reconnaît 
+                    le partenariat stratégique formé dans le but d'accélérer la transformation technologique et créative 
+                    à l'horizon 2036.
+                </p>
+            </div>
+
+            <!-- VISION -->
+            <div class="vision">
+                <span class="highlight">« Dix ans de collaboration pour créer une technologie accessible,</span><br>
+                <span class="highlight">inclusive et porteuse de sens pour tous les citoyens du monde. »</span>
+            </div>
+
+            <!-- CONTEXTE GLOBAL -->
+            <div class="section">
+                <h2>Contexte et Enjeux Mondiaux</h2>
+                <p>
+                    À l'heure où la technologie façonne les sociétés, les défis sont colossaux. D'ici 2036, nous assistons à 
+                    une <span class="highlight">révolution digitale majeure</span>. L'intelligence artificielle, les technologies 
+                    quantiques et l'accessibilité numérique ne sont plus des luxes – ce sont des nécessités.
+                </p>
+                <p>
+                    Les principaux <span class="highlight">leaders technologiques mondiaux</span> reconnaissent que l'innovation 
+                    durable exige inclusivité. Des géants comme <span class="highlight">OpenAI, Google DeepMind, Apple</span> et 
+                    les gouvernements des Nations Unies formalisent des cadres de responsabilité éthique.
+                </p>
+            </div>
+
+            <!-- LEADERS MONDIAUX -->
+            <div class="section">
+                <h2>Leaders Mondiaux à l'Horizon 2036</h2>
+                <p>
+                    <span class="highlight">États-Unis & Silicon Valley :</span> Google, Meta, OpenAI, et les startups IA 
+                    continueront de dominer, avec un accent croissant sur l'éthique et l'accessibilité.
+                </p>
+                <p>
+                    <span class="highlight">Chine & Asie :</span> Alibaba, Tencent, et les étatsDu sud-est asiatique établissent 
+                    de nouveaux standards d'accessibilité numérique pour leurs 2 milliards d'utilisateurs.
+                </p>
+                <p>
+                    <span class="highlight">Europe :</span> L'IA Act (2024) positionnera l'Europe comme référence en matière 
+                    d'innovation responsable. Les régulateurs définiront les règles que le monde suivra.
+                </p>
+                <p>
+                    <span class="highlight">Le Global South :</span> L'Afrique, l'Amérique latine et l'Asie du sud émergeront 
+                    comme foyers de l'innovation inclusive – créant des technologies adaptées aux réalités locales.
+                </p>
+            </div>
+
+            <!-- LEADERS NATIONAUX FRANCE -->
+            <div class="section">
+                <h2>Leadership Français à l'Horizon 2036</h2>
+                <p>
+                    La France possède atouts uniques : une culture de l'innovation, un cadre de régulation européen progressiste, 
+                    et une forte tradition d'accessibilité sociale.
+                </p>
+                <p>
+                    <span class="highlight">Champions français attendus :</span>
+                </p>
+                <ul style="margin-left: 2em; margin-top: 10px;">
+                    <li><span class="highlight">Mistral AI :</span> Challenger français de l'IA générative responsable</li>
+                    <li><span class="highlight">Eurostar (Hugging Face inclus) :</span> Plateforme d'IA open-source et inclusive</li>
+                    <li><span class="highlight">Capgemini & Accenture France :</span> Leaders du consulting en transformation numérique éthique</li>
+                    <li><span class="highlight">Organismes publics :</span> CNIL, ANSSI, et l'Institut de l'IA français définiront les standards</li>
+                </ul>
+                <p style="margin-top: 15px;">
+                    <span class="highlight">AsArt'sDev se positionne</span> comme catalyseur français d'innovation créative accessible – 
+                    apportant une voix humaniste à ce débat technologique.
+                </p>
+            </div>
+
+            <!-- ENGAGEMENTS RÉCIPROQUES -->
+            <div class="section">
+                <h2>Engagements Réciproques</h2>
+                <p>
+                    Par ce partenariat, les signataires s'engagent à :
+                </p>
+                <ul style="margin-left: 2em; margin-top: 10px;">
+                    <li><span class="highlight">Promouvoir l'accessibilité</span> comme droit fondamental dans les solutions technologiques</li>
+                    <li><span class="highlight">Collaborer sur des projets innovants</span> avec impact social mesurable</li>
+                    <li><span class="highlight">Partager les connaissances</span> et les résultats pour l'avancement collectif</li>
+                    <li><span class="highlight">Respecter l'éthique</span> dans l'utilisation de l'IA et des données</li>
+                    <li><span class="highlight">Soutenir les talents</span> à tous les niveaux du parcours technologique</li>
+                </ul>
+            </div>
+
+            <!-- PROMESSE -->
+            <div class="section">
+                <h2>Notre Promesse Commune</h2>
+                <p>
+                    Nous promettons, solennellement et ensemble, de créer un <span class="highlight">héritage technologique 
+                    positif</span> pour la décennie 2026-2036. Un héritage où :
+                </p>
+                <div class="vision">
+                    <em>Chaque personne, indépendamment de ses capacités, peut accéder à la technologie,<br>
+                    créer sa propre histoire,<br>
+                    et participer à la construction de demain.</em>
+                </div>
+            </div>
+
+            <!-- SIGNATURE -->
+            <div class="signature-section">
+                <div class="date-section">
+                    <div class="date-label">Signé et accepté à</div>
+                    <div class="date-line"></div>
+                    <div class="date-label">Le</div>
+                    <div class="date-line"></div>
+                </div>
+
+                <div class="seal">🔒</div>
+
+                <div class="signatures">
+                    <div class="signature-block">
+                        <div class="signature-line">
+                            <input type="text" placeholder="Signature">
+                        </div>
+                        <div class="signature-label">Pour AsArt'sDev<br>Asmir Milianni - Fondateur</div>
+                    </div>
+
+                    <div class="signature-block">
+                        <div class="signature-line">
+                            <input type="text" placeholder="Signature">
+                        </div>
+                        <div class="signature-label">Partenaire / Mécène<br>Dénomination Organisme</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <div class="footer">
+                <p>📜 Document officiel AsArt'sDev - Attestation de Partenariat</p>
+                <p>Valable pour la période 2026-2036 | Régulièrement renouvelable</p>
+                <p style="margin-top: 20px; opacity: 0.7;">
+                    Cette attestation symbolise notre engagement conjoint. Conservez ce document 
+                    comme preuve de votre soutien à l'innovation inclusive.
+                </p>
+            </div>
+
+            <!-- BOUTONS D'ACTION -->
+            <div class="action-buttons">
+                <button onclick="window.print()">🖨️ Imprimer / Exporter PDF</button>
+                <button onclick="downloadImage()">📥 Télécharger</button>
+                <button onclick="shareDocument()">📤 Partager</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Importer une signature
+        function importSignature() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    // Exemple: placer l'image dans le champ signature
+                    console.log('Signature importée:', event.target.result);
+                };
+                reader.readAsDataURL(file);
+            };
+            input.click();
+        }
+
+        // Télécharger le document
+        function downloadImage() {
+            alert('Fonction de téléchargement à implémenter avec html2pdf.js');
+        }
+
+        // Partager le document
+        function shareDocument() {
+            if (navigator.share) {
+                navigator.share({
+                    title: '🎯 Attestation de Partenariat AsArt\'sDev',
+                    text: 'Découvrez notre vision d\'innovation inclusive pour 2026-2036',
+                    url: window.location.href
+                });
+            } else {
+                const url = window.location.href;
+                prompt('Copier le lien:', url);
+            }
+        }
+
+        // Auto-date
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateLines = document.querySelectorAll('.date-line');
+            if (dateLines.length >= 2) {
+                // Première ligne vide (lieu)
+                // Deuxième ligne: date d'aujourd'hui
+                const today = new Date();
+                const dateStr = today.toLocaleDateString('fr-FR', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+            }
+        });
+    </script>
+</body>
+</html>

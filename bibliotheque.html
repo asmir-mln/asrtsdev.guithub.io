@@ -1,0 +1,892 @@
+<!-- AsArt'sDev | Signature invisible | ASmir Milia | ASARTSDEV_SIGNATURE_INVISIBLE -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bibliothèque Dynamique - AsArt'sDev</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0d1b2a 100%);
+      color: #e0f7ff;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Effet de grille cyberpunk en arrière-plan */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Particules de néons flottantes */
+    .neon-particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: #00f3ff;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #00f3ff;
+      animation: float-particle 15s infinite ease-in-out;
+    }
+
+    @keyframes float-particle {
+      0%, 100% {
+        transform: translate(0, 0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate(100vw, -100vh);
+        opacity: 0;
+      }
+    }
+
+    header {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 60px 20px 40px;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(15px);
+      border-bottom: 2px solid #00f3ff;
+      box-shadow: 0 10px 50px rgba(0, 243, 255, 0.2);
+    }
+
+    header h1 {
+      font-size: clamp(2rem, 5vw, 4rem);
+      background: linear-gradient(135deg, #00f3ff 0%, #0099ff 50%, #00f3ff 100%);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 3s ease infinite;
+      text-shadow: 0 0 30px rgba(0, 243, 255, 0.5);
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    header p {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: #00d4ff;
+      opacity: 0.9;
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      margin-top: 15px;
+      padding: 15px 30px;
+      background: rgba(0, 243, 255, 0.1);
+      border-left: 4px solid #00f3ff;
+      border-radius: 8px;
+      font-size: 1rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+
+    .subtitle strong {
+      color: #00f3ff;
+      text-shadow: 0 0 10px rgba(0, 243, 255, 0.6);
+    }
+
+    /* Section carousel principal */
+    .carousel-section {
+      position: relative;
+      z-index: 10;
+      max-width: 1400px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 2px solid #00f3ff;
+      box-shadow: 
+        0 0 30px rgba(0, 243, 255, 0.3),
+        0 20px 60px rgba(0, 0, 0, 0.6);
+      padding: 40px;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .livre-card {
+      min-width: 100%;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    @media (min-width: 768px) {
+      .livre-card {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    .livre-image {
+      flex: 0 0 400px;
+      position: relative;
+    }
+
+    .livre-image img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 15px;
+      border: 3px solid #00f3ff;
+      box-shadow: 
+        0 0 30px rgba(0, 243, 255, 0.4),
+        0 20px 60px rgba(0, 0, 0, 0.8);
+      transition: all 0.3s;
+    }
+
+    .livre-image img:hover {
+      transform: scale(1.05);
+      box-shadow: 
+        0 0 50px rgba(0, 243, 255, 0.6),
+        0 30px 80px rgba(0, 0, 0, 1);
+    }
+
+    .livre-content {
+      flex: 1;
+      padding: 0 30px;
+    }
+
+    .livre-categorie {
+      display: inline-block;
+      padding: 8px 20px;
+      background: linear-gradient(135deg, #0066cc 0%, #0099ff 100%);
+      color: white;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 15px rgba(0, 153, 255, 0.4);
+    }
+
+    .livre-titre {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: #00f3ff;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+      line-height: 1.2;
+    }
+
+    .livre-description {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #c5e7f2;
+      margin-bottom: 25px;
+      text-align: justify;
+    }
+
+    .livre-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 25px;
+      padding: 20px;
+      background: rgba(0, 243, 255, 0.08);
+      border-radius: 10px;
+      border-left: 4px solid #00f3ff;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+    }
+
+    .meta-item span:first-child {
+      font-size: 1.5rem;
+    }
+
+    .livre-evolution {
+      background: rgba(0, 153, 255, 0.15);
+      border-left: 4px solid #0099ff;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+    }
+
+    .livre-evolution h4 {
+      color: #00f3ff;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .livre-evolution p {
+      color: #c5e7f2;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .livre-prix {
+      font-size: 2rem;
+      color: #00ff88;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
+    }
+
+    .livre-actions {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      padding: 15px 35px;
+      background: linear-gradient(135deg, #00f3ff 0%, #0099ff 100%);
+      color: #0a0e27;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 5px 20px rgba(0, 243, 255, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0, 243, 255, 0.6);
+    }
+
+    .btn-secondary {
+      padding: 15px 35px;
+      background: transparent;
+      color: #00f3ff;
+      border: 2px solid #00f3ff;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(0, 243, 255, 0.1);
+      transform: translateY(-3px);
+    }
+
+    /* Contrôles du carousel */
+    .carousel-controls {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .carousel-btn {
+      width: 50px;
+      height: 50px;
+      background: rgba(0, 243, 255, 0.2);
+      border: 2px solid #00f3ff;
+      border-radius: 50%;
+      color: #00f3ff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      backdrop-filter: blur(10px);
+    }
+
+    .carousel-btn:hover {
+      background: rgba(0, 243, 255, 0.4);
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
+    }
+
+    .carousel-indicators {
+      display: flex;
+      gap: 10px;
+    }
+
+    .indicator {
+      width: 12px;
+      height: 12px;
+      background: rgba(0, 243, 255, 0.3);
+      border: 2px solid #00f3ff;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .indicator.active {
+      background: #00f3ff;
+      box-shadow: 0 0 15px rgba(0, 243, 255, 0.8);
+      transform: scale(1.3);
+    }
+
+    /* Section évolution psychologique */
+    .evolution-section {
+      position: relative;
+      z-index: 10;
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 20px;
+    }
+
+    .evolution-title {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #00f3ff;
+      margin-bottom: 50px;
+      text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 50px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, #00f3ff 0%, #0099ff 100%);
+      box-shadow: 0 0 10px rgba(0, 243, 255, 0.6);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 50px;
+      padding: 25px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid #00f3ff;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -37px;
+      top: 30px;
+      width: 15px;
+      height: 15px;
+      background: #00f3ff;
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(0, 243, 255, 0.8);
+    }
+
+    .timeline-item h3 {
+      color: #00f3ff;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    .timeline-item p {
+      color: #c5e7f2;
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    footer {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 40px 20px;
+      background: rgba(0, 0, 0, 0.6);
+      border-top: 2px solid #00f3ff;
+      margin-top: 100px;
+    }
+
+    footer a {
+      color: #00f3ff;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    footer a:hover {
+      text-shadow: 0 0 10px rgba(0, 243, 255, 0.8);
+    }
+
+    @media (max-width: 768px) {
+      .livre-image {
+        flex: 0 0 100%;
+      }
+
+      .livre-content {
+        padding: 0;
+      }
+
+      .timeline {
+        padding-left: 30px;
+      }
+    }
+
+    /* Logo Milian-NIA */
+    header.header-with-logo {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      text-align: left;
+      padding: 30px 40px;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(15px);
+      border-bottom: 2px solid #00f3ff;
+      box-shadow: 0 5px 30px rgba(0, 243, 255, 0.15);
+    }
+
+    .logo-mark-header {
+      flex-shrink: 0;
+    }
+
+    .logo-nia-small {
+      width: 45px;
+      height: 45px;
+      filter: drop-shadow(0 0 10px rgba(0, 243, 255, 0.6));
+      animation: logoFloat4 4s ease-in-out infinite;
+    }
+
+    @keyframes logoFloat4 {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    header.header-with-logo h1 {
+      margin: 0;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      background: linear-gradient(135deg, #00f3ff 0%, #0099ff 50%, #00f3ff 100%);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: headerGradient 3s ease infinite;
+      letter-spacing: 2px;
+      text-shadow: none;
+    }
+
+    @keyframes headerGradient {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    header.header-with-logo p {
+      margin: 5px 0 0 0;
+      color: #00d4ff;
+      opacity: 0.85;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Particules de néons -->
+  <div class="neon-particles" id="particles"></div>
+
+  <header class="header-with-logo">
+    <div class="logo-mark-header">
+      <svg class="logo-nia-small" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="logoGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#00f3ff;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#0099ff;stop-opacity:1" />
+          </linearGradient>
+          <filter id="logoG2">
+            <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+            <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <circle cx="30" cy="30" r="28" fill="none" stroke="url(#logoGrad2)" stroke-width="1.5" opacity="0.7"/>
+        <path d="M18 25 Q15 25 14 28 Q13 32 14 35 Q15 38 18 38 Q21 38 22 35 Q23 32 22 28 Q21 25 18 25" fill="none" stroke="url(#logoGrad2)" stroke-width="1" filter="url(#logoG2)"/>
+        <path d="M42 25 Q39 25 38 28 Q37 32 38 35 Q39 38 42 38 Q45 38 46 35 Q47 32 46 28 Q45 25 42 25" fill="none" stroke="url(#logoGrad2)" stroke-width="1" filter="url(#logoG2)"/>
+        <circle cx="16" cy="26" r="1.5" fill="#00f3ff" opacity="0.8"/>
+        <circle cx="44" cy="26" r="1.5" fill="#00f3ff" opacity="0.8"/>
+        <circle cx="30" cy="32" r="1.5" fill="#0099ff" opacity="0.8"/>
+        <line x1="16" y1="26" x2="30" y2="32" stroke="#00f3ff" stroke-width="0.5" opacity="0.5"/>
+        <line x1="44" y1="26" x2="30" y2="32" stroke="#0099ff" stroke-width="0.5" opacity="0.5"/>
+      </svg>
+    </div>
+    <h1>📚 Bibliothèque Dynamique</h1>
+    <p>Collection autobiographique — Évolution psychologique d'un esprit atypique</p>
+    <div class="subtitle">
+      <strong>🧠 HPI/HPE 136 QI</strong> | Dyslexie transformée en force mentale | 
+      Récits non-linéaires d'une pensée en arborescence | 
+      De la rue à l'innovation inclusive
+    </div>
+  </header>
+
+  <!-- Carousel principal -->
+  <section class="carousel-section">
+    <div class="carousel-container">
+      <div class="carousel-track" id="carouselTrack">
+        <!-- Livre 1 : Enfance -->
+        <div class="livre-card" id="card-enfance-cycle">
+          <div class="livre-image">
+            <img src="images/session-mars-2026/placeholder-original.png" alt="Max et Mila">
+          </div>
+          <div class="livre-content">
+            <span class="livre-categorie">📖 Enfance</span>
+            <h2 class="livre-titre">Max, Mila et le Perroquet<br><small style="font-size: 0.7em; opacity: 0.8;">Le Cycle des 10 Ans</small></h2>
+            
+            <p class="livre-description">
+              Histoire vraie d'un parcours d'enfance marqué par l'autodidaxie et la dyslexie, 
+              transformée en force mentale. Récit d'une adaptation permanente dans un monde qui ne comprend pas 
+              la différence cognitive. Les débuts d'une hypervigilance qui deviendra une capacité d'analyse unique.
+            </p>
+
+            <div class="livre-meta">
+              <div class="meta-item"><span>👶</span> Âge : 0-10 ans</div>
+              <div class="meta-item"><span>🧩</span> Phase : Découverte dyslexique</div>
+              <div class="meta-item"><span>📄</span> Pages : ~150</div>
+            </div>
+
+            <div class="livre-evolution">
+              <h4>🧠 Évolution Psychologique</h4>
+              <p>
+                <strong>Développement de la pensée en 3D :</strong> La dyslexie force mon cerveau à créer 
+                des représentations spatiales du langage. Chaque mot devient une forme, chaque phrase une architecture. 
+                Cette période forge ma capacité à voir des solutions là où d'autres ne voient que du chaos.
+              </p>
+            </div>
+
+            <div class="livre-prix">15,00 €</div>
+
+            <div class="livre-actions">
+              <button class="btn-primary">🛒 Commander</button>
+              <button class="btn-secondary">📖 Extrait gratuit</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Livre 2 : Adolescence/Adulte -->
+        <div class="livre-card" id="card-adulte-reconstruction">
+          <div class="livre-image">
+            <img src="images/session-mars-2026/placeholder-original.png" alt="Les Trois Vies">
+          </div>
+          <div class="livre-content">
+            <span class="livre-categorie">📕 Adulte</span>
+            <h2 class="livre-titre">Les Trois Vies d'Asmir<br><small style="font-size: 0.7em; opacity: 0.8;">Autobiographie en trois actes</small></h2>
+            
+            <p class="livre-description">
+              Récit brut d'un parcours de survie urbaine transformé en résilience stratégique. 
+              De la rue à l'innovation technologique, cette autobiographie dévoile comment l'hypervigilance 
+              développée dans l'adversité devient une vision systémique du monde. Version manuscrite signée, 
+              traces authentiques d'une écriture dyslexique assumée.
+            </p>
+
+            <div class="livre-meta">
+              <div class="meta-item"><span>🎯</span> Âge : 10-30 ans</div>
+              <div class="meta-item"><span>🧠</span> Phase : Reconstruction mentale</div>
+              <div class="meta-item"><span>📄</span> Pages : ~300</div>
+            </div>
+
+            <div class="livre-evolution">
+              <h4>🧠 Évolution Psychologique</h4>
+              <p>
+                <strong>De l'hypervigilance à l'analyse systémique :</strong> Les années de rue développent 
+                ma capacité à lire les situations en temps réel, anticiper les dangers, décoder les intentions. 
+                Mon HPI transforme ce mécanisme de survie en outil d'innovation : je vois les systèmes, 
+                leurs failles, leurs potentiels. La dyslexie m'empêche de penser linéairement — c'est devenu ma force.
+              </p>
+            </div>
+
+            <div class="livre-prix">39,99 €</div>
+
+            <div class="livre-actions">
+              <button class="btn-primary">🛒 Commander (Acompte 30%)</button>
+              <button class="btn-secondary">📖 Lire synopsis complet</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Livre 3 : Vision Future -->
+        <div class="livre-card" id="card-vision-future">
+          <div class="livre-image">
+            <img src="images/session-mars-2026/placeholder-original.png" alt="Vision Technologique">
+          </div>
+          <div class="livre-content">
+            <span class="livre-categorie">🚀 Vision Future</span>
+            <h2 class="livre-titre">Vision Technologique<br><small style="font-size: 0.7em; opacity: 0.8;">Innovation inclusive et IA éthique</small></h2>
+            
+            <p class="livre-description">
+              Manifeste d'une tech au service de l'humain : IA éthique, accessibilité pour malvoyants, 
+              solutions médicales open-source. Ce livre expose ma vision d'un futur où la technologie 
+              amplifie les capacités humaines plutôt que de les remplacer. Projet de laboratoire parisien 
+              dédié à l'innovation inclusive. La dyslexie m'a appris que la différence est une ressource, 
+              pas un handicap.
+            </p>
+
+            <div class="livre-meta">
+              <div class="meta-item"><span>🔮</span> Vision : 2026-2030</div>
+              <div class="meta-item"><span>💡</span> Phase : Impact social</div>
+              <div class="meta-item"><span>📄</span> Pages : ~200</div>
+            </div>
+
+            <div class="livre-evolution">
+              <h4>🧠 Évolution Psychologique</h4>
+              <p>
+                <strong>Synthèse et projection :</strong> Mon parcours atypique (dyslexie-HPI, survie urbaine, 
+                autodidaxie tech) converge vers une mission : créer une tech qui inclut au lieu d'exclure. 
+                Mon cerveau câblé différemment me permet de voir des ponts entre art, code, psychologie et innovation. 
+                Milian-NIA, mon IA personnelle, incarne cette vision : une intelligence qui amplifie la diversité cognitive.
+              </p>
+            </div>
+
+            <div class="livre-prix">Sur devis — Partenariat</div>
+
+            <div class="livre-actions">
+              <button class="btn-primary">🤝 Demander un partenariat</button>
+              <button class="btn-secondary">💡 Voir le projet complet</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contrôles -->
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="prevBtn">‹</button>
+        <div class="carousel-indicators" id="indicators"></div>
+        <button class="carousel-btn" id="nextBtn">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline d'évolution psychologique -->
+  <section class="evolution-section">
+    <h2 class="evolution-title">🧠 Évolution Psychologique — Vision du Monde</h2>
+    
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Phase 1 : Pensée Tridimensionnelle (0-10 ans)</h3>
+        <p>
+          <strong>Impact dyslexie :</strong> Incapacité à traiter le langage de façon linéaire. 
+          Développement d'une pensée spatiale et symbolique. Les mots deviennent des formes, 
+          les idées des architectures mentales. Cette période pose les fondations d'une créativité 
+          non-conventionnelle qui deviendra ma signature cognitive.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <h3>Phase 2 : Hypervigilance & Analyse Systémique (10-20 ans)</h3>
+        <p>
+          <strong>Impact rue & HPI :</strong> Survie urbaine force l'hypervigilance — lecture instantanée 
+          des situations, anticipation des menaces, décodage des intentions. Mon HPI transforme ce mécanisme 
+          en outil d'analyse systémique : je ne vois pas les détails, je vois les patterns, les structures, 
+          les interconnexions invisibles.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <h3>Phase 3 : Reconstruction par le Code (20-25 ans)</h3>
+        <p>
+          <strong>Impact autodidaxie tech :</strong> La programmation devient ma langue maternelle. 
+          Le code est logique, prévisible, manipulable — exactement ce que le langage humain n'a jamais été 
+          pour mon cerveau dyslexique. Je découvre que ma pensée atypique excelle dans la résolution de problèmes 
+          complexes, la création d'architectures logicielles innovantes.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <h3>Phase 4 : Vision Inclusive & IA Éthique (2026+)</h3>
+        <p>
+          <strong>Synthèse et mission :</strong> Mon parcours atypique devient ma force motrice. 
+          Création de Milian-NIA, IA personnelle qui reflète ma pensée en arborescence. Vision d'une tech 
+          qui amplifie la diversité cognitive : accessibilité pour malvoyants, IA adaptée aux neurodivergents, 
+          open-source médical. La dyslexie m'a appris que la différence est une ressource stratégique, 
+          pas un obstacle à contourner.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <h3>🔮 Vision Future : Laboratoire d'Innovation Inclusive</h3>
+        <p>
+          <strong>Projet parisien 2026-2030 :</strong> Créer un labo où dyslexiques, HPI, autistes, 
+          neurodivergents co-créent la tech de demain. Prouver que les cerveaux atypiques ne sont pas 
+          "à réparer" mais "à libérer". Milian-NIA n'est pas qu'une IA — c'est le symbole d'une intelligence 
+          qui célèbre la différence comme source d'innovation disruptive.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 AsArt'sDev — Asmir Milianni | <a href="index.html">Retour à l'accueil</a> | <a href="musee.html">Musée Virtuel</a></p>
+    <p style="margin-top: 20px; color: #00d4ff;">
+      🧠 Intelligence artificielle Milian-NIA développée avec passion<br>
+      💡 Innovation inclusive • IA éthique • Tech pour tous
+    </p>
+    
+    <!-- Code de page -->
+    <div style="margin-top: 30px; padding: 20px; background: rgba(0, 0, 0, 0.6); border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.85rem; color: #00d4ff; max-width: 600px; margin-left: auto; margin-right: auto; text-align: left; border-left: 4px solid #0099ff;">
+      <strong style="color: #00f3ff;">📄 CODE PAGE:</strong><br>
+      <span style="color: #00ff88;">bibliothèque.html</span> v2.1<br>
+      <span style="color: #0099ff;">▪ ID:</span> lib-dynamique-6d<br>
+      <span style="color: #0099ff;">▪ Cards:</span> enfance-cycle | adulte-reconstruction | vision-future<br>
+      <span style="color: #0099ff;">▪ AI:</span> Milian-NIA 136QI<br>
+      <span style="color: #0099ff;">▪ Build:</span> 09.03.2026<br>
+      <span style="color: #0099ff;">▪ Author:</span> Asmir Milianni | @AsArtsdev
+    </div>
+  </footer>
+
+  <!-- Script Milian-NIA -->
+  <script src="milian-nia.js"></script>
+
+  <!-- Script Carousel et Particules -->
+  <script>
+    // Génération de particules néons
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 30; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.top = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 15 + 's';
+      particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+      particlesContainer.appendChild(particle);
+    }
+
+    // Carousel - Structure thématique des slides
+    const livresSlides = [
+      { id: 'enfance-cycle', nom: 'Max, Mila et le Perroquet' },
+      { id: 'adulte-reconstruction', nom: 'Les Trois Vies d\'Asmir' },
+      { id: 'vision-future', nom: 'Vision Technologique' }
+    ];
+
+    const track = document.getElementById('carouselTrack');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const indicatorsContainer = document.getElementById('indicators');
+    
+    let currentSlide = 0;
+    const totalSlides = livresSlides.length;
+
+    // Créer les indicateurs avec labels thématiques
+    for (let i = 0; i < totalSlides; i++) {
+      const indicator = document.createElement('div');
+      indicator.className = 'indicator';
+      indicator.id = `slide-${livresSlides[i].id}`;
+      indicator.setAttribute('data-slide', livresSlides[i].id);
+      indicator.title = livresSlides[i].nom;
+      if (i === 0) indicator.classList.add('active');
+      indicator.addEventListener('click', () => goToSlide(i));
+      indicatorsContainer.appendChild(indicator);
+    }
+
+    function updateCarousel() {
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+      
+      // Mettre à jour les indicateurs
+      document.querySelectorAll('.indicator').forEach((ind, index) => {
+        ind.classList.toggle('active', index === currentSlide);
+      });
+    }
+
+    function goToSlide(index) {
+      currentSlide = index;
+      updateCarousel();
+    }
+
+    prevBtn.addEventListener('click', () => {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateCarousel();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateCarousel();
+    });
+
+    // Navigation clavier
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+      } else if (e.key === 'ArrowRight') {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+      }
+    });
+
+    // Auto-play carousel (optionnel)
+    let autoplayInterval = setInterval(() => {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateCarousel();
+    }, 8000);
+
+    // Console - Code de page
+    console.log('%c📚 BIBLIOTHÈQUE DYNAMIQUE', 'color: #00f3ff; font-size: 16px; font-weight: bold;');
+    console.log('%cbib-dynamique-6d v2.1', 'color: #00ff88; font-size: 14px;');
+    console.log('Slides:', livresSlides.map(s => `[${s.id}]`).join(' → '));
+    console.log('Author: Asmir Milianni | AI: Milian-NIA 136QI');
+    console.log('Build: 09.03.2026');
+
+    // Pause auto-play au survol
+    document.querySelector('.carousel-container').addEventListener('mouseenter', () => {
+      clearInterval(autoplayInterval);
+    });
+
+    document.querySelector('.carousel-container').addEventListener('mouseleave', () => {
+      autoplayInterval = setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+      }, 8000);
+    });
+  </script>
+</body>
+</html>
