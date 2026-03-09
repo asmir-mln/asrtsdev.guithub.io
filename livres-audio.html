@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les 3 Livres & Bandes Audio | AsArt'sDev</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-family: 'Tangerine', cursive;
+            font-size: 4.5em;
+            color: #ffd700;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #b8860b;
+            font-style: italic;
+        }
+
+        .livres-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            gap: 40px;
+        }
+
+        .livre-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            border-radius: 20px;
+            padding: 30px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .livre-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 60px rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.6);
+        }
+
+        .livre-header {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+            align-items: start;
+        }
+
+        .livre-cover {
+            width: 200px;
+            height: 280px;
+            background: linear-gradient(145deg, #2c2c54, #474787);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Tangerine', cursive;
+            font-size: 2em;
+            color: #ffd700;
+            text-align: center;
+            padding: 20px;
+            border: 3px solid rgba(255, 215, 0, 0.5);
+            box-shadow: 5px 5px 20px rgba(0,0,0,0.5);
+        }
+
+        .livre-info h2 {
+            font-family: 'Tangerine', cursive;
+            font-size: 3em;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .livre-numero {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #1a1a2e;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .livre-description {
+            color: #d0d0d0;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .livre-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .meta-item {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 8px 15px;
+            border-radius: 10px;
+            font-size: 0.95em;
+        }
+
+        .meta-item strong {
+            color: #ffd700;
+        }
+
+        .section-title {
+            font-family: 'Tangerine', cursive;
+            font-size: 2.5em;
+            color: #ffd700;
+            margin: 30px 0 20px 0;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .audio-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .audio-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #ffd700;
+            padding: 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .audio-item:hover {
+            background: rgba(255, 215, 0, 0.1);
+            transform: translateX(5px);
+        }
+
+        .audio-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .audio-title {
+            font-size: 1.3em;
+            color: #ffd700;
+            font-weight: 600;
+        }
+
+        .audio-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .badge-gratuit {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+        }
+
+        .badge-premium {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+            color: white;
+        }
+
+        .audio-description {
+            color: #c0c0c0;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .audio-player {
+            width: 100%;
+            height: 40px;
+            border-radius: 20px;
+            outline: none;
+            margin-bottom: 10px;
+        }
+
+        .audio-player::-webkit-media-controls-panel {
+            background: linear-gradient(135deg, #2c2c54, #474787);
+        }
+
+        .audio-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9em;
+            color: #999;
+        }
+
+        .commentaire-item {
+            background: rgba(255, 215, 0, 0.05);
+            border-left: 4px solid #b8860b;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .commentaire-item:hover {
+            background: rgba(184, 134, 11, 0.1);
+        }
+
+        .commentaire-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 10px;
+        }
+
+        .commentaire-title {
+            font-size: 1.2em;
+            color: #ffd700;
+            font-weight: 600;
+        }
+
+        .commentaire-type {
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            background: rgba(184, 134, 11, 0.3);
+            color: #ffd700;
+        }
+
+        .commentaire-reference {
+            font-size: 0.9em;
+            color: #b8860b;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .transcription {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            color: #d0d0d0;
+            font-style: italic;
+            line-height: 1.7;
+            border-left: 3px solid #b8860b;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(255, 215, 0, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            color: #999;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .btn-action {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #1a1a2e;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+
+        .btn-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #474787, #2c2c54);
+            color: #ffd700;
+        }
+
+        .actions-bar {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3em;
+            }
+
+            .livre-header {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .livre-cover {
+                margin: 0 auto;
+            }
+
+            .audio-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .stats-bar {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        .icon-audio {
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .loading-placeholder {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📚 Les 3 Livres d'AsArt'sDev</h1>
+        <p class="subtitle">Trilogie autobiographique avec bandes audio & commentaires exclusifs</p>
+    </div>
+
+    <div class="livres-container" id="livresContainer">
+        <!-- Le contenu sera chargé dynamiquement via JavaScript/API -->
+        
+        <!-- LIVRE 1 -->
+        <div class="livre-card" data-livre="1">
+            <div class="livre-header">
+                <div class="livre-cover">
+                    <div>Livre 1<br>Les premières<br>lueurs</div>
+                </div>
+                <div class="livre-info">
+                    <span class="livre-numero">📕 Tome 1</span>
+                    <h2>Les premières lueurs</h2>
+                    <p class="livre-description">
+                        Le premier tome d'une trilogie autobiographique. Découvrez les origines, les premières luttes et les rêves naissants d'une vie marquée par la créativité et la résilience.
+                    </p>
+                    <div class="livre-meta">
+                        <div class="meta-item"><strong>Prix:</strong> 35,00 €</div>
+                        <div class="meta-item"><strong>Pages:</strong> 380</div>
+                        <div class="meta-item"><strong>ISBN:</strong> 978-2-ASART-001-1</div>
+                        <div class="meta-item"><strong>Poids:</strong> 0,65 kg</div>
+                    </div>
+                    <div class="actions-bar">
+                        <button class="btn-action" onclick="acheterLivre(1)">Acheter le livre</button>
+                        <button class="btn-action btn-secondary" onclick="previsualiser(1)">Prévisualiser</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bandes Audio -->
+            <h3 class="section-title">🎧 Bandes Audio</h3>
+            <div class="audio-list">
+                <div class="audio-item">
+                    <div class="audio-header">
+                        <div class="audio-title">
+                            <span class="icon-audio">🎵</span>
+                            Introduction - Les premières lueurs
+                        </div>
+                        <span class="audio-badge badge-gratuit">GRATUIT</span>
+                    </div>
+                    <p class="audio-description">
+                        Introduction lue par l'auteur - Découverte du contexte et de l'ambiance du premier tome
+                    </p>
+                    <audio class="audio-player" controls>
+                        <source src="/audio/livre1/intro.mp3" type="audio/mpeg">
+                        Votre navigateur ne supporte pas la lecture audio.
+                    </audio>
+                    <div class="audio-meta">
+                        <span>⏱️ Durée: 08:00</span>
+                        <span>👂 570 écoutes</span>
+                        <span>📁 Format: MP3</span>
+                    </div>
+                </div>
+
+                <div class="audio-item">
+                    <div class="audio-header">
+                        <div class="audio-title">
+                            <span class="icon-audio">🎵</span>
+                            Chapitre 1 - L'enfance
+                        </div>
+                        <span class="audio-badge badge-premium">PREMIUM</span>
+                    </div>
+                    <p class="audio-description">
+                        Lecture intégrale du chapitre 1 - Plongez dans les souvenirs d'enfance qui ont façonné l'auteur
+                    </p>
+                    <audio class="audio-player" controls>
+                        <source src="/audio/livre1/chapitre01.mp3" type="audio/mpeg">
+                    </audio>
+                    <div class="audio-meta">
+                        <span>⏱️ Durée: 40:00</span>
+                        <span>👂 324 écoutes</span>
+                        <span>🔒 Accès Premium requis</span>
+                    </div>
+                </div>
+
+                <div class="audio-item">
+                    <div class="audio-header">
+                        <div class="audio-title">
+                            <span class="icon-audio">🎵</span>
+                            Chapitre 2 - Les premiers pas
+                        </div>
+                        <span class="audio-badge badge-premium">PREMIUM</span>
+                    </div>
+                    <p class="audio-description">
+                        Lecture intégrale du chapitre 2 - Les premiers pas vers la créativité et l'indépendance
+                    </p>
+                    <audio class="audio-player" controls>
+                        <source src="/audio/livre1/chapitre02.mp3" type="audio/mpeg">
+                    </audio>
+                    <div class="audio-meta">
+                        <span>⏱️ Durée: 35:00</span>
+                        <span>👂 298 écoutes</span>
+                        <span>🔒 Accès Premium requis</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Commentaires Audio -->
+            <h3 class="section-title">💬 Commentaires Audio de l'Auteur</h3>
+            <div class="audio-list">
+                <div class="commentaire-item">
+                    <div class="commentaire-header">
+                        <div>
+                            <div class="commentaire-title">
+                                <span class="icon-audio">🎙️</span>
+                                Pourquoi ce titre ?
+                            </div>
+                            <div class="commentaire-reference">📖 Introduction - Page 5</div>
+                        </div>
+                        <span class="commentaire-type">contexte</span>
+                    </div>
+                    <p class="audio-description">
+                        Commentaire audio expliquant le choix du titre "Les premières lueurs" et sa signification profonde dans le contexte de l'histoire
+                    </p>
+                    <audio class="audio-player" controls>
+                        <source src="/audio/livre1/commentaires/titre.mp3" type="audio/mpeg">
+                    </audio>
+                    <div class="audio-meta">
+                        <span>⏱️ 03:00</span>
+                        <span>👤 Asmir Milianni</span>
+                        <span>👂 845 écoutes</span>
+                    </div>
+                    <div class="transcription">
+                        <strong>📝 Transcription:</strong><br>
+                        "Le titre 'Les premières lueurs' représente ces moments d'éveil, de prise de conscience qui marquent le début d'un voyage intérieur. Dans ma vie, ces lueurs ont été les premiers signes que quelque chose de différent bouillonnait en moi..."
+                    </div>
+                </div>
+
+                <div class="commentaire-item">
+                    <div class="commentaire-header">
+                        <div>
+                            <div class="commentaire-title">
+                                <span class="icon-audio">🎙️</span>
+                                Anecdote - La scène du parc
+                            </div>
+                            <div class="commentaire-reference">📖 Chapitre 3 - Page 78</div>
+                        </div>
+                        <span class="commentaire-type">anecdote</span>
+                    </div>
+                    <p class="audio-description">
+                        Histoire vraie derrière la scène emblématique du parc au chapitre 3
+                    </p>
+                    <audio class="audio-player" controls>
+                        <source src="/audio/livre1/commentaires/anecdote_parc.mp3" type="audio/mpeg">
+                    </audio>
+                    <div class="audio-meta">
+                        <span>⏱️ 04:00</span>
+                        <span>👤 Asmir Milianni</span>
+                        <span>👂 612 écoutes</span>
+                        <span class="audio-badge badge-premium">PREMIUM</span>
+                    </div>
+                    <div class="transcription">
+                        <strong>📝 Transcription:</strong><br>
+                        "Cette scène est inspirée d'un moment réel vécu en 2015. J'étais assis dans ce parc, complètement perdu, me demandant quelle serait la prochaine étape..."
+                    </div>
+                </div>
+
+                <div class="commentaire-item">
+                    <div class="commentaire-header">
+                        <div>
+                            <div class="commentaire-title">
+                                <span class="icon-audio">🎙️</span>
+                                Analyse - Le symbolisme des couleurs
+                            </div>
+                            <div class="commentaire-reference">📖 Général</div>
+                        </div>
+                        <span class="commentaire-type">analyse</span>
+                    </div>
+                    <p class="audio-description">
+                        Décryptage des symboliques utilisées tout au long du premier tome
+                    </p>
+                    <audio class="audio-player" controls>
+                        <source src="/audio/livre1/commentaires/symbolisme.mp3" type="audio/mpeg">
+                    </audio>
+                    <div class="audio-meta">
+                        <span>⏱️ 06:00</span>
+                        <span>👤 Asmir Milianni</span>
+                        <span>👂 734 écoutes</span>
+                        <span class="audio-badge badge-premium">PREMIUM</span>
+                    </div>
+                    <div class="transcription">
+                        <strong>📝 Transcription:</strong><br>
+                        "Les couleurs jouent un rôle central dans ma narration. Le bleu représente la mélancolie et la profondeur, tandis que le jaune symbolise l'espoir naissant..."
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistiques -->
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Bandes Audio</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">83:00</div>
+                    <div class="stat-label">Durée Totale</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Commentaires</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">1192</div>
+                    <div class="stat-label">Écoutes</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LIVRE 2 -->
+        <div class="livre-card" data-livre="2">
+            <div class="livre-header">
+                <div class="livre-cover">
+                    <div>Livre 2<br>Entre ombres<br>et lumières</div>
+                </div>
+                <div class="livre-info">
+                    <span class="livre-numero">📗 Tome 2</span>
+                    <h2>Entre ombres et lumières</h2>
+                    <p class="livre-description">
+                        Le deuxième tome explore les défis, les doutes et les victoires qui sculptent un parcours unique. Entre créativité et adversité, une histoire de transformation.
+                    </p>
+                    <div class="livre-meta">
+                        <div class="meta-item"><strong>Prix:</strong> 38,00 €</div>
+                        <div class="meta-item"><strong>Pages:</strong> 420</div>
+                        <div class="meta-item"><strong>ISBN:</strong> 978-2-ASART-002-8</div>
+                        <div class="meta-item"><strong>Poids:</strong> 0,72 kg</div>
+                    </div>
+                    <div class="actions-bar">
+                        <button class="btn-action" onclick="acheterLivre(2)">Acheter le livre</button>
+                        <button class="btn-action btn-secondary" onclick="previsualiser(2)">Prévisualiser</button>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-title">🎧 Bandes Audio</h3>
+            <div class="loading-placeholder">
+                📦 Contenu audio en cours de chargement...
+            </div>
+
+            <h3 class="section-title">💬 Commentaires Audio</h3>
+            <div class="loading-placeholder">
+                🎙️ Commentaires disponibles bientôt...
+            </div>
+        </div>
+
+        <!-- LIVRE 3 -->
+        <div class="livre-card" data-livre="3">
+            <div class="livre-header">
+                <div class="livre-cover">
+                    <div>Livre 3<br>Entre rêves<br>et tempête</div>
+                </div>
+                <div class="livre-info">
+                    <span class="livre-numero">📘 Tome 3</span>
+                    <h2>Entre rêves et tempête</h2>
+                    <p class="livre-description">
+                        Le tome final de la trilogie. L'aboutissement d'un voyage intérieur, entre passion créative et quête de sens. Une célébration de l'art comme force de vie.
+                    </p>
+                    <div class="livre-meta">
+                        <div class="meta-item"><strong>Prix:</strong> 42,00 €</div>
+                        <div class="meta-item"><strong>Pages:</strong> 450</div>
+                        <div class="meta-item"><strong>ISBN:</strong> 978-2-ASART-003-5</div>
+                        <div class="meta-item"><strong>Poids:</strong> 0,78 kg</div>
+                    </div>
+                    <div class="actions-bar">
+                        <button class="btn-action" onclick="acheterLivre(3)">Acheter le livre</button>
+                        <button class="btn-action btn-secondary" onclick="previsualiser(3)">Prévisualiser</button>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-title">🎧 Bandes Audio</h3>
+            <div class="loading-placeholder">
+                📦 Contenu audio en cours de chargement...
+            </div>
+
+            <h3 class="section-title">💬 Commentaires Audio</h3>
+            <div class="loading-placeholder">
+                🎙️ Commentaires disponibles bientôt...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fonctions JavaScript pour interactivité
+        function acheterLivre(numeroLivre) {
+            alert(`Redirection vers l'achat du Livre ${numeroLivre}...`);
+            // TODO: Implémenter la redirection vers le système de commande
+            window.location.href = `/commande.html?livre=${numeroLivre}`;
+        }
+
+        function previsualiser(numeroLivre) {
+            alert(`Ouverture de la prévisualisation du Livre ${numeroLivre}...`);
+            // TODO: Implémenter la prévisualisation (PDF, extrait)
+        }
+
+        // Charger les données depuis l'API
+        async function chargerDonneesLivres() {
+            try {
+                const response = await fetch('/api/livres/with-audio');
+                const data = await response.json();
+                
+                // TODO: Remplir dynamiquement les cartes avec les vraies données
+                console.log('Données livres chargées:', data);
+            } catch (error) {
+                console.error('Erreur chargement livres:', error);
+            }
+        }
+
+        // Charger au chargement de la page
+        // document.addEventListener('DOMContentLoaded', chargerDonneesLivres);
+    </script>
+</body>
+</html>
