@@ -1,0 +1,541 @@
+<!-- AsArt'sDev | Signature invisible | ASmir Milia | ASARTSDEV_SIGNATURE_INVISIBLE -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique – AsArt'sDev</title>
+    <meta name="description" content="Boutique AsArt'sDev : livres, créations numériques et œuvres d'Asmir Milia. Commander en ligne en toute sécurité.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="logo-style.css">
+    <style>
+        /* ====== Eshop – styles spécifiques ====== */
+        .eshop-hero {
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            background: linear-gradient(135deg, #f8f9fa, #e8f4f8);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 12px var(--shadow);
+            margin-bottom: 3rem;
+        }
+
+        .eshop-hero h2 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .eshop-hero p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .promo-banner {
+            display: inline-block;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 0.6rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 3px 10px rgba(231, 76, 60, 0.4);
+        }
+
+        /* Filtres catégories */
+        .eshop-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.25rem;
+            border: 2px solid var(--primary-color);
+            background: transparent;
+            color: var(--primary-color);
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Grille produits */
+        .produits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .produit-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 12px var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .produit-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+        }
+
+        .produit-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .produit-badge {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+        }
+
+        .produit-badge.badge-nouveau {
+            background: #27ae60;
+        }
+
+        .produit-badge.badge-numerique {
+            background: #8e44ad;
+        }
+
+        .produit-badge.badge-precommande {
+            background: var(--secondary-color);
+            color: #333;
+        }
+
+        .produit-body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .produit-body h3 {
+            color: var(--primary-color);
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .produit-sous-titre {
+            font-style: italic;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .produit-description {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+
+        .produit-prix {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .produit-prix .prix-ancien {
+            font-size: 1rem;
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 0.5rem;
+            font-weight: 400;
+        }
+
+        .produit-actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-commander {
+            flex: 1;
+            display: inline-block;
+            padding: 0.75rem 1.25rem;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-commander:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .btn-apercu {
+            display: inline-block;
+            padding: 0.75rem 1.25rem;
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .btn-apercu:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Section informations commande */
+        .info-commande {
+            background: linear-gradient(135deg, #f8f9fa, #e3f2fd);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-item {
+            text-align: center;
+        }
+
+        .info-item .info-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .info-item h3 {
+            color: var(--primary-color);
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .info-item p {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+
+        /* Navigation pages — fil d'Ariane */
+        .fil-ariane {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+
+        .fil-ariane a {
+            color: var(--primary-color);
+        }
+
+        .fil-ariane span {
+            margin: 0 0.4rem;
+        }
+
+        @media (max-width: 768px) {
+            .eshop-hero h2 {
+                font-size: 1.8rem;
+            }
+            .produits-grid {
+                grid-template-columns: 1fr;
+            }
+            .produit-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo AsArt'sDev - Visible au 1er coup d'œil -->
+    <a href="index.html" class="asartsdev-logo" title="Retour à l'accueil AsArt'sDev" aria-label="AsArt'sDev, retour à l'accueil du site">
+        <div class="asartsdev-logo-icon">
+            <span aria-hidden="true">A</span>
+        </div>
+        <div class="asartsdev-logo-text">
+            <span class="asartsdev-logo-brand">AsArt'sDev</span>
+            <span class="asartsdev-logo-tagline">Boutique</span>
+        </div>
+    </a>
+
+    <header>
+        <h1>🛍️ Boutique AsArt'sDev</h1>
+        <p>Livres, créations numériques et œuvres de Asmir Milia</p>
+        <nav class="main-nav">
+            <a href="index.html">Accueil</a>
+            <a href="eshop.html">Boutique</a>
+            <a href="commande.html">Commander</a>
+            <a href="bibliotheque.html">Bibliothèque</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Fil d'Ariane -->
+        <p class="fil-ariane">
+            <a href="index.html">Accueil</a>
+            <span>›</span>
+            <strong>Boutique</strong>
+        </p>
+
+        <!-- Hero eshop -->
+        <section class="eshop-hero">
+            <h2>Nos créations à découvrir</h2>
+            <p>Parcourez la boutique AsArt'sDev : livres enfants, autobiographies, produits numériques et créations exclusives. Chaque achat soutient directement le projet.</p>
+            <span class="promo-banner">🎉 Promo mise en ligne : -5 % sur le panier total</span>
+        </section>
+
+        <!-- Filtres -->
+        <div class="eshop-filters" role="group" aria-label="Filtrer les produits">
+            <button class="filter-btn active" data-filter="tous">Tous les produits</button>
+            <button class="filter-btn" data-filter="livres">📚 Livres</button>
+            <button class="filter-btn" data-filter="numerique">💻 Numérique</button>
+            <button class="filter-btn" data-filter="don">🤝 Soutien</button>
+        </div>
+
+        <!-- Catalogue produits -->
+        <section class="produits-grid" id="catalogue" aria-label="Catalogue des produits">
+
+            <!-- Produit 1 : Max et Milla -->
+            <article class="produit-card" data-categorie="livres">
+                <img class="produit-image"
+                     src="images/session-mars-2026/placeholder-original.png"
+                     alt="Couverture du livre Max et Milla – version finale enfant, histoire illustrée pour enfants par Asmir Milia."
+                     onerror="this.src='images/session-mars-2026/placeholder-original.png'">
+                <div class="produit-body">
+                    <span class="produit-badge badge-nouveau">Nouveau</span>
+                    <h3>Max et Milla – version finale enfant</h3>
+                    <p class="produit-sous-titre">Le secret du cycle des dix ans</p>
+                    <p class="produit-description">Une histoire vraie pour enfants : aventure, courage et entraide dans un univers illustré chaleureux. Idéal pour les 6–12 ans.</p>
+                    <p class="produit-prix">15,00 €</p>
+                    <div class="produit-actions">
+                        <a href="commande.html?produit=max-milla" class="btn-commander">Commander</a>
+                        <a href="home.html" class="btn-apercu">Voir détails</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Produit 2 : Biographie Asmir -->
+            <article class="produit-card" data-categorie="livres">
+                <img class="produit-image"
+                     src="images/parcours/parcours-1-autodidacte.jpg"
+                     alt="Couverture de la biographie Asmir Milia – La fin du cycle des 10 ans, livre de développement personnel et témoignage."
+                     onerror="this.src='images/session-mars-2026/placeholder-original.png'">
+                <div class="produit-body">
+                    <span class="produit-badge">Livre</span>
+                    <h3>Biographie des Asmir mln</h3>
+                    <p class="produit-sous-titre">La fin du cycle des 10 ans</p>
+                    <p class="produit-description">Récit autobiographique d'un parcours autodidacte : résilience, apprentissage et dépassement de soi. Expédition après confirmation de commande.</p>
+                    <p class="produit-prix">Sur devis <span style="font-size:0.8rem; color:#888;">(impression + envoi)</span></p>
+                    <div class="produit-actions">
+                        <a href="commande.html?produit=biographie-cycle" class="btn-commander">Commander</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Produit 3 : Les trois vies d'Asmir -->
+            <article class="produit-card" data-categorie="livres">
+                <img class="produit-image"
+                     src="images/parcours/parcours-3-vision-tech.jpg"
+                     alt="Couverture du livre Les trois vies d'Asmir – version adulte, autobiographie littéraire et technologique."
+                     onerror="this.src='images/session-mars-2026/placeholder-original.png'">
+                <div class="produit-body">
+                    <span class="produit-badge badge-precommande">En cours</span>
+                    <h3>Les trois vies d'Asmir</h3>
+                    <p class="produit-sous-titre">La fin du cycle des dix ans</p>
+                    <p class="produit-description">Autobiographie adulte : parcours de vie, vision technologique et impact social. Manuscrit en cours de finalisation – option dédicacée disponible.</p>
+                    <p class="produit-prix">39,99 € <span class="prix-ancien">44,99 €</span></p>
+                    <div class="produit-actions">
+                        <a href="commande.html?produit=autobiographie-adulte" class="btn-commander">Commander</a>
+                        <a href="MemoLivreAutobiographique/pdf_version.pdf" target="_blank" class="btn-apercu" rel="noopener noreferrer">Aperçu PDF</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Produit 4 : Bibliothèque numérique -->
+            <article class="produit-card" data-categorie="numerique">
+                <img class="produit-image"
+                     src="images/session-mars-2026/placeholder-original.png"
+                     alt="Illustration de la bibliothèque numérique AsArt'sDev avec accès aux ressources digitales et livres en ligne."
+                     onerror="this.src='images/session-mars-2026/placeholder-original.png'">
+                <div class="produit-body">
+                    <span class="produit-badge badge-numerique">Numérique</span>
+                    <h3>Accès Bibliothèque numérique</h3>
+                    <p class="produit-sous-titre">Ressources digitales AsArt'sDev</p>
+                    <p class="produit-description">Accédez aux ressources numériques exclusives : extraits, illustrations, documents de recherche et œuvres inédites d'AsArt'sDev.</p>
+                    <p class="produit-prix">Accès libre</p>
+                    <div class="produit-actions">
+                        <a href="bibliotheque.html" class="btn-commander">Accéder</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Produit 5 : Livres audio -->
+            <article class="produit-card" data-categorie="numerique">
+                <img class="produit-image"
+                     src="images/session-mars-2026/placeholder-original.png"
+                     alt="Illustration des livres audio AsArt'sDev, récits sonores et expériences auditives immersives."
+                     onerror="this.src='images/session-mars-2026/placeholder-original.png'">
+                <div class="produit-body">
+                    <span class="produit-badge badge-numerique">Audio</span>
+                    <h3>Livres audio</h3>
+                    <p class="produit-sous-titre">Expérience sonore immersive</p>
+                    <p class="produit-description">Écoutez les œuvres d'AsArt'sDev en version audio : narration immersive, accessibilité optimale pour tous les publics.</p>
+                    <p class="produit-prix">Accès libre</p>
+                    <div class="produit-actions">
+                        <a href="livres-audio.html" class="btn-commander">Écouter</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Produit 6 : Soutien / Don -->
+            <article class="produit-card" data-categorie="don">
+                <img class="produit-image"
+                     src="images/parcours/parcours-2-decouverte.jpg"
+                     alt="Illustration représentant le soutien au projet AsArt'sDev : investissement humain, solidarité et mécénat."
+                     onerror="this.src='images/session-mars-2026/placeholder-original.png'">
+                <div class="produit-body">
+                    <span class="produit-badge" style="background:#2980b9;">Soutien</span>
+                    <h3>Soutenir le projet</h3>
+                    <p class="produit-sous-titre">Don libre ou partenariat</p>
+                    <p class="produit-description">Participez au développement d'AsArt'sDev : don libre, partenariat ou mécénat. Chaque contribution compte pour concrétiser ce projet unique.</p>
+                    <p class="produit-prix">Montant libre</p>
+                    <div class="produit-actions">
+                        <a href="donation.php" class="btn-commander">Soutenir</a>
+                        <a href="contact.html" class="btn-apercu">Partenariat</a>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- Informations commande -->
+        <section class="info-commande" aria-label="Informations sur les commandes">
+            <div class="info-item">
+                <div class="info-icon">🔒</div>
+                <h3>Paiement sécurisé</h3>
+                <p>Carte bancaire, virement ou PayPal — traitement sécurisé</p>
+            </div>
+            <div class="info-item">
+                <div class="info-icon">📦</div>
+                <h3>Livraison soignée</h3>
+                <p>Produits physiques expédiés sous 5–7 jours ouvrés</p>
+            </div>
+            <div class="info-item">
+                <div class="info-icon">💻</div>
+                <h3>Livraison numérique</h3>
+                <p>Accès immédiat sous 48h après confirmation du paiement</p>
+            </div>
+            <div class="info-item">
+                <div class="info-icon">📧</div>
+                <h3>Support dédié</h3>
+                <p>Questions ? <a href="mailto:asartdev.contact@gmail.com">Écrivez-nous</a></p>
+            </div>
+        </section>
+
+        <!-- CTA final -->
+        <section class="cta">
+            <h2>Besoin d'aide pour choisir ?</h2>
+            <p>Notre équipe est disponible pour vous conseiller sur le produit le mieux adapté à vos besoins.</p>
+            <a href="contact.html" class="btn-primary">Nous contacter</a>
+        </section>
+    </main>
+
+    <!-- Script Milian-NIA -->
+    <script src="milian-nia.js"></script>
+
+    <footer>
+        <nav>
+            <a href="index.html">Accueil</a> |
+            <a href="eshop.html">Boutique</a> |
+            <a href="commande.html">Commander</a> |
+            <a href="bibliotheque.html">Bibliothèque</a> |
+            <a href="LivresAsArtsDev/cgv.html">CGV</a> |
+            <a href="contact.html">Contact</a> |
+            <a href="image-protection.html">Protection</a>
+        </nav>
+        <p>© 2026 AsArt'sDev – créé par ASmir Milia. Tous droits réservés.</p>
+    </footer>
+
+    <!-- Pop-up de validation CGV avec signature électronique -->
+    <script src="cgv-popup.js"></script>
+
+    <!-- Filtre produits -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const cards = document.querySelectorAll('.produit-card');
+
+            filterBtns.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    const filter = btn.getAttribute('data-filter');
+
+                    filterBtns.forEach(function (b) { b.classList.remove('active'); });
+                    btn.classList.add('active');
+
+                    cards.forEach(function (card) {
+                        if (filter === 'tous' || card.getAttribute('data-categorie') === filter) {
+                            card.style.display = '';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
+    <!-- Protection des images -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('img').forEach(function (img) {
+                img.addEventListener('contextmenu', function (e) {
+                    e.preventDefault();
+                    return false;
+                });
+                img.addEventListener('dragstart', function (e) {
+                    e.preventDefault();
+                    return false;
+                });
+                img.setAttribute('data-protected', 'true');
+                img.setAttribute('data-owner', "AsArt'sDev");
+                img.style.userSelect = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

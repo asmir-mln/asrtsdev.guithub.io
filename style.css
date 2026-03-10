@@ -501,6 +501,10 @@ footer p {
     padding: 2rem;
 }
 
+.mr-1 {
+    margin-right: 1rem;
+}
+
 /* Formulaires */
 .formulaire-commande,
 .formulaire-contact {
