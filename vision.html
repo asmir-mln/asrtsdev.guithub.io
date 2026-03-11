@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AsArt'sDev | Vision du futur</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+overflow:hidden;
+background:black;
+color:white;
+}
+
+.video-bg{
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-1;
+
+}
+
+.overlay{
+
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.65);
+
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:40px;
+
+}
+
+.logo{
+
+width:220px;
+margin-bottom:30px;
+animation:logoFade 3s ease;
+
+}
+
+h1{
+
+font-size:60px;
+color:#38bdf8;
+margin-bottom:20px;
+animation:textFade 3s ease;
+
+}
+
+.message{
+
+font-size:22px;
+max-width:900px;
+line-height:1.6;
+margin-bottom:40px;
+animation:textFade 4s ease;
+
+}
+
+.btn{
+
+padding:18px 45px;
+font-size:20px;
+border:none;
+background:#38bdf8;
+border-radius:8px;
+cursor:pointer;
+transition:0.3s;
+
+}
+
+.btn:hover{
+
+background:#0284c7;
+
+}
+
+@keyframes logoFade{
+
+0%{opacity:0; transform:scale(0.6);}
+100%{opacity:1; transform:scale(1);}
+
+}
+
+@keyframes textFade{
+
+0%{opacity:0; transform:translateY(20px);}
+100%{opacity:1; transform:translateY(0);}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<video autoplay muted loop class="video-bg">
+
+<source src="video/videoNIA.mp4" type="video/mp4">
+
+</video>
+
+
+<div class="overlay">
+
+<img src="logo.png" class="logo">
+
+<h1>AsArt'sDev</h1>
+
+<div class="message">
+
+<p>
+Rejoignez notre architecture simple et épurée, avec une touche futuriste.
+</p>
+
+<p>
+Découvrez <strong>NIA</strong>, notre intelligence artificielle qui vous accompagne partout.
+</p>
+
+<p>
+Chez <strong>AsArt'sDev</strong>, nous créons aujourd’hui les outils du monde de demain.
+</p>
+
+<p>
+<strong>Une vision sur le long terme — le futur commence maintenant.</strong>
+</p>
+
+</div>
+
+<button class="btn" onclick="enterSite()">
+
+Entrer dans l'expérience
+
+</button>
+
+</div>
+
+
+<script>
+
+function enterSite(){
+
+window.location.href="parcours.html"
+
+}
+
+</script>
+
+
+</body>
+</html>

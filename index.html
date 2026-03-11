@@ -287,6 +287,74 @@
             font-size: 0.95rem;
         }
 
+        /* Section Vidéos en introduction */
+        .videos-intro-section {
+            width: 100%;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+            min-height: auto;
+        }
+
+        .videos-intro-section h2 {
+            color: #00f3ff;
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
+        }
+
+        .videos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .video-player {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 3px solid #00f3ff;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.4);
+            background: #000;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .video-player iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+            pointer-events: auto;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* Texte sous les vidéos */
+        .video-description {
+            color: #00d4ff;
+            text-align: center;
+            font-size: 1.1em;
+            margin-top: 15px;
+            padding: 0 15px;
+        }
+
         @media (max-width: 768px) {
             .main-header-with-logo {
                 flex-direction: column;
@@ -310,6 +378,14 @@
             .logo-nia-small {
                 width: 35px;
                 height: 35px;
+            }
+
+            .videos-intro-section h2 {
+                font-size: 1.8em;
+            }
+
+            .videos-container {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -373,6 +449,48 @@
     </header>
 
     <main>
+        <!-- SECTION VIDÉOS EN INTRODUCTION -->
+        <section class="videos-intro-section">
+            <h2>🎬 Bienvenue sur AsArt'sDev</h2>
+            
+            <div class="videos-container">
+                <!-- Première vidéo : Présentation -->
+                <div class="video-wrapper">
+                    <div class="video-player">
+                        <iframe 
+                            src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&controls=1&modestbranding=1" 
+                            allowfullscreen="" 
+                            loading="lazy"
+                            title="Présentation AsArt'sDev - Vidéo 1"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                        </iframe>
+                    </div>
+                    <p class="video-description">📺 Découvrez notre vision et notre mission</p>
+                </div>
+
+                <!-- Deuxième vidéo : Projets -->
+                <div class="video-wrapper">
+                    <div class="video-player">
+                        <iframe 
+                            src="https://www.youtube.com/embed/ScMzIvxBSi4?rel=0&controls=1&modestbranding=1" 
+                            allowfullscreen="" 
+                            loading="lazy"
+                            title="Nos Projets - AsArt'sDev Vidéo 2"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                        </iframe>
+                    </div>
+                    <p class="video-description">🚀 Explorez nos innovations et créations</p>
+                </div>
+            </div>
+
+            <!-- CTA pour explorer l'évolution -->
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="evolution-2035.html" class="btn-primary" style="display: inline-block; padding: 15px 40px; background: linear-gradient(135deg, #00f3ff, #0099ff); color: #0a0e27; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 1.1em; transition: all 0.3s ease;">
+                    🚀 Découvrir la Feuille de Route 2026-2035
+                </a>
+            </div>
+        </section>
+
         <!-- Blason AsArt'sDev avec Milian-NIA -->
         <section class="blason-section">
             <div class="blason-container">
@@ -508,7 +626,7 @@
         <section class="cta">
             <h2>Projet en cours de développement</h2>
             <p>Pour recevoir le dossier complet (études privées, feuille de route, besoins de financement), contactez AsArt'sDev.</p>
-            <a href="donation.php" class="btn-primary">Voir Don / Achat / Partenariat</a>
+            <a href="don-paypal.html" class="btn-primary">Voir Don / Achat / Partenariat</a>
         </section>
 
         <section class="vision-paris" style="margin-top: 80px; padding: 60px 40px; background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(230,240,250,0.8) 100%); border-left: 5px solid #d32f2f; border-radius: 8px;">
@@ -554,6 +672,127 @@
 
     <!-- Script Milian-NIA -->
     <script src="milian-nia.js"></script>
+
+    <!-- ============================================
+         PROTECTION DU CONTENU - ASMIR MILIANNI
+         Code de sécurité pour empêcher le vol de contenu
+         Marque AsArt'sDev protégée par Samir Milianni
+         Verrouillé le 10 mars 2026
+         ============================================ -->
+    <script>
+        /**
+         * Fonction de protection contre le copier-coller
+         * Empêche la sélection et la copie du contenu du site
+         * Sécurité: AsArt'sDev © Samir Milianni (Asmir mln)
+         */
+        function disableCopyPaste() {
+            // Bloquer le clic droit (menu contextuel)
+            document.addEventListener('contextmenu', function(event) {
+                event.preventDefault();
+                return false;
+            }, false);
+
+            // Bloquer Ctrl+C (copie)
+            document.addEventListener('copy', function(event) {
+                event.preventDefault();
+                return false;
+            }, false);
+
+            // Bloquer Ctrl+X (couper)
+            document.addEventListener('cut', function(event) {
+                event.preventDefault();
+                return false;
+            }, false);
+
+            // Bloquer la sélection du texte
+            document.addEventListener('selectstart', function(event) {
+                if (event.target.tagName !== 'INPUT' && event.target.tagName !== 'TEXTAREA') {
+                    event.preventDefault();
+                    return false;
+                }
+            }, false);
+
+            // Bloquer la sélection à la souris
+            document.addEventListener('mousedown', function(event) {
+                if (event.button === 2) { // Bouton droit
+                    event.preventDefault();
+                    return false;
+                }
+            }, false);
+
+            // Ajouter CSS pour désactiver la sélection
+            const style = document.createElement('style');
+            style.innerHTML = `
+                * {
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                }
+                input, textarea, [contenteditable="true"] {
+                    -webkit-user-select: text;
+                    -moz-user-select: text;
+                    -ms-user-select: text;
+                    user-select: text;
+                }
+                /* Protégé par: © 2026 Samir Milianni - AsArt'sDev */
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Appeler la fonction de protection au chargement du document
+        document.addEventListener('DOMContentLoaded', disableCopyPaste);
+
+        /**
+         * Fonction pour afficher un message d'avertissement en cas de tentative
+         * de copie ou d'accès au menu contextuel
+         * Sécurité AsArt'sDev - Fondateur: Samir Milianni (Asmir mln)
+         */
+        document.addEventListener('mousedown', function(e) {
+            // Si clic droit détecté
+            if (e.button === 2) {
+                // Message de sécurité discret en console
+                console.log('%c⚠️ PROTECTION ASART\'SDEV', 'color: #00f3ff; font-size: 16px; font-weight: bold;');
+                console.log('%cCe contenu est protégé par © Samir Milianni (Asmir mln)', 'color: #00d4ff;');
+                console.log('%cLe copier-coller, l\'impression-écran et le clic droit sont désactivés.', 'color: #ccc;');
+                console.log('%cMerci de respecter nos droits d\'auteur.', 'color: #00f3ff; font-style: italic;');
+            }
+        });
+
+        // Bloquer les touches de clavier spéciales
+        document.addEventListener('keydown', function(e) {
+            // Ctrl+C, Cmd+C
+            if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+X, Cmd+X
+            if ((e.ctrlKey || e.metaKey) && e.key === 'x') {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+V, Cmd+V
+            if ((e.ctrlKey || e.metaKey) && e.key === 'v') {
+                e.preventDefault();
+                return false;
+            }
+            // F12 (Outils développeur)
+            if (e.key === 'F12') {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+Shift+I (Inspecteur)
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'I') {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+Shift+K (Console)
+            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'K') {
+                e.preventDefault();
+                return false;
+            }
+        });
+    </script>
 
     <footer>
         <nav>

@@ -1,0 +1,735 @@
+<!-- AsArt'sDev | Signature invisible | ASmir Milia | ASARTSDEV_SIGNATURE_INVISIBLE -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Évolution 2026-2035 | AsArt'sDev</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="logo-style.css">
+    <style>
+        /* ============================================
+           STYLES POUR L'ÉVOLUTION 2026-2035
+           ============================================ */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #ccc;
+            overflow-x: hidden;
+        }
+
+        /* Conteneur d'introduction avec Milian-NIA */
+        .nia-intro-section {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0d1b2a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nia-intro-section::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 243, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+            top: 50%;
+            left: 10%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+            50% { transform: translate(-50%, -50%) translateY(-30px); }
+        }
+
+        .nia-intro-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            padding: 40px 20px;
+        }
+
+        .nia-avatar {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .nia-avatar svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 30px rgba(0, 243, 255, 0.8));
+            animation: braniPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes brainPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .nia-intro-content h1 {
+            font-size: 2.8em;
+            color: #00f3ff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
+        }
+
+        .nia-intro-content p {
+            font-size: 1.3em;
+            color: #00d4ff;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .nia-follow-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #00f3ff, #0099ff);
+            color: #0a0e27;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(0, 243, 255, 0.4);
+        }
+
+        .nia-follow-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.6);
+        }
+
+        /* Section Timeline Evolution */
+        .timeline-evolution-section {
+            width: 100%;
+            min-height: 100vh;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-evolution-section h2 {
+            color: #00f3ff;
+            font-size: 2.8em;
+            text-align: center;
+            margin-bottom: 60px;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
+        }
+
+        #timeline-container {
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+            height: 500px;
+            border: 3px solid #00f3ff;
+            border-radius: 20px;
+            overflow: hidden;
+            background: linear-gradient(to bottom, rgba(0, 31, 63, 0.8), rgba(26, 31, 58, 0.8));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.4);
+            margin-bottom: 40px;
+        }
+
+        #year {
+            font-size: 4em;
+            font-weight: bold;
+            color: #00f3ff;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.8);
+            animation: yearPulse 0.5s ease;
+        }
+
+        @keyframes yearPulse {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        #city-visual {
+            width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            transition: background 1.5s ease-in-out;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        #city-visual::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.1) 0%, rgba(0, 153, 255, 0.1) 100%);
+            pointer-events: none;
+        }
+
+        /* Controls */
+        .timeline-controls {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .timeline-btn {
+            padding: 15px 30px;
+            background: rgba(0, 243, 255, 0.1);
+            border: 2px solid #00f3ff;
+            color: #00f3ff;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-btn:hover {
+            background: rgba(0, 243, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 243, 255, 0.4);
+        }
+
+        .timeline-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Milestone Cards */
+        .milestones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin-top: 60px;
+            width: 100%;
+        }
+
+        .milestone-card {
+            background: rgba(26, 31, 58, 0.9);
+            border: 2px solid #00f3ff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .milestone-card:hover {
+            transform: translateY(-10px);
+            border-color: #00d4ff;
+            box-shadow: 0 10px 40px rgba(0, 243, 255, 0.4);
+        }
+
+        .milestone-year {
+            color: #00f3ff;
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .milestone-title {
+            color: #00d4ff;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .milestone-description {
+            color: #ccc;
+            font-size: 1em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .milestone-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .milestone-card ul {
+            list-style: none;
+            padding: 0;
+            color: #ccc;
+        }
+
+        .milestone-card li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .milestone-card li:before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #00f3ff;
+        }
+
+        /* Final Message */
+        #final-message {
+            display: none;
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.1) 0%, rgba(0, 153, 255, 0.1) 100%);
+            border: 3px solid #00f3ff;
+            border-radius: 20px;
+            max-width: 900px;
+            margin-top: 60px;
+            animation: slideUp 0.6s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #final-message h2 {
+            color: #00f3ff;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
+        }
+
+        #final-message p {
+            font-size: 1.2em;
+            color: #00d4ff;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .asartsdev-future-logo {
+            width: 200px;
+            height: 200px;
+            margin: 40px auto;
+            filter: drop-shadow(0 0 30px rgba(0, 243, 255, 0.8));
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        @media (max-width: 768px) {
+            .nia-intro-content h1 {
+                font-size: 2em;
+            }
+
+            .nia-intro-content p {
+                font-size: 1.1em;
+            }
+
+            #year {
+                font-size: 2.5em;
+            }
+
+            .timeline-evolution-section h2 {
+                font-size: 2em;
+            }
+
+            #timeline-container {
+                height: 400px;
+                margin-bottom: 30px;
+            }
+
+            #city-visual {
+                height: 200px;
+            }
+
+            .milestones-grid {
+                grid-template-columns: 1fr;
+                margin-top: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- SECTION 1 : Introduction avec Milian-NIA -->
+    <section class="nia-intro-section" id="nia-intro">
+        <div class="nia-intro-content">
+            <!-- Avatar Milian-NIA -->
+            <div class="nia-avatar">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="niaBrainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00f3ff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#0099ff;stop-opacity:1" />
+                        </linearGradient>
+                        <filter id="niaBrainGlow">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    
+                    <circle cx="100" cy="100" r="95" fill="none" stroke="url(#niaBrainGradient)" stroke-width="4" filter="url(#niaBrainGlow)"/>
+                    <path d="M100 40 Q60 40 55 70 Q50 100 55 130 Q60 160 100 160 Q140 160 145 130 Q150 100 145 70 Q140 40 100 40" 
+                          fill="none" stroke="url(#niaBrainGradient)" stroke-width="4" filter="url(#niaBrainGlow)"/>
+                    <circle cx="80" cy="80" r="8" fill="#00f3ff" filter="url(#niaBrainGlow)"/>
+                    <circle cx="120" cy="80" r="8" fill="#00f3ff" filter="url(#niaBrainGlow)"/>
+                    <circle cx="100" cy="100" r="10" fill="#0099ff" filter="url(#niaBrainGlow)"/>
+                    <circle cx="70" cy="115" r="6" fill="#00d4ff" filter="url(#niaBrainGlow)"/>
+                    <circle cx="130" cy="115" r="6" fill="#00d4ff" filter="url(#niaBrainGlow)"/>
+                    <line x1="80" y1="80" x2="100" y2="100" stroke="#00f3ff" stroke-width="3" opacity="0.7"/>
+                    <line x1="120" y1="80" x2="100" y2="100" stroke="#0099ff" stroke-width="3" opacity="0.7"/>
+                    <line x1="100" y1="100" x2="70" y2="115" stroke="#00d4ff" stroke-width="3" opacity="0.7"/>
+                    <line x1="100" y1="100" x2="130" y2="115" stroke="#00d4ff" stroke-width="3" opacity="0.7"/>
+                </svg>
+            </div>
+
+            <h1>🧠 Milian-NIA</h1>
+            <p>Bonjour ! Je suis Milian-NIA, l'intelligence artificielle d'AsArt'sDev.</p>
+            <p>Je suis heureuse de vous accueillir et de vous présenter la feuille de route visionnaire de notre projet.</p>
+            <p><strong>Suivez-moi dans ce voyage 🚀 vers l'avenir.</strong></p>
+            
+            <button class="nia-follow-btn" onclick="scrollToTimeline()">
+                Me suivre vers 2035 →
+            </button>
+        </div>
+    </section>
+
+    <!-- SECTION 2 : Timeline Evolution 2026-2035 -->
+    <section class="timeline-evolution-section">
+        <h2>📈 Notre Feuille de Route 2026-2035</h2>
+
+        <!-- Timeline Container -->
+        <div id="timeline-container">
+            <div id="year">2026</div>
+            <div id="city-visual" style="background-color: #1a4d7a;">💡 Fondation & Innovation</div>
+        </div>
+
+        <!-- Controls -->
+        <div class="timeline-controls">
+            <button class="timeline-btn" id="prev-btn" onclick="previousYear()">← Année précédente</button>
+            <button class="timeline-btn" id="next-btn" onclick="nextYear()">Année suivante →</button>
+            <button class="timeline-btn" onclick="playTimeline()">▶️ Lecture automatique</button>
+        </div>
+
+        <!-- Milestones Grid -->
+        <div class="milestones-grid" id="milestones-grid">
+            <!-- Les cartes seront générées par JavaScript -->
+        </div>
+
+        <!-- Final Message -->
+        <div id="final-message">
+            <svg class="asartsdev-future-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="finalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00f3ff;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#0099ff;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <circle cx="100" cy="100" r="95" fill="none" stroke="url(#finalGradient)" stroke-width="4"/>
+                <text x="100" y="110" text-anchor="middle" font-size="60" font-weight="bold" fill="url(#finalGradient)">AS</text>
+            </svg>
+            
+            <h2>🌟 2035 : AsArt'sDev Réalisé</h2>
+            <p><strong>Asmir vous remercie</strong> pour votre soutien et votre confiance.</p>
+            <p>En 2035, nous aurons créé un écosystème technologique innovant, accessible et inclusif qui change des vies.</p>
+            <p style="font-style: italic; margin-top: 30px;">Ensemble, nous avons bâti l'avenir. 💙</p>
+        </div>
+    </section>
+
+    <script>
+        /**
+         * Données de l'évolution 2026-2035
+         * Projection de développement d'AsArt'sDev
+         * © Samir Milianni - AsArt'sDev
+         */
+        const evolutionData = {
+            2026: {
+                title: "Fondation & Innovation",
+                emoji: "💡",
+                description: "Lancement officiel d'AsArt'sDev. Phase de consolidation de Milian-NIA et développement des premiers projets R&D.",
+                items: [
+                    "Lancement du label AsArt'sDev",
+                    "Version 1.0 de Milian-NIA",
+                    "Première édition des livres autobiographiques",
+                    "Partenariats stratégiques initiés"
+                ],
+                color: "#1a4d7a"
+            },
+            2027: {
+                title: "Expansion Technologique",
+                emoji: "🚀",
+                description: "Développement des solutions d'accessibilité. Premières applications en santé numérique.",
+                items: [
+                    "Plateforme d'accessibilité alpha",
+                    "Projets IA avancés",
+                    "Recrutement d'équipe tech",
+                    "Premiers prototypes produits"
+                ],
+                color: "#2d5a85"
+            },
+            2028: {
+                title: "Croissance Commerciale",
+                emoji: "📈",
+                description: "Monétisation des produits. Lancement des solutions B2B. Expansion du portefeuille de services.",
+                items: [
+                    "Produits commercialisables",
+                    "Contrats B2B signés",
+                    "Agrandissement des bureaux",
+                    "Levée de fonds Series A"
+                ],
+                color: "#406a8f"
+            },
+            2029: {
+                title: "Innovation Inclusive",
+                emoji: "♿",
+                description: "Focus sur l'accessibilité. Solutions pour malvoyance, surdité, mobilité réduite.",
+                items: [
+                    "Suite complète d'outils accessibles",
+                    "Certifications inclusivité",
+                    "Partenariats associatifs",
+                    "Prix d'innovation remportés"
+                ],
+                color: "#537a99"
+            },
+            2030: {
+                title: "Rayonnement International",
+                emoji: "🌍",
+                description: "Expansion européenne et mondiale. Localisation des produits en 10+ langues.",
+                items: [
+                    "Bureaux en Europe",
+                    "Présence mondiale",
+                    "Communautés internationales",
+                    "Partenaires stratégiques globaux"
+                ],
+                color: "#6a8aa3"
+            },
+            2031: {
+                title: "Leadership IA Ethique",
+                emoji: "🤖",
+                description: "Positionnement comme leader en IA éthique et inclusive. Publications académiques majeures.",
+                items: [
+                    "Centre de R&D dédiée IA",
+                    "Publications scientifiques",
+                    "Conférences internationales",
+                    "Certifications éthiques"
+                ],
+                color: "#7d9aad"
+            },
+            2032: {
+                title: "Écosystème & Communautés",
+                emoji: "🤝",
+                description: "Construction d'un véritable écosystème. Plateforme de collaboration pour startups et innovateurs.",
+                items: [
+                    "Incubateur AsArt'sDev",
+                    "Communautés de 10k+ membres",
+                    "Hackathons réguliers",
+                    "Programme de mentorat"
+                ],
+                color: "#90aab7"
+            },
+            2033: {
+                title: "Impact Médical",
+                emoji: "⚕️",
+                description: "Solutions reconnaissables dans le secteur médical. Premiers cas d'usage validés cliniquement.",
+                items: [
+                    "Produits médicaux certifiés",
+                    "Études cliniques complétées",
+                    "Validation hospitalière",
+                    "Impact mesurable prouvé"
+                ],
+                color: "#a3bac1"
+            },
+            2034: {
+                title: "Consolidation & Durabilité",
+                emoji: "🌱",
+                description: "Modèle économique durable et profitable. Expansion des services. Stabilisation de l'équipe.",
+                items: [
+                    "500+ collaborateurs",
+                    "Profitabilité atteinte",
+                    "Nouvelles vertentes",
+                    "Stabilité long-terme"
+                ],
+                color: "#b6cacb"
+            },
+            2035: {
+                title: "Vision Réalisée",
+                emoji: "⭐",
+                description: "AsArt'sDev est devenu une référence mondiale d'innovation inclusive et de technologie éthique.",
+                items: [
+                    "Leader reconnu mondialement",
+                    "Millions d'utilisateurs impactés",
+                    "Prix et distinctions majeures",
+                    "Fondations sociales créées"
+                ],
+                color: "#c9dadf"
+            }
+        };
+
+        const years = Object.keys(evolutionData).map(Number).sort((a, b) => a - b);
+        let currentIndex = 0;
+
+        /**
+         * Fonction pour afficher l'année actuelle
+         * Met à jour le visuel et les informations de la timeline
+         */
+        function displayYear() {
+            const year = years[currentIndex];
+            const data = evolutionData[year];
+            
+            document.getElementById('year').textContent = year;
+            document.getElementById('city-visual').innerHTML = `<span>${data.emoji} ${data.title}</span>`;
+            document.getElementById('city-visual').style.backgroundColor = data.color;
+            
+            // Mettre à jour les boutons
+            document.getElementById('prev-btn').disabled = currentIndex === 0;
+            document.getElementById('next-btn').disabled = currentIndex === years.length - 1;
+            
+            // Afficher le message final si fin de la timeline
+            if (currentIndex === years.length - 1) {
+                document.getElementById('final-message').style.display = 'block';
+                const grid = document.getElementById('milestones-grid');
+                grid.style.display = 'none';
+            } else {
+                document.getElementById('final-message').style.display = 'none';
+                const grid = document.getElementById('milestones-grid');
+                grid.style.display = 'grid';
+            }
+        }
+
+        /**
+         * Fonction pour aller à l'année suivante
+         */
+        function nextYear() {
+            if (currentIndex < years.length - 1) {
+                currentIndex++;
+                displayYear();
+            }
+        }
+
+        /**
+         * Fonction pour aller à l'année précédente
+         */
+        function previousYear() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                displayYear();
+            }
+        }
+
+        /**
+         * Fonction pour lancer la lecture automatique de la timeline
+         */
+        function playTimeline() {
+            const interval = setInterval(() => {
+                if (currentIndex < years.length - 1) {
+                    currentIndex++;
+                    displayYear();
+                } else {
+                    clearInterval(interval);
+                }
+            }, 2000); // 2 secondes par année
+        }
+
+        /**
+         * Fonction pour scroller vers la section timeline
+         * Utilisée au clic du bouton d'introduction
+         */
+        function scrollToTimeline() {
+            const timelineSection = document.querySelector('.timeline-evolution-section');
+            timelineSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        /**
+         * Générer les cartes de jalon pour l'année actuelle
+         */
+        function generateMilestoneCards() {
+            const grid = document.getElementById('milestones-grid');
+            grid.innerHTML = '';
+            
+            const year = years[currentIndex];
+            const data = evolutionData[year];
+            
+            // Créer la main card
+            const mainCard = document.createElement('div');
+            mainCard.className = 'milestone-card';
+            mainCard.style.borderColor = data.color;
+            mainCard.innerHTML = `
+                <div class="milestone-icon">${data.emoji}</div>
+                <div class="milestone-year">${year}</div>
+                <div class="milestone-title">${data.title}</div>
+                <div class="milestone-description">${data.description}</div>
+                <ul>
+                    ${data.items.map(item => `<li>${item}</li>`).join('')}
+                </ul>
+            `;
+            grid.appendChild(mainCard);
+        }
+
+        // Initialiser la page au chargement
+        document.addEventListener('DOMContentLoaded', () => {
+            displayYear();
+            generateMilestoneCards();
+            
+            // Rafraîchir les cartes quand on change l'année
+            const originalNext = nextYear;
+            window.nextYear = function() {
+                originalNext();
+                generateMilestoneCards();
+            };
+            
+            const originalPrev = previousYear;
+            window.previousYear = function() {
+                originalPrev();
+                generateMilestoneCards();
+            };
+        });
+
+        /**
+         * Écouter le changement d'année pour mettre à jour les cartes
+         * Création dynamique basée sur l'année sélectionnée
+         */
+        const observer = new MutationObserver(() => {
+            generateMilestoneCards();
+        });
+    </script>
+
+    <footer style="text-align: center; padding: 40px 20px; background: rgba(26, 31, 58, 0.8); border-top: 2px solid #00f3ff; margin-top: 60px;">
+        <p style="color: #00d4ff; margin-bottom: 10px;">© 2026 AsArt'sDev – Samir Milianni (Asmir mln)</p>
+        <nav style="margin-top: 15px;">
+            <a href="index.html" style="color: #00f3ff; margin: 0 15px;">Accueil</a> |
+            <a href="apropos.html" style="color: #00f3ff; margin: 0 15px;">À Propos</a> |
+            <a href="don-paypal.html" style="color: #00f3ff; margin: 0 15px;">Soutenir</a> |
+            <a href="contact.html" style="color: #00f3ff; margin: 0 15px;">Contact</a>
+        </nav>
+    </footer>
+</body>
+</html>

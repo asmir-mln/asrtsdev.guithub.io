@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AsArt'sDev Splash</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #0f0f1f;
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        #splash {
+            text-align: center;
+        }
+
+        #logo {
+            width: 300px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        #commentaire {
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+
+        video {
+            width: 300px;
+            margin: 10px;
+            border: 2px solid #fff;
+            border-radius: 10px;
+        }
+
+        #enter-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-size: 1em;
+            background-color: #6a0dad;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #enter-btn:hover {
+            background-color: #520a9b;
+        }
+    </style>
+</head>
+<body>
+    <div id="splash">
+        <!-- Logo -->
+        <img id="logo" src="logo.png" alt="AsArt'sDev Logo">
+
+        <!-- Commentaire -->
+        <div id="commentaire">
+            Bienvenue sur AsArt'sDev ! Laissez-nous vous montrer nos dernières créations.
+        </div>
+
+        <!-- Vidéos -->
+        <div id="videos">
+            <video controls>
+                <source src="video/video1.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
+            <video controls>
+                <source src="video/videoMIA" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
+        </div>
+
+        <!-- Bouton pour entrer sur le site -->
+        <button id="enter-btn" onclick="enterSite()">Entrer sur le site</button>
+    </div>
+
+    <script>
+        function enterSite() {
+            window.location.href = "index.html"; // Mettre le lien vers ta page d'accueil principale
+        }
+    </script>
+</body>
+</html>
