@@ -1,0 +1,512 @@
+<!-- AsArt'sDev | Signature invisible | ASmir Milia | ASARTSDEV_SIGNATURE_INVISIBLE -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos - AsArt'sDev | Histoire et Mission</title>
+    <meta name="description" content="Découvrez l'histoire d'AsArt'sDev, notre mission d'innovation inclusive et l'équipe derrière les projets technologiques.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="logo-style.css">
+    
+    <style>
+        /* ============================================
+           STYLES POUR LA PAGE À PROPOS
+           ============================================ */
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #ccc;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* En-tête de page avec titre principal */
+        .page-header {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(26, 31, 58, 0.8);
+            border-bottom: 3px solid #00f3ff;
+            box-shadow: 0 5px 30px rgba(0, 243, 255, 0.3);
+        }
+
+        .page-header h1 {
+            font-size: 3em;
+            color: #00f3ff;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
+        }
+
+        .page-header p {
+            font-size: 1.3em;
+            color: #00d4ff;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Conteneur principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Sections avec articles */
+        .section {
+            background: rgba(26, 31, 58, 0.8);
+            border: 2px solid #00f3ff;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+        }
+
+        .section h2 {
+            color: #00f3ff;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #00f3ff;
+            padding-bottom: 15px;
+        }
+
+        /* Articles individuels dans chaque section */
+        .article {
+            background: rgba(0, 31, 63, 0.5);
+            border-left: 4px solid #00f3ff;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .article:hover {
+            background: rgba(0, 31, 63, 0.7);
+            border-left-color: #00d4ff;
+            transform: translateX(5px);
+        }
+
+        .article h3 {
+            color: #00f3ff;
+            font-size: 1.6em;
+            margin-bottom: 15px;
+        }
+
+        .article p {
+            color: #ccc;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .article ul {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+
+        .article ul li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #ccc;
+        }
+
+        .article ul li:before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #00f3ff;
+            font-size: 1.2em;
+        }
+
+        /* Grid pour articles côte à côte */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        /* Citations et témoignages */
+        .quote {
+            background: rgba(0, 243, 255, 0.1);
+            border-left: 4px solid #00f3ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #00d4ff;
+            font-size: 1.2em;
+        }
+
+        .quote cite {
+            display: block;
+            margin-top: 10px;
+            font-style: normal;
+            font-weight: bold;
+            color: #00f3ff;
+        }
+
+        /* Ligne de temps (timeline) */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-left: 3px solid #00f3ff;
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: #00f3ff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.8);
+        }
+
+        .timeline-item h4 {
+            color: #00f3ff;
+            font-size: 1.3em;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item .date {
+            color: #00d4ff;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Navigation de retour */
+        .back-nav {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .back-nav a {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #00f3ff, #0099ff);
+            color: #0a0e27;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+
+        .back-nav a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 243, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- En-tête de la page -->
+    <header class="page-header">
+        <h1>📖 À propos d'AsArt'sDev</h1>
+        <p>Découvrez l'histoire, la mission et les valeurs qui animent notre vision de l'innovation inclusive</p>
+    </header>
+
+    <div class="container">
+        <!-- SECTION 1 : Notre Histoire -->
+        <section class="section">
+            <h2>🌱 Notre Histoire</h2>
+            
+            <article class="article">
+                <h3>Les Origines</h3>
+                <p>
+                    AsArt'sDev est né d'un parcours personnel atypique marqué par la résilience et la transformation. 
+                    Fondé par Samir Milianni (Asmir mln), le projet trouve ses racines dans une enfance difficile 
+                    et une détermination sans faille à transformer les obstacles en opportunités.
+                </p>
+                <p>
+                    La dyslexie, initialement perçue comme un handicap, est devenue une force : une capacité à 
+                    penser différemment, à décoder le monde avec créativité et à développer une intelligence 
+                    atypique (HPI 136 QI).
+                </p>
+            </article>
+
+            <article class="article">
+                <h3>L'Évolution du Projet</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="date">2015-2020</span>
+                        <h4>Période d'apprentissage autodidacte</h4>
+                        <p>Formation en programmation, design 3D et technologies web. Développement des premières compétences techniques.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="date">2021-2023</span>
+                        <h4>Naissance d'AsArt'sDev</h4>
+                        <p>Création de la marque et premiers projets d'illustrations numériques et de développements web.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="date">2024-2025</span>
+                        <h4>Expansion vers l'IA et l'accessibilité</h4>
+                        <p>Intégration de l'intelligence artificielle Milian-NIA et focus sur les solutions d'accessibilité.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="date">2026</span>
+                        <h4>Vision internationale</h4>
+                        <p>Lancement de projets d'envergure mondiale axés sur l'innovation inclusive et l'impact social.</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- SECTION 2 : Notre Mission -->
+        <section class="section">
+            <h2>🎯 Notre Mission</h2>
+            
+            <article class="article">
+                <h3>Innovation Inclusive</h3>
+                <p>
+                    Notre mission principale est de développer des technologies <strong>accessibles à tous</strong>, 
+                    particulièrement pour les personnes en situation de handicap ou d'exclusion numérique.
+                </p>
+                <ul>
+                    <li>Solutions pour personnes malvoyantes et aveugles</li>
+                    <li>Outils d'aide pour personnes sourdes et malentendantes</li>
+                    <li>Technologies d'assistance pour mobilité réduite</li>
+                    <li>Interfaces adaptées aux troubles cognitifs (dyslexie, TDAH, etc.)</li>
+                </ul>
+            </article>
+
+            <article class="article">
+                <h3>Recherche & Développement</h3>
+                <p>
+                    AsArt'sDev investit dans la R&D pour créer des solutions innovantes dans plusieurs domaines :
+                </p>
+                <ul>
+                    <li><strong>Intelligence Artificielle :</strong> Développement de Milian-NIA, assistant IA éthique et inclusif</li>
+                    <li><strong>Santé numérique :</strong> Applications de suivi médical et d'assistance au diagnostic</li>
+                    <li><strong>Éducation :</strong> Outils pédagogiques adaptés aux profils atypiques</li>
+                    <li><strong>Open Source :</strong> Contribution à des projets libres et accessibles</li>
+                </ul>
+            </article>
+
+            <div class="quote">
+                "La technologie ne doit pas créer de nouvelles barrières, mais ouvrir des portes pour tous."
+                <cite>— Asmir, Fondateur d'AsArt'sDev</cite>
+            </div>
+        </section>
+
+        <!-- SECTION 3 : Nos Valeurs -->
+        <section class="section">
+            <h2>💎 Nos Valeurs</h2>
+            
+            <div class="articles-grid">
+                <article class="article">
+                    <h3>🌍 Inclusion</h3>
+                    <p>
+                        Chaque personne, quelles que soient ses capacités, mérite d'accéder aux technologies 
+                        et opportunités du monde numérique.
+                    </p>
+                </article>
+
+                <article class="article">
+                    <h3>💪 Résilience</h3>
+                    <p>
+                        Transformer les difficultés en forces. Notre parcours est la preuve qu'avec détermination, 
+                        tout est possible.
+                    </p>
+                </article>
+
+                <article class="article">
+                    <h3>🚀 Innovation</h3>
+                    <p>
+                        Repousser les limites du possible avec créativité et audace. Oser penser différemment 
+                        pour créer l'avenir.
+                    </p>
+                </article>
+
+                <article class="article">
+                    <h3>🤝 Solidarité</h3>
+                    <p>
+                        Collaborer, partager et soutenir. Le changement se fait ensemble, pas en solitaire.
+                    </p>
+                </article>
+
+                <article class="article">
+                    <h3>✨ Éthique</h3>
+                    <p>
+                        Développer des technologies responsables qui respectent la vie privée et la dignité 
+                        de chaque utilisateur.
+                    </p>
+                </article>
+
+                <article class="article">
+                    <h3>🌟 Excellence</h3>
+                    <p>
+                        Viser la qualité dans chaque projet, chaque ligne de code, chaque interaction avec 
+                        nos utilisateurs.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- SECTION 4 : L'Équipe -->
+        <section class="section">
+            <h2>👥 L'Équipe</h2>
+            
+            <article class="article">
+                <h3>Asmir Milianni - Fondateur & Directeur Général</h3>
+                <p>
+                    <strong>Samir Milianni</strong>, connu sous le pseudonyme <strong>Asmir mln</strong>, est 
+                    le créateur et moteur principal d'AsArt'sDev.
+                </p>
+                <p><strong>Compétences et expertise :</strong></p>
+                <ul>
+                    <li>Développement Full-Stack (PHP, JavaScript, Python)</li>
+                    <li>Architecture IA et Machine Learning</li>
+                    <li>DevOps et infrastructure cloud</li>
+                    <li>Design UX/UI et accessibilité</li>
+                    <li>Illustrations 3D et création numérique</li>
+                    <li>Prompt Engineering et optimisation IA</li>
+                </ul>
+                <p><strong>Parcours :</strong></p>
+                <ul>
+                    <li>Autodidacte dyslexique avec QI de 136 (HPI)</li>
+                    <li>Spécialisation en innovation inclusive</li>
+                    <li>Auteur de livres autobiographiques et contenus éducatifs</li>
+                </ul>
+            </article>
+
+            <article class="article">
+                <h3>Milian-NIA - Assistant IA</h3>
+                <p>
+                    <strong>Milian-NIA</strong> est l'intelligence artificielle développée par AsArt'sDev pour 
+                    accompagner les utilisateurs dans leur navigation et leur découverte du projet.
+                </p>
+                <ul>
+                    <li>Interface conversationnelle intelligente</li>
+                    <li>Assistance contextuelle personnalisée</li>
+                    <li>Promotion de l'éthique et de l'inclusion dans l'IA</li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- Navigation de retour -->
+        <div class="back-nav">
+            <a href="index.html">← Retour à l'accueil</a>
+        </div>
+    </div>
+
+    <footer style="text-align: center; padding: 40px 20px; background: rgba(26, 31, 58, 0.8); border-top: 2px solid #00f3ff; margin-top: 60px;">
+        <p style="color: #00d4ff; margin-bottom: 10px;">© 2026 AsArt'sDev – Samir Milianni (Asmir mln)</p>
+        <nav style="margin-top: 15px;">
+            <a href="index.html" style="color: #00f3ff; margin: 0 15px;">Accueil</a> |
+            <a href="services.html" style="color: #00f3ff; margin: 0 15px;">Services</a> |
+            <a href="projets.html" style="color: #00f3ff; margin: 0 15px;">Projets</a> |
+            <a href="contact.html" style="color: #00f3ff; margin: 0 15px;">Contact</a>
+        </nav>
+    </footer>
+
+    <script>
+        /**
+         * ============================================
+         * FONCTIONS JAVASCRIPT POUR LA PAGE À PROPOS
+         * ============================================
+         */
+
+        /**
+         * Fonction pour animer l'apparition des sections au scroll
+         * Utilise l'API Intersection Observer pour détecter quand un élément entre dans le viewport
+         */
+        function animateSectionsOnScroll() {
+            // Créer un observer pour surveiller les sections
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // Si la section devient visible
+                    if (entry.isIntersecting) {
+                        // Ajouter une classe pour l'animation
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1 // Déclenchement quand 10% de l'élément est visible
+            });
+
+            // Observer toutes les sections
+            document.querySelectorAll('.section').forEach(section => {
+                // État initial : invisible et décalé vers le bas
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'all 0.6s ease';
+                observer.observe(section);
+            });
+        }
+
+        /**
+         * Fonction pour animer les items de la timeline
+         * Révèle progressivement chaque étape de l'histoire
+         */
+        function animateTimeline() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // Animation en cascade avec délai croissant
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateX(0)';
+                        }, index * 150); // Délai de 150ms entre chaque item
+                    }
+                });
+            }, {
+                threshold: 0.2
+            });
+
+            // Appliquer l'état initial et observer chaque item
+            timelineItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(-20px)';
+                item.style.transition = 'all 0.5s ease';
+                observer.observe(item);
+            });
+        }
+
+        /**
+         * Fonction pour ajouter un effet de parallaxe léger sur l'en-tête
+         * Crée un mouvement subtil en réponse au scroll de la page
+         */
+        function addParallaxEffect() {
+            const header = document.querySelector('.page-header');
+            
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                // Diviser par 3 pour un effet subtil
+                const parallaxOffset = scrolled / 3;
+                header.style.transform = `translateY(${parallaxOffset}px)`;
+            });
+        }
+
+        /**
+         * Fonction d'initialisation appelée au chargement de la page
+         * Lance toutes les animations et interactions
+         */
+        function initPage() {
+            console.log('Page À propos initialisée');
+            animateSectionsOnScroll();
+            animateTimeline();
+            addParallaxEffect();
+        }
+
+        // Attendre que le DOM soit complètement chargé avant d'initialiser
+        document.addEventListener('DOMContentLoaded', initPage);
+    </script>
+</body>
+</html>

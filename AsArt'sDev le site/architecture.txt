@@ -1,19 +1,8 @@
-asartsdev-musee/
-
-backend/
-    api.py
-    requirements.txt
-
-frontend/
-    package.json
-    src/
-        App.js
-        Etage.js
-        Livre.js
-
-symfony_api/
-    src/
-    config/
-
-cli/
-    museum_cli.py
+STRIPE_SECRET_KEY=sk_test_XXXXXXXXXXXXXXXX
+STRIPE_PUBLIC_KEY=pk_test_XXXXXXXXXXXXXXXX
+TWILIO_SID=XXXXXXXXXXXXXXXXXXXXX
+TWILIO_AUTH_TOKEN=XXXXXXXXXXXXXXXX
+TWILIO_PHONE=+33XXXXXXXXX
+DATABASE_URL=postgres://user:password@localhost:5432/paymentdb
+CLIENT_URL=http://localhost:3000
+JWT_SECRET=TON_SECRET_JWT
