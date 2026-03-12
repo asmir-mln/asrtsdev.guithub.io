@@ -1,0 +1,604 @@
+<!-- AsArt'sDev | Signature invisible | ASmir Milia | ASARTSDEV_SIGNATURE_INVISIBLE -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceuil – AsArt'sDev</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="logo-style.css">
+    <style>
+        /* Page 1 : Hero plein écran */
+        .accueil-hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0d1b2a 100%);
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .accueil-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(circle at 50% 50%, rgba(0, 243, 255, 0.08) 0%, transparent 60%),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(rgba(0, 243, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 50px 50px, 50px 50px;
+            pointer-events: none;
+        }
+
+        .accueil-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .accueil-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            background: linear-gradient(135deg, #00f3ff 0%, #0099ff 50%, #00f3ff 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease infinite;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .accueil-hero p {
+            font-size: 1.2rem;
+            color: #a0c4d8;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .accueil-hero-btns {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-accueil-primary {
+            background: linear-gradient(135deg, #00f3ff 0%, #0099ff 100%);
+            color: #001a33;
+            padding: 14px 32px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-accueil-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 243, 255, 0.35);
+        }
+
+        .btn-accueil-secondary {
+            border: 2px solid #00f3ff;
+            color: #00f3ff;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn-accueil-secondary:hover {
+            background: rgba(0, 243, 255, 0.1);
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #00f3ff;
+            opacity: 0.6;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* Page 2 : home1 */
+        .home1-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(180deg, #f8f9fa 0%, #eef2f7 100%);
+            padding: 80px 40px;
+        }
+
+        .home1-section h2 {
+            text-align: center;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            color: #1a1f3a;
+            margin-bottom: 16px;
+        }
+
+        .home1-section .home1-intro {
+            text-align: center;
+            color: #555;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            line-height: 1.8;
+        }
+
+        .home1-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 28px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .home1-card {
+            background: white;
+            border-radius: 12px;
+            padding: 32px 24px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+            transition: transform 0.25s, box-shadow 0.25s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .home1-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 36px rgba(0, 153, 255, 0.15);
+        }
+
+        .home1-card .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .home1-card h3 {
+            font-size: 1.1rem;
+            color: #1a1f3a;
+            margin-bottom: 10px;
+        }
+
+        .home1-card p {
+            font-size: 0.92rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Section Vidéos */
+        .videos-section {
+            padding: 80px 40px;
+            background: #0a0e27;
+            color: white;
+        }
+
+        .videos-section h2 {
+            text-align: center;
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            color: #00f3ff;
+            margin-bottom: 12px;
+        }
+
+        .videos-section .videos-intro {
+            text-align: center;
+            color: #a0c4d8;
+            margin-bottom: 50px;
+            font-size: 1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .video-embed-wrapper {
+            background: #1a1f3a;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 243, 255, 0.15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .video-embed-wrapper iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            display: block;
+            border: none;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #0d1b2a;
+            color: #a0c4d8;
+            font-size: 0.95rem;
+            gap: 10px;
+        }
+
+        .video-placeholder .play-icon {
+            font-size: 3rem;
+            opacity: 0.4;
+        }
+
+        .video-placeholder span {
+            opacity: 0.6;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .video-caption {
+            padding: 14px 16px;
+            font-size: 0.9rem;
+            color: #a0c4d8;
+            border-top: 1px solid rgba(0, 243, 255, 0.1);
+        }
+
+        .video-caption strong {
+            display: block;
+            color: #00f3ff;
+            margin-bottom: 4px;
+        }
+
+        /* Section Mon Histoire en images */
+        .histoire-section {
+            padding: 80px 40px;
+            background: linear-gradient(180deg, #ffffff 0%, #f0f5fb 100%);
+        }
+
+        .histoire-section h2 {
+            text-align: center;
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+            color: #1a1f3a;
+            margin-bottom: 12px;
+        }
+
+        .histoire-section .histoire-intro {
+            text-align: center;
+            color: #666;
+            font-size: 1rem;
+            max-width: 650px;
+            margin: 0 auto 50px;
+            line-height: 1.7;
+        }
+
+        .histoire-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 28px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .histoire-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .histoire-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 36px rgba(0, 99, 200, 0.15);
+        }
+
+        .histoire-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .histoire-card-body {
+            padding: 20px 22px;
+        }
+
+        .histoire-card-body .etape {
+            display: inline-block;
+            background: linear-gradient(135deg, #00f3ff, #0099ff);
+            color: #001a33;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .histoire-card-body h3 {
+            font-size: 1.1rem;
+            color: #1a1f3a;
+            margin-bottom: 8px;
+        }
+
+        .histoire-card-body p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .home1-section,
+            .videos-section,
+            .histoire-section {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo AsArt'sDev -->
+    <a href="index.html" class="asartsdev-logo" title="Retour à l'accueil AsArt'sDev" aria-label="AsArt'sDev, retour à l'accueil du site">
+        <div class="asartsdev-logo-icon">
+            <span>A</span>
+        </div>
+        <div class="asartsdev-logo-text">
+            <span class="asartsdev-logo-brand">AsArt'sDev</span>
+            <span class="asartsdev-logo-tagline">Créations artistiques</span>
+        </div>
+    </a>
+
+    <main>
+
+        <!-- ══════════════════════════════════════════════ -->
+        <!-- PAGE 1 : ACCUEIL / HERO                        -->
+        <!-- ══════════════════════════════════════════════ -->
+        <section id="accueil" class="accueil-hero">
+            <div class="accueil-hero-content">
+                <h1>AsArt'sDev</h1>
+                <p>De l'autodidaxie à l'innovation — création numérique, livres pour enfants et technologie accessible.</p>
+                <div class="accueil-hero-btns">
+                    <a href="#home1" class="btn-accueil-primary">Découvrir le projet ↓</a>
+                    <a href="contact.html" class="btn-accueil-secondary">Nous contacter</a>
+                </div>
+            </div>
+            <span class="scroll-hint">↓ Défiler</span>
+        </section>
+
+        <!-- ══════════════════════════════════════════════ -->
+        <!-- PAGE 2 : HOME1 — Présentation des créations   -->
+        <!-- ══════════════════════════════════════════════ -->
+        <section id="home1" class="home1-section">
+            <h2>Bienvenue dans l'univers AsArt'sDev</h2>
+            <p class="home1-intro">Un projet né d'une passion pour l'art, la technologie et le récit. Explorez les livres, les créations numériques et la vision derrière chaque projet.</p>
+
+            <div class="home1-grid">
+                <a href="home.html" class="home1-card">
+                    <span class="card-icon">📚</span>
+                    <h3>Livres pour enfants</h3>
+                    <p>Découvrez <em>Max et Milla</em>, une histoire vraie illustrée pour les jeunes lecteurs.</p>
+                </a>
+
+                <a href="bibliotheque.html" class="home1-card">
+                    <span class="card-icon">🗂️</span>
+                    <h3>Bibliothèque numérique</h3>
+                    <p>Accédez aux livres autobiographiques et aux œuvres complètes d'AsArt'sDev.</p>
+                </a>
+
+                <a href="musee.html" class="home1-card">
+                    <span class="card-icon">🖼️</span>
+                    <h3>Musée virtuel</h3>
+                    <p>Parcourez les tableaux et illustrations numériques réalisés par l'auteur.</p>
+                </a>
+
+                <a href="ia-devops.html" class="home1-card">
+                    <span class="card-icon">🤖</span>
+                    <h3>IA & Innovation</h3>
+                    <p>Milian-NIA, accessibilité, DevOps — les projets technologiques du laboratoire.</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════ -->
+        <!-- SECTION VIDÉOS                                 -->
+        <!-- ══════════════════════════════════════════════ -->
+        <section id="videos" class="videos-section">
+            <h2>🎬 Vidéos du projet</h2>
+            <p class="videos-intro">Plongez dans l'univers d'AsArt'sDev à travers ces présentations vidéo.</p>
+
+            <div class="videos-grid">
+                <div class="video-embed-wrapper">
+                    <div class="video-placeholder">
+                        <span class="play-icon">▶</span>
+                        <span>Vidéo à venir</span>
+                    </div>
+                    <div class="video-caption">
+                        <strong>Présentation du projet</strong>
+                        AsArt'sDev — de l'idée à la réalisation.
+                    </div>
+                </div>
+
+                <div class="video-embed-wrapper">
+                    <div class="video-placeholder">
+                        <span class="play-icon">▶</span>
+                        <span>Vidéo à venir</span>
+                    </div>
+                    <div class="video-caption">
+                        <strong>Max et Milla</strong>
+                        Extrait du livre animé pour enfants.
+                    </div>
+                </div>
+
+                <div class="video-embed-wrapper">
+                    <div class="video-placeholder">
+                        <span class="play-icon">▶</span>
+                        <span>Vidéo à venir</span>
+                    </div>
+                    <div class="video-caption">
+                        <strong>Innovation & Accessibilité</strong>
+                        La vision technologique AsArt'sDev.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════ -->
+        <!-- SECTION MON HISTOIRE EN IMAGES                 -->
+        <!-- ══════════════════════════════════════════════ -->
+        <section id="histoire" class="histoire-section">
+            <h2>📸 Mon histoire en images</h2>
+            <p class="histoire-intro">Chaque image raconte une étape : de l'apprentissage autodidacte à la vision technologique, une trajectoire construite pas à pas.</p>
+
+            <div class="histoire-grid">
+                <article class="histoire-card">
+                    <img
+                        src="images/parcours/parcours-1-autodidacte.jpg"
+                        alt="Illustration du parcours autodidacte d'AsArt'sDev : progression personnelle, apprentissage en autonomie et résilience face aux difficultés scolaires."
+                        onerror="this.src='images/session-mars-2026/placeholder-original.png'">
+                    <div class="histoire-card-body">
+                        <span class="etape">Étape 1</span>
+                        <h3>Autodidacte dyslexique</h3>
+                        <p>J'ai appris à transformer la dyslexie en force mentale : analyser, décoder et mémoriser différemment.</p>
+                    </div>
+                </article>
+
+                <article class="histoire-card">
+                    <img
+                        src="images/parcours/parcours-2-decouverte.jpg"
+                        alt="Illustration de la découverte scientifique et de l'écriture : réflexion structurée, curiosité intellectuelle et création de savoirs."
+                        onerror="this.src='images/session-mars-2026/placeholder-original.png'">
+                    <div class="histoire-card-body">
+                        <span class="etape">Étape 2</span>
+                        <h3>Écriture et logique scientifique</h3>
+                        <p>L'écriture précoce et les matières scientifiques ont révélé une pensée structurée et créative.</p>
+                    </div>
+                </article>
+
+                <article class="histoire-card">
+                    <img
+                        src="images/parcours/parcours-3-vision-tech.jpg"
+                        alt="Illustration de la vision technologique d'AsArt'sDev : innovation inclusive, accessibilité numérique et solutions utiles pour la santé et la société."
+                        onerror="this.src='images/session-mars-2026/placeholder-original.png'">
+                    <div class="histoire-card-body">
+                        <span class="etape">Étape 3</span>
+                        <h3>Vision technologique</h3>
+                        <p>Développement de solutions orientées accessibilité, assistance médicale et innovation de terrain.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Script Milian-NIA -->
+    <script src="milian-nia.js"></script>
+
+    <footer>
+        <nav>
+            <a href="index.html">AsArt'sDev</a> |
+            <a href="home.html">Livres</a> |
+            <a href="commande.html">Commander</a> |
+            <a href="contact.html">Contact</a> |
+            <a href="LivresAsArtsDev/cgv.html">CGV</a> |
+            <a href="image-protection.html">Protection</a>
+        </nav>
+        <p>© 2026 AsArt'sDev – créé par ASmir Milia. Tous droits réservés.</p>
+    </footer>
+
+    <!-- Pop-up de validation CGV avec signature -->
+    <script src="cgv-popup.js"></script>
+
+    <!-- Protection des images -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('contextmenu', e => {
+                    e.preventDefault();
+                    showProtectionAlert('Cette image est protégée par © AsArt\'sDev. Tout téléchargement est interdit.');
+                    return false;
+                });
+                img.addEventListener('dragstart', e => {
+                    e.preventDefault();
+                    return false;
+                });
+                img.setAttribute('data-protected', 'true');
+                img.setAttribute('data-owner', 'AsArt\'sDev');
+                img.style.userSelect = 'none';
+            });
+        });
+
+        function showProtectionAlert(message) {
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(0,0,0,0.7);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9998;
+            `;
+            const box = document.createElement('div');
+            box.style.cssText = `
+                background: white;
+                padding: 30px;
+                border-radius: 10px;
+                max-width: 500px;
+                text-align: center;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+                border-top: 4px solid #d32f2f;
+            `;
+            box.innerHTML = `
+                <h2 style="color: #d32f2f; margin-top: 0;">🔒 Contenu Protégé</h2>
+                <p style="color: #666; margin: 15px 0;">${message}</p>
+                <p style="font-size: 12px; color: #999;">
+                    <a href="image-protection.html" style="color: #1976d2; text-decoration: underline;">
+                        En savoir plus sur notre protection →
+                    </a>
+                </p>
+                <button onclick="this.parentElement.parentElement.remove()" style="
+                    background: #d32f2f;
+                    color: white;
+                    border: none;
+                    padding: 10px 30px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    font-weight: bold;
+                    margin-top: 15px;
+                ">Fermer</button>
+            `;
+            overlay.appendChild(box);
+            document.body.appendChild(overlay);
+            overlay.addEventListener('click', e => {
+                if (e.target === overlay) overlay.remove();
+            });
+            setTimeout(() => overlay.remove(), 6000);
+        }
+    </script>
+</body>
+</html>
