@@ -668,6 +668,193 @@
                 </p>
             </div>
         </section>
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- Section : Vision du Futur – Talents, Micro & Voix Off      -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <section id="vision-futur-section" style="
+            margin-top: 80px;
+            padding: 70px 40px 60px;
+            background: linear-gradient(135deg, #0a0e27 0%, #0d1b3a 50%, #050d1a 100%);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        ">
+            <!-- Grille néon d'arrière-plan -->
+            <div aria-hidden="true" style="
+                position: absolute;
+                inset: 0;
+                background:
+                    radial-gradient(circle at 30% 40%, rgba(0,243,255,0.07) 0%, transparent 50%),
+                    radial-gradient(circle at 70% 60%, rgba(100,50,255,0.07) 0%, transparent 50%),
+                    linear-gradient(90deg,  rgba(0,243,255,0.03) 1px, transparent 1px),
+                    linear-gradient(0deg,   rgba(0,243,255,0.03) 1px, transparent 1px);
+                background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+                pointer-events: none;
+                animation: vfGridScroll 25s linear infinite;
+            "></div>
+
+            <style>
+                @keyframes vfGridScroll {
+                    0%   { background-position: 0 0, 0 0, 0 0, 0 0; }
+                    100% { background-position: 0 0, 0 0, 40px 40px, 40px 40px; }
+                }
+                #vision-futur-section h2 {
+                    color: #00f3ff;
+                    text-align: center;
+                    font-size: 1.9rem;
+                    letter-spacing: 1px;
+                    margin-bottom: 10px;
+                    text-shadow: 0 0 20px rgba(0,243,255,0.5);
+                }
+                #vision-futur-section .vf-subtitle {
+                    text-align: center;
+                    color: #9ecfdb;
+                    font-size: 0.95rem;
+                    margin-bottom: 40px;
+                    letter-spacing: 0.5px;
+                }
+                #vision-futur-section .vf-content {
+                    max-width: 820px;
+                    margin: 0 auto;
+                    color: #cde8f5;
+                    line-height: 1.85;
+                    font-size: 1rem;
+                    position: relative;
+                    z-index: 2;
+                }
+                #vision-futur-section .vf-content p {
+                    margin-bottom: 20px;
+                }
+                #vision-futur-section .vf-highlight {
+                    border-left: 3px solid #00f3ff;
+                    padding-left: 18px;
+                    color: #e0f7ff;
+                    font-style: italic;
+                    margin: 28px 0;
+                }
+                /* Bouton d'activation */
+                #btn-activer-vision {
+                    display: block;
+                    margin: 36px auto;
+                    padding: 16px 40px;
+                    background: linear-gradient(135deg, #00f3ff 0%, #0066ff 100%);
+                    color: #0a0e27;
+                    border: none;
+                    border-radius: 50px;
+                    font-size: 1rem;
+                    font-weight: 700;
+                    letter-spacing: 0.8px;
+                    cursor: pointer;
+                    box-shadow: 0 0 24px rgba(0,243,255,0.45);
+                    transition: box-shadow 0.3s, transform 0.2s;
+                    position: relative;
+                    z-index: 2;
+                }
+                #btn-activer-vision:hover,
+                #btn-activer-vision:focus {
+                    box-shadow: 0 0 40px rgba(0,243,255,0.7);
+                    transform: scale(1.03);
+                    outline: none;
+                }
+                /* Indicateur voix off */
+                #voix-off-indicator {
+                    display: none;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 6px;
+                    margin: 20px auto;
+                    color: #00f3ff;
+                    font-size: 0.85rem;
+                    letter-spacing: 0.5px;
+                    position: relative;
+                    z-index: 2;
+                }
+                #voix-off-indicator .vf-bar {
+                    width: 4px;
+                    height: 18px;
+                    background: #00f3ff;
+                    border-radius: 2px;
+                    animation: vfWave 0.8s ease-in-out infinite;
+                }
+                #voix-off-indicator .vf-bar:nth-child(2) { animation-delay: 0.15s; }
+                #voix-off-indicator .vf-bar:nth-child(3) { animation-delay: 0.30s; }
+                #voix-off-indicator .vf-bar:nth-child(4) { animation-delay: 0.45s; }
+                #voix-off-indicator .vf-bar:nth-child(5) { animation-delay: 0.60s; }
+                /* Conclusion */
+                #vision-conclusion {
+                    display: none;
+                    margin: 40px auto 0;
+                    max-width: 700px;
+                    text-align: center;
+                    padding: 32px 40px;
+                    background: linear-gradient(135deg, rgba(0,243,255,0.1) 0%, rgba(100,50,255,0.15) 100%);
+                    border: 1.5px solid rgba(0,243,255,0.4);
+                    border-radius: 12px;
+                    position: relative;
+                    z-index: 2;
+                }
+                #vision-conclusion p {
+                    color: #e0f7ff;
+                    font-size: 1.25rem;
+                    font-weight: 700;
+                    line-height: 1.6;
+                    margin: 0 0 10px;
+                    text-shadow: 0 0 16px rgba(0,243,255,0.4);
+                }
+                #vision-conclusion small {
+                    color: #7db8cc;
+                    font-size: 0.82rem;
+                }
+            </style>
+
+            <h2><span aria-hidden="true">🌐</span> Vision du Futur</h2>
+            <p class="vf-subtitle">AsArt'sDev — Talents cachés, technologies accessibles, impact mondial</p>
+
+            <div class="vf-content">
+                <p>
+                    Ma vision repose sur l'équilibre entre les talents qui sont visibles très tôt et ceux
+                    qui restent longtemps cachés. Beaucoup de personnes, notamment celles qui sont
+                    dyslexiques ou qui ont un parcours différent, possèdent des capacités qui ne sont
+                    pas immédiatement détectées par les méthodes classiques.
+                </p>
+
+                <p class="vf-highlight">
+                    Pendant longtemps, je pensais être simplement plus à l'aise dans des domaines comme
+                    la logique — jusqu'au jour où j'ai compris que cette façon différente de penser
+                    était en réalité une force.
+                </p>
+
+                <p>
+                    Ce site représente ma vision concrète d'un futur où la technologie accessible,
+                    l'intelligence artificielle éthique et la création humaine convergent pour
+                    produire un impact réel — en France, en Europe, et au-delà.
+                </p>
+
+                <!-- Bouton d'activation de l'expérience -->
+                <button id="btn-activer-vision" aria-label="Activer l'expérience sonore de la vision du futur">
+                    <span aria-hidden="true">🎙️</span> Activer l'expérience sonore
+                </button>
+
+                <!-- Indicateur de lecture voix off -->
+                <div id="voix-off-indicator" role="status" aria-live="polite" aria-label="Voix off en cours de lecture">
+                    <span class="vf-bar"></span>
+                    <span class="vf-bar"></span>
+                    <span class="vf-bar"></span>
+                    <span class="vf-bar"></span>
+                    <span class="vf-bar"></span>
+                    <span style="margin-left: 8px;">Voix off en cours…</span>
+                </div>
+
+                <!-- Message de conclusion (révélé après voix off) -->
+                <div id="vision-conclusion" role="region" aria-label="Conclusion">
+                    <p><span aria-hidden="true">✨</span> Ce site est ma vision du futur <span aria-hidden="true">✨</span></p>
+                    <small>
+                        AsArt'sDev — Collaboration France · Europe · Afrique
+                    </small>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Script Milian-NIA -->
@@ -805,6 +992,9 @@
         </nav>
         <p>© 2026 AsArt'sDev – créé par ASmir Milia. Tous droits réservés.</p>
     </footer>
+
+    <!-- Vision du Futur : microphone + voix off -->
+    <script src="vision-futur.js"></script>
 
     <!-- Pop-up de validation CGV avec signature électronique -->
     <script src="cgv-popup.js"></script>
