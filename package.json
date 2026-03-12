@@ -9,7 +9,7 @@
   "scripts": {
     "start": "php -S localhost:8000",
     "cli": "node api/cli-orders.js",
-    "test": "node api/cli-orders.js create && node api/cli-orders.js list"
+    "test": "node api/test-runner.js"
   },
   "keywords": [
     "orders",
