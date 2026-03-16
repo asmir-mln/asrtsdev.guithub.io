@@ -1,0 +1,8 @@
+# Image finale
+img = Image.new('RGB', (800,600), color=(20,20,50))
+draw = ImageDraw.Draw(img)
+logo = Image.open("logo.png").resize((300, 150))
+img.paste(logo, (250, 200))  # Centrer le logo
+draw.text((180, 400), "150 ans d’évolution technologique à portée de mains", fill=(255,255,255))
+img.save("final_logo.png")
+images.append("final_logo.png")

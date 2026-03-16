@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Évolution de la ville - AsArt'sDev</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: white;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #timeline-container {
+            position: relative;
+            width: 80%;
+            height: 60%;
+            border: 2px solid #6a0dad;
+            border-radius: 15px;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #222, #555);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #year {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        #city-visual {
+            width: 100%;
+            height: 60%;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            transition: background 1s ease-in-out;
+        }
+
+        #final-logo {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #final-logo img {
+            width: 300px;
+            height: auto;
+        }
+
+        #final-logo h2 {
+            margin-top: 15px;
+            font-size: 1.8em;
+            color: #6a0dad;
+        }
+    </style>
+</head>
+<body>
+    <div id="timeline-container">
+        <div id="year">1886</div>
+        <div id="city-visual" style="background-color: #333;"></div>
+    </div>
+
+    <div id="final-logo">
+        <img src="logo.png" alt="AsArt'sDev Logo">
+        <h2>150 ans d’évolution technologique à portée de mains</h2>
+    </div>
+
+    <script>
+        const years = [];
+        for(let y=1886; y<=2036; y+=10) {
+            years.push(y);
+        }
+
+        const cityVisual = document.getElementById('city-visual');
+        const yearDiv = document.getElementById('year');
+        const finalLogo = document.getElementById('final-logo');
+
+        let index = 0;
+
+        function nextStep() {
+            if(index < years.length) {
+                let year = years[index];
+                yearDiv.textContent = year;
+
+                // Changer la couleur ou image pour simuler l'évolution
+                // Tu peux remplacer par des images réelles de la ville
+                let hue = Math.min(360, (index / years.length) * 360);
+                cityVisual.style.backgroundColor = `hsl(${hue}, 50%, 30%)`;
+
+                index++;
+                setTimeout(nextStep, 1000); // 1 seconde par étape
+            } else {
+                // Afficher le logo final
+                document.getElementById('timeline-container').style.display = 'none';
+                finalLogo.style.display = 'block';
+            }
+        }
+
+        nextStep();
+    </script>
+</body>
+</html>
