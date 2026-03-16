@@ -193,6 +193,13 @@ section {
     margin-bottom: 1rem;
 }
 
+/* Parcours section: show images in full without cropping */
+#parcours .livre-card img {
+    height: 260px;
+    object-fit: contain;
+    background-color: #1a1a2e;
+}
+
 .livre-card h3 {
     color: var(--primary-color);
     margin-bottom: 1rem;
