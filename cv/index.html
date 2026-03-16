@@ -1,0 +1,481 @@
+<!-- AsArt'sDev | CV Asmir Milianni | Mis à jour Mars 2026 -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV – Asmir Milianni | Développeur Full-Stack & DevOps – AsArt'sDev</title>
+    <style>
+        /* ============================================================
+           CV imprimable – AsArt'sDev
+           Optimisé pour impression A4 et affichage web
+           ============================================================ */
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --dark: #2c3e50;
+            --light-bg: #f8f9fa;
+            --border: #ddd;
+            --text: #333;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 14px;
+            color: var(--text);
+            background: #fff;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* ---- Entête ---- */
+        .cv-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 35px 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .cv-header h1 {
+            font-size: 2em;
+            margin-bottom: 6px;
+        }
+
+        .cv-header .titre-poste {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-bottom: 12px;
+        }
+
+        .cv-contact-line {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            font-size: 0.9em;
+            opacity: 0.95;
+        }
+
+        .cv-contact-line a { color: white; text-decoration: none; }
+        .cv-contact-line a:hover { text-decoration: underline; }
+
+        /* ---- Corps principal ---- */
+        .cv-body {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 680px) {
+            .cv-body { grid-template-columns: 1fr; }
+        }
+
+        /* ---- Sections ---- */
+        .cv-section { margin-bottom: 28px; }
+
+        .cv-section h2 {
+            font-size: 1em;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 6px;
+            margin-bottom: 14px;
+        }
+
+        /* ---- Éléments d'expérience ---- */
+        .cv-entry { margin-bottom: 18px; }
+
+        .cv-entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .cv-entry-header strong { color: var(--dark); font-size: 0.97em; }
+
+        .cv-entry-date {
+            font-size: 0.82em;
+            color: var(--secondary);
+            white-space: nowrap;
+        }
+
+        .cv-entry-org {
+            font-size: 0.88em;
+            color: var(--secondary);
+            font-style: italic;
+            margin: 3px 0 5px;
+        }
+
+        .cv-entry p, .cv-entry ul {
+            font-size: 0.88em;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .cv-entry ul { padding-left: 18px; }
+        .cv-entry ul li { margin-bottom: 3px; }
+
+        /* ---- Compétences ---- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .skill-group-label {
+            font-size: 0.82em;
+            font-weight: bold;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .skill-tag {
+            background: var(--light-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 3px 10px;
+            font-size: 0.8em;
+            color: var(--dark);
+        }
+
+        .skill-tag.highlight {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        /* ---- Langues & Divers ---- */
+        .side-item {
+            margin-bottom: 14px;
+            font-size: 0.88em;
+            line-height: 1.6;
+        }
+
+        .side-item strong {
+            display: block;
+            color: var(--dark);
+            margin-bottom: 2px;
+        }
+
+        /* ---- Barre de langue ---- */
+        .lang-bar-bg {
+            background: var(--border);
+            border-radius: 4px;
+            height: 6px;
+            margin-top: 4px;
+        }
+
+        .lang-bar {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            height: 6px;
+            border-radius: 4px;
+        }
+
+        /* ---- Pied de page ---- */
+        .cv-footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.8em;
+            color: #888;
+            border-top: 1px solid var(--border);
+            padding-top: 12px;
+        }
+
+        /* ---- Boutons d'action (masqués à l'impression) ---- */
+        .cv-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .btn-print, .btn-back {
+            padding: 10px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+            transition: opacity 0.2s;
+        }
+
+        .btn-print {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .btn-back {
+            background: var(--light-bg);
+            color: var(--dark);
+            border: 1px solid var(--border);
+        }
+
+        .btn-print:hover, .btn-back:hover { opacity: 0.85; }
+
+        /* ---- Impression ---- */
+        @media print {
+            body { padding: 10px; font-size: 12px; }
+            .cv-actions { display: none; }
+            .cv-header { border-radius: 0; }
+            a { color: inherit !important; text-decoration: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Actions -->
+    <div class="cv-actions">
+        <a href="../ia-devops.html" class="btn-back">← Retour au profil</a>
+        <button class="btn-print" onclick="window.print()">🖨️ Imprimer / Exporter PDF</button>
+    </div>
+
+    <!-- En-tête -->
+    <div class="cv-header">
+        <h1>Asmir Milianni <span style="font-weight:300; font-size:0.65em;">— ASmir Mln</span></h1>
+        <p class="titre-poste">Développeur Full-Stack · DevOps · IA Inclusive · Entrepreneur Numérique</p>
+        <div class="cv-contact-line">
+            <span>📧 <a href="mailto:asartdev.contact@gmail.com">asartdev.contact@gmail.com</a></span>
+            <span>📱 <a href="tel:0781586882">07 81 58 68 82</a></span>
+            <span>🌐 <a href="https://asmir-mln.github.io/asrtsdev.guithub.io/" target="_blank">AsArt'sDev</a></span>
+            <span>🐙 <a href="https://github.com/asmir-mln" target="_blank">github.com/asmir-mln</a></span>
+            <span>📅 Mis à jour : Mars 2026</span>
+        </div>
+    </div>
+
+    <!-- Corps du CV -->
+    <div class="cv-body">
+
+        <!-- Colonne principale -->
+        <div>
+
+            <!-- Profil -->
+            <div class="cv-section">
+                <h2>🎯 Profil</h2>
+                <p style="line-height:1.7; font-size:0.92em;">
+                    Entrepreneur technologue autodidacte, fondateur de la plateforme <strong>AsArt'sDev</strong>.
+                    Passionné par le croisement entre créativité, accessibilité numérique et innovation technique.
+                    Je conçois des solutions full-stack et DevOps inclusives, avec un intérêt marqué pour l'IA
+                    éthique et les technologies accessibles. En préparation d'un <strong>Master Spécialisé
+                    DevOps Engineer Expert</strong> (Reims 2026).
+                </p>
+            </div>
+
+            <!-- Expériences / Projets -->
+            <div class="cv-section">
+                <h2>💼 Expériences &amp; Projets</h2>
+
+                <div class="cv-entry">
+                    <div class="cv-entry-header">
+                        <strong>Fondateur &amp; Développeur principal — AsArt'sDev</strong>
+                        <span class="cv-entry-date">2020 – présent</span>
+                    </div>
+                    <p class="cv-entry-org">Projet entrepreneurial indépendant</p>
+                    <ul>
+                        <li>Conception et développement d'une plateforme e-commerce (HTML5, CSS3, JS, PHP, Stripe)</li>
+                        <li>Mise en place d'une API REST Symfony pour la gestion des commandes et des clients</li>
+                        <li>Déploiement continu via GitHub Actions (CI/CD) vers GitHub Pages</li>
+                        <li>Développement de NIA : système d'IA inclusive pour accessibilité (malvoyants, malentendants)</li>
+                        <li>Gestion de la propriété intellectuelle (INPI), marque &amp; contrats partenaires</li>
+                    </ul>
+                </div>
+
+                <div class="cv-entry">
+                    <div class="cv-entry-header">
+                        <strong>Développeur Full-Stack — Projets Opensource &amp; Communautaires</strong>
+                        <span class="cv-entry-date">2022 – présent</span>
+                    </div>
+                    <p class="cv-entry-org">Contributions GitHub</p>
+                    <ul>
+                        <li>Développement de bibliothèques numériques accessibles (livres audio, musée virtuel)</li>
+                        <li>Intégration Stripe pour paiements sécurisés et gestion des donations</li>
+                        <li>Architecture base de données (MySQL) pour suivi commandes, livraisons, clients</li>
+                    </ul>
+                </div>
+
+                <div class="cv-entry">
+                    <div class="cv-entry-header">
+                        <strong>Auteur — « Max et Milla » (livre jeunesse)</strong>
+                        <span class="cv-entry-date">2024</span>
+                    </div>
+                    <p class="cv-entry-org">AsArt'sDev Éditions</p>
+                    <ul>
+                        <li>Rédaction, mise en page et publication d'un livre pour enfants</li>
+                        <li>Développement de la page de vente et de la librairie numérique associée</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Formation -->
+            <div class="cv-section">
+                <h2>🎓 Formation</h2>
+
+                <div class="cv-entry">
+                    <div class="cv-entry-header">
+                        <strong>Master Spécialisé — DevOps Engineer Expert</strong>
+                        <span class="cv-entry-date">En cours · 2026</span>
+                    </div>
+                    <p class="cv-entry-org">École d'ingénieurs, Reims (candidature MS 2025-26)</p>
+                    <ul>
+                        <li>Architectures cloud, CI/CD avancé, orchestration Kubernetes</li>
+                        <li>Certification Cloud AWS visée</li>
+                    </ul>
+                </div>
+
+                <div class="cv-entry">
+                    <div class="cv-entry-header">
+                        <strong>Autodidacte Technologue</strong>
+                        <span class="cv-entry-date">2020 – présent</span>
+                    </div>
+                    <p class="cv-entry-org">Formation continue en ligne (Coursera, OpenClassrooms, documentation officielle)</p>
+                    <ul>
+                        <li>DevOps, Docker, Kubernetes, Linux, AWS/GCP/Azure</li>
+                        <li>Machine Learning, NLP, Computer Vision (TensorFlow, PyTorch)</li>
+                        <li>Développement web full-stack (PHP/Symfony, JavaScript/Node.js, React)</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Colonne latérale -->
+        <div>
+
+            <!-- Compétences techniques -->
+            <div class="cv-section">
+                <h2>🛠️ Compétences</h2>
+                <div class="skills-grid">
+
+                    <div>
+                        <p class="skill-group-label">DevOps &amp; Cloud</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag highlight">Docker</span>
+                            <span class="skill-tag highlight">Kubernetes</span>
+                            <span class="skill-tag">GitHub Actions</span>
+                            <span class="skill-tag">GitLab CI</span>
+                            <span class="skill-tag">Linux</span>
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">GCP</span>
+                            <span class="skill-tag">Azure</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p class="skill-group-label">Backend &amp; API</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag highlight">PHP</span>
+                            <span class="skill-tag highlight">Symfony</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">REST API</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p class="skill-group-label">Frontend &amp; Web</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag highlight">HTML5</span>
+                            <span class="skill-tag highlight">CSS3</span>
+                            <span class="skill-tag">JavaScript ES6+</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">WCAG 2.1</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p class="skill-group-label">IA &amp; Machine Learning</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">NLP</span>
+                            <span class="skill-tag">Computer Vision</span>
+                            <span class="skill-tag">APIs LLM</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p class="skill-group-label">Paiements &amp; Sécurité</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Stripe</span>
+                            <span class="skill-tag">HTTPS</span>
+                            <span class="skill-tag">RGPD</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Langues -->
+            <div class="cv-section">
+                <h2>🌍 Langues</h2>
+                <div class="side-item">
+                    <strong>Français</strong>
+                    Langue maternelle
+                    <div class="lang-bar-bg"><div class="lang-bar" style="width:100%"></div></div>
+                </div>
+                <div class="side-item">
+                    <strong>Anglais</strong>
+                    Technique (lecture/écriture courante)
+                    <div class="lang-bar-bg"><div class="lang-bar" style="width:72%"></div></div>
+                </div>
+            </div>
+
+            <!-- Intérêts -->
+            <div class="cv-section">
+                <h2>✨ Intérêts</h2>
+                <div class="skill-tags" style="gap:6px">
+                    <span class="skill-tag">IA inclusive</span>
+                    <span class="skill-tag">Art numérique</span>
+                    <span class="skill-tag">Écriture créative</span>
+                    <span class="skill-tag">Tech for Good</span>
+                    <span class="skill-tag">Entrepreneuriat</span>
+                    <span class="skill-tag">Open Source</span>
+                </div>
+            </div>
+
+            <!-- Liens -->
+            <div class="cv-section">
+                <h2>🔗 Liens</h2>
+                <div class="side-item">
+                    <strong>Site AsArt'sDev</strong>
+                    <a href="https://asmir-mln.github.io/asrtsdev.guithub.io/" style="color:var(--primary); font-size:0.85em;">asmir-mln.github.io/…</a>
+                </div>
+                <div class="side-item">
+                    <strong>GitHub</strong>
+                    <a href="https://github.com/asmir-mln" style="color:var(--primary); font-size:0.85em;">github.com/asmir-mln</a>
+                </div>
+                <div class="side-item">
+                    <strong>Contact</strong>
+                    <a href="mailto:asartdev.contact@gmail.com" style="color:var(--primary); font-size:0.85em;">asartdev.contact@gmail.com</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Pied de page -->
+    <div class="cv-footer">
+        <p>CV Asmir Milianni — AsArt'sDev · Mars 2026 · Tous droits réservés</p>
+        <p style="margin-top:4px;">
+            <a href="../ia-devops.html" style="color:var(--primary);">Voir le profil complet →</a>
+        </p>
+    </div>
+
+    <script src="../milian-nia.js"></script>
+</body>
+</html>
