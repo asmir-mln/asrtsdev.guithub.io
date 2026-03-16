@@ -359,6 +359,37 @@ section {
     background-color: #c0392b;
 }
 
+/* E-shop Section */
+.eshop-section {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #fff8e1 0%, #fff3e0 100%);
+    border-radius: var(--border-radius);
+}
+
+.eshop-section h2 {
+    text-align: center;
+    margin-bottom: 0.75rem;
+}
+
+.eshop-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.prix {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    margin: 0.5rem 0;
+    font-weight: 600;
+}
+
+.eshop-cta {
+    text-align: center;
+    margin-top: 2rem;
+}
+
 /* CTA Section */
 .cta {
     text-align: center;
