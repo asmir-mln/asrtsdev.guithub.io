@@ -23,12 +23,24 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/asartsdev/asartsdev.github.io.git"
+    "url": "git+https://github.com/asartsdev/asartsdev.github.io.git"
   },
   "engines": {
     "node": ">=14.0.0",
     "php": ">=7.4.0"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/asartsdev/asartsdev.github.io/issues"
+  },
+  "homepage": "https://github.com/asartsdev/asartsdev.github.io#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "pg": "^8.20.0",
+    "sequelize": "^6.37.8",
+    "stripe": "^20.4.1",
+    "twilio": "^5.12.2"
+  }
 }

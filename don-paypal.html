@@ -1,0 +1,957 @@
+<!-- AsArt'sDev | Signature invisible | ASmir Milia | ASARTSDEV_SIGNATURE_INVISIBLE -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💙 Soutenir AsArt'sDev avec PayPal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="logo-style.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #ccc;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Bannière image course avec logo blason */
+        .hero-banner {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 3px solid #00f3ff;
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.4);
+        }
+
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .logo-blason-overlay {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140px;
+            height: 140px;
+            background: rgba(10, 14, 39, 0.95);
+            border: 4px solid #00f3ff;
+            border-radius: 50%;
+            padding: 15px;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.8);
+            animation: logoFloat 3s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 30px;
+            background: rgba(26, 31, 58, 0.8);
+            border: 2px solid #00f3ff;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            color: #00f3ff;
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(0, 243, 255, 0.6);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #00d4ff;
+            line-height: 1.6;
+        }
+
+        .donation-section {
+            background: rgba(26, 31, 58, 0.9);
+            border: 2px solid #00f3ff;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+        }
+
+        .donation-section h2 {
+            color: #00f3ff;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            text-align: center;
+        }
+
+        .preset-amounts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .amount-btn {
+            padding: 18px;
+            background: rgba(0, 243, 255, 0.1);
+            border: 2px solid #00f3ff;
+            border-radius: 8px;
+            color: #00f3ff;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .amount-btn:hover {
+            background: rgba(0, 243, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 243, 255, 0.4);
+        }
+
+        .amount-btn.selected {
+            background: #00f3ff;
+            color: #0a0e27;
+            border-color: #00f3ff;
+        }
+
+        .custom-amount {
+            margin: 25px 0;
+        }
+
+        .custom-amount label {
+            display: block;
+            margin-bottom: 10px;
+            color: #00d4ff;
+            font-weight: 500;
+            font-size: 1.1em;
+        }
+
+        .custom-amount input {
+            width: 100%;
+            padding: 15px;
+            background: rgba(10, 14, 39, 0.8);
+            border: 2px solid #00f3ff;
+            border-radius: 8px;
+            color: #00f3ff;
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .custom-amount input:focus {
+            outline: none;
+            border-color: #00d4ff;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+        }
+
+        .paypal-button-container {
+            margin: 30px 0;
+            min-height: 55px;
+        }
+
+        .message-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(0, 243, 255, 0.05);
+            border-left: 4px solid #00f3ff;
+            border-radius: 8px;
+        }
+
+        .message-section h3 {
+            color: #00f3ff;
+            margin-bottom: 15px;
+        }
+
+        .message-section textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(10, 14, 39, 0.8);
+            border: 2px solid #00f3ff;
+            border-radius: 8px;
+            color: #ccc;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .thank-you-section {
+            background: rgba(0, 243, 255, 0.1);
+            border: 3px solid #00f3ff;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 40px;
+            display: none;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .thank-you-section.show {
+            display: block;
+        }
+
+        .thank-you-logo {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 30px;
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .thank-you-section h2 {
+            color: #00f3ff;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
+        }
+
+        .thank-you-section p {
+            font-size: 1.3em;
+            color: #00d4ff;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .thank-you-section .signature {
+            font-size: 1.5em;
+            font-style: italic;
+            color: #00f3ff;
+            margin-top: 30px;
+            font-weight: bold;
+        }
+
+        .impact-message {
+            background: rgba(0, 31, 63, 0.5);
+            border-left: 4px solid #00f3ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .impact-message h3 {
+            color: #00f3ff;
+            margin-bottom: 15px;
+        }
+
+        .impact-message ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .impact-message li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #ccc;
+        }
+
+        .impact-message li:before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #00d4ff;
+            font-size: 0.9em;
+        }
+
+        .security-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(0, 243, 255, 0.1);
+            border: 1px solid #00f3ff;
+            border-radius: 20px;
+            color: #00f3ff;
+            font-size: 0.9em;
+            margin: 5px;
+        }
+
+        /* Message du directeur */
+        .director-message {
+            background: linear-gradient(135deg, rgba(0, 31, 63, 0.8) 0%, rgba(26, 31, 58, 0.8) 100%);
+            border: 2px solid #00f3ff;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.2);
+        }
+
+        .director-message h2 {
+            color: #00f3ff;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .director-message .title {
+            color: #00d4ff;
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .director-message .message {
+            color: #ccc;
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        /* Graphique évolution dons */
+        .donation-chart {
+            background: rgba(26, 31, 58, 0.9);
+            border: 2px solid #00f3ff;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+        }
+
+        .donation-chart h3 {
+            color: #00f3ff;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.5em;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+
+        .chart-bar {
+            position: absolute;
+            bottom: 0;
+            width: 15%;
+            background: linear-gradient(to top, #00f3ff, #0099ff);
+            border-radius: 8px 8px 0 0;
+            border: 2px solid #00f3ff;
+            transition: all 0.3s ease;
+            animation: growBar 1.5s ease;
+        }
+
+        @keyframes growBar {
+            from { height: 0; }
+        }
+
+        .chart-bar:hover {
+            background: linear-gradient(to top, #00d4ff, #00f3ff);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
+        }
+
+        .chart-label {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #00d4ff;
+            font-size: 0.85em;
+            white-space: nowrap;
+        }
+
+        .chart-value {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #00f3ff;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .chart-legend {
+            text-align: center;
+            color: #00d4ff;
+            margin-top: 40px;
+            font-style: italic;
+        }
+
+        /* Popup Partenariat */
+        .partnership-section {
+            background: rgba(0, 31, 63, 0.8);
+            border: 2px solid #00f3ff;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .partnership-section h3 {
+            color: #00f3ff;
+            margin-bottom: 15px;
+            font-size: 1.6em;
+        }
+
+        .partnership-btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: linear-gradient(135deg, #00f3ff, #0099ff);
+            color: #0a0e27;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            text-decoration: none;
+        }
+
+        .partnership-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 243, 255, 0.5);
+        }
+
+        /* Modal Partenariat */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            border: 3px solid #00f3ff;
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 0 50px rgba(0, 243, 255, 0.5);
+            position: relative;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2em;
+            color: #00f3ff;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .modal-close:hover {
+            color: #fff;
+        }
+
+        .modal-content h2 {
+            color: #00f3ff;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .modal-content p {
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .modal-content ul {
+            color: #ccc;
+            margin: 20px 0;
+            padding-left: 25px;
+        }
+
+        .modal-content li {
+            margin-bottom: 10px;
+        }
+
+        .modal-content .btn-contact {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #00f3ff;
+            color: #0a0e27;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .modal-content .btn-contact:hover {
+            background: #00d4ff;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Bannière Hero avec image course et logo blason -->
+        <div class="hero-banner">
+            <img src="images/course-finish-line.png" alt="Course vers le futur - AsArt'sDev">
+            
+            <!-- Logo blason superposé -->
+            <div class="logo-blason-overlay">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="gradientBlason" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00f3ff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#0099ff;stop-opacity:1" />
+                        </linearGradient>
+                        <filter id="glowBlason">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    
+                    <circle cx="100" cy="100" r="90" fill="none" stroke="url(#gradientBlason)" stroke-width="4" filter="url(#glowBlason)"/>
+                    <path d="M100 50 Q70 50 65 70 Q60 90 65 110 Q70 130 100 130 Q130 130 135 110 Q140 90 135 70 Q130 50 100 50" 
+                          fill="none" stroke="url(#gradientBlason)" stroke-width="4" filter="url(#glowBlason)"/>
+                    <circle cx="85" cy="80" r="6" fill="#00f3ff" filter="url(#glowBlason)"/>
+                    <circle cx="115" cy="80" r="6" fill="#00f3ff" filter="url(#glowBlason)"/>
+                    <circle cx="100" cy="95" r="7" fill="#0099ff" filter="url(#glowBlason)"/>
+                    <circle cx="80" cy="105" r="5" fill="#00d4ff" filter="url(#glowBlason)"/>
+                    <circle cx="120" cy="105" r="5" fill="#00d4ff" filter="url(#glowBlason)"/>
+                    <line x1="85" y1="80" x2="100" y2="95" stroke="#00f3ff" stroke-width="3" opacity="0.7"/>
+                    <line x1="115" y1="80" x2="100" y2="95" stroke="#0099ff" stroke-width="3" opacity="0.7"/>
+                    <line x1="100" y1="95" x2="80" y2="105" stroke="#00d4ff" stroke-width="3" opacity="0.7"/>
+                    <line x1="100" y1="95" x2="120" y2="105" stroke="#00d4ff" stroke-width="3" opacity="0.7"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Message du Directeur -->
+        <div class="director-message">
+            <h2>👋 Asmir</h2>
+            <p class="title">Directeur Général & Fondateur de la marque AsArt'sDev</p>
+            <p class="message">Vous souhaite la bienvenue à vos côtés, prêts à bondir dans le futur !</p>
+        </div>
+
+        <!-- Graphique évolution des dons -->
+        <div class="donation-chart">
+            <h3>📈 Impact de votre soutien</h3>
+            <div class="chart-container">
+                <div class="chart-bar" style="left: 5%; height: 60%;">
+                    <span class="chart-value">●●●</span>
+                    <span class="chart-label">Jan 2026</span>
+                </div>
+                <div class="chart-bar" style="left: 22%; height: 75%;">
+                    <span class="chart-value">●●●●</span>
+                    <span class="chart-label">Fév 2026</span>
+                </div>
+                <div class="chart-bar" style="left: 39%; height: 90%;">
+                    <span class="chart-value">●●●●●</span>
+                    <span class="chart-label">Mar 2026</span>
+                </div>
+                <div class="chart-bar" style="left: 56%; height: 100%; background: linear-gradient(to top, #00f3ff, #00ff88);">
+                    <span class="chart-value">●●●●●●</span>
+                    <span class="chart-label">Avr 2026</span>
+                </div>
+                <div class="chart-bar" style="left: 73%; height: 85%; opacity: 0.5;">
+                    <span class="chart-value">?</span>
+                    <span class="chart-label">Mai 2026</span>
+                </div>
+            </div>
+            <p class="chart-legend">
+                💙 Les valeurs sont représentées par des indicateurs visuels pour valoriser votre contribution collective sans exposer les montants individuels.
+            </p>
+        </div>
+
+        <!-- Section Partenariat -->
+        <div class="partnership-section">
+            <h3>🤝 Vous êtes une entreprise ou une organisation ?</h3>
+            <p style="color: #ccc; font-size: 1.1em; margin: 15px 0;">
+                Découvrez nos opportunités de partenariat et de subvention pour soutenir l'innovation inclusive.
+            </p>
+            <button class="partnership-btn" onclick="openPartnershipModal()">
+                📋 Voir les contrats de partenariat
+            </button>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <!-- Logo AsArt'sDev -->
+            <div class="asartsdev-logo dark-mode" style="margin: 0 auto 20px; width: 120px; height: 120px;">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00f3ff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#0099ff;stop-opacity:1" />
+                        </linearGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    
+                    <!-- Cercle extérieur -->
+                    <circle cx="100" cy="100" r="90" fill="none" stroke="url(#gradient1)" stroke-width="3" filter="url(#glow)"/>
+                    
+                    <!-- Cerveau Milian-NIA -->
+                    <path d="M100 50 Q70 50 65 70 Q60 90 65 110 Q70 130 100 130 Q130 130 135 110 Q140 90 135 70 Q130 50 100 50" 
+                          fill="none" stroke="url(#gradient1)" stroke-width="3" filter="url(#glow)"/>
+                    
+                    <!-- Neurones -->
+                    <circle cx="85" cy="80" r="5" fill="#00f3ff" filter="url(#glow)"/>
+                    <circle cx="115" cy="80" r="5" fill="#00f3ff" filter="url(#glow)"/>
+                    <circle cx="100" cy="95" r="6" fill="#0099ff" filter="url(#glow)"/>
+                    <circle cx="80" cy="105" r="4" fill="#00d4ff" filter="url(#glow)"/>
+                    <circle cx="120" cy="105" r="4" fill="#00d4ff" filter="url(#glow)"/>
+                    
+                    <!-- Synapses -->
+                    <line x1="85" y1="80" x2="100" y2="95" stroke="#00f3ff" stroke-width="2" opacity="0.6"/>
+                    <line x1="115" y1="80" x2="100" y2="95" stroke="#0099ff" stroke-width="2" opacity="0.6"/>
+                    <line x1="100" y1="95" x2="80" y2="105" stroke="#00d4ff" stroke-width="2" opacity="0.6"/>
+                    <line x1="100" y1="95" x2="120" y2="105" stroke="#00d4ff" stroke-width="2" opacity="0.6"/>
+                </svg>
+            </div>
+            
+            <h1>💙 Soutenir AsArt'sDev</h1>
+            <p>Votre générosité permet de financer l'innovation, l'accessibilité et les projets sociaux d'AsArt'sDev.</p>
+            <p><strong>Merci de croire en notre vision !</strong></p>
+        </div>
+
+        <!-- Section Don -->
+        <div class="donation-section" id="donation-form">
+            <h2>Choisissez votre don</h2>
+            
+            <div class="preset-amounts">
+                <button class="amount-btn" data-amount="5">5 €</button>
+                <button class="amount-btn" data-amount="10">10 €</button>
+                <button class="amount-btn" data-amount="20">20 €</button>
+                <button class="amount-btn" data-amount="50">50 €</button>
+                <button class="amount-btn" data-amount="100">100 €</button>
+            </div>
+
+            <div class="custom-amount">
+                <label for="custom-amount-input">📝 Ou montant personnalisé (€)</label>
+                <input type="number" id="custom-amount-input" min="1" step="0.01" placeholder="Ex: 15.00">
+            </div>
+
+            <div class="message-section">
+                <h3>💬 Message personnel (optionnel)</h3>
+                <textarea id="donor-message" placeholder="Laissez-nous un message..."></textarea>
+            </div>
+
+            <!-- Zone des boutons PayPal -->
+            <div id="paypal-button-container" class="paypal-button-container"></div>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <span class="security-badge">🔒 Paiement 100% sécurisé</span>
+                <span class="security-badge">💳 PayPal</span>
+                <span class="security-badge">✓ Sans frais affichés</span>
+            </div>
+        </div>
+
+        <!-- Impact du don -->
+        <div class="impact-message">
+            <h3>🌟 L'impact de votre don</h3>
+            <ul>
+                <li><strong>Innovation inclusive</strong> : Financer des solutions tech pour malvoyants, sourds, mobilité réduite</li>
+                <li><strong>R&D open-source</strong> : Développement d'outils gratuits et accessibles pour tous</li>
+                <li><strong>Éducation</strong> : Soutien à la diffusion de livres et contenus éducatifs</li>
+                <li><strong>Impact social</strong> : Projets concrets pour changer des vies et créer demain</li>
+            </ul>
+        </div>
+
+        <!-- Section Remerciement (masquée par défaut) -->
+        <div class="thank-you-section" id="thank-you-section">
+            <!-- Logo animé -->
+            <svg class="thank-you-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00f3ff;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#0099ff;stop-opacity:1" />
+                    </linearGradient>
+                    <filter id="glow2">
+                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                
+                <circle cx="100" cy="100" r="90" fill="none" stroke="url(#gradient2)" stroke-width="4" filter="url(#glow2)"/>
+                <path d="M100 50 Q70 50 65 70 Q60 90 65 110 Q70 130 100 130 Q130 130 135 110 Q140 90 135 70 Q130 50 100 50" 
+                      fill="none" stroke="url(#gradient2)" stroke-width="4" filter="url(#glow2)"/>
+                <circle cx="85" cy="80" r="6" fill="#00f3ff" filter="url(#glow2)"/>
+                <circle cx="115" cy="80" r="6" fill="#00f3ff" filter="url(#glow2)"/>
+                <circle cx="100" cy="95" r="7" fill="#0099ff" filter="url(#glow2)"/>
+                <circle cx="80" cy="105" r="5" fill="#00d4ff" filter="url(#glow2)"/>
+                <circle cx="120" cy="105" r="5" fill="#00d4ff" filter="url(#glow2)"/>
+                <line x1="85" y1="80" x2="100" y2="95" stroke="#00f3ff" stroke-width="3" opacity="0.7"/>
+                <line x1="115" y1="80" x2="100" y2="95" stroke="#0099ff" stroke-width="3" opacity="0.7"/>
+                <line x1="100" y1="95" x2="80" y2="105" stroke="#00d4ff" stroke-width="3" opacity="0.7"/>
+                <line x1="100" y1="95" x2="120" y2="105" stroke="#00d4ff" stroke-width="3" opacity="0.7"/>
+            </svg>
+
+            <h2>🙏 Merci infiniment !</h2>
+            <p><strong>Asmir vous remercie.</strong></p>
+            <p>Grâce à votre don, nous serons bientôt demain.</p>
+            <p class="signature">— Asmir Milianni, AsArt'sDev</p>
+            
+            <p style="margin-top: 30px; font-size: 1.1em;">
+                Vous recevrez un email de confirmation de PayPal.<br>
+                Votre soutien fait toute la différence. 💙
+            </p>
+        </div>
+
+        <!-- Note pied de page -->
+        <div class="footer-note">
+            <p>AsArt'sDev est un projet personnel de Samir Milianni (Asmir mln)</p>
+            <p>Tous les dons servent directement à financer le développement de solutions innovantes et inclusives.</p>
+            <p><a href="index.html" style="color: #00f3ff;">Retour à l'accueil</a> | 
+               <a href="contact.html" style="color: #00f3ff;">Contact</a></p>
+        </div>
+    </div>
+
+    <!-- Modal Partenariat -->
+    <div id="partnership-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closePartnershipModal()">&times;</span>
+            <h2>🤝 Contrats de Partenariat & Subvention</h2>
+            
+            <p><strong>AsArt'sDev</strong> propose des opportunités de collaboration pour les entreprises, organisations et institutions souhaitant soutenir l'innovation inclusive.</p>
+            
+            <h3 style="color: #00f3ff; margin-top: 25px;">📋 Types de partenariats disponibles :</h3>
+            <ul>
+                <li><strong>Partenariat de subvention</strong> : Financement de projets R&D dédiés à l'accessibilité et à la santé</li>
+                <li><strong>Co-branding technologique</strong> : Collaboration sur des solutions innovantes avec visibilité mutuelle</li>
+                <li><strong>Mécénat d'entreprise</strong> : Soutien financier avec avantages fiscaux et reconnaissance publique</li>
+                <li><strong>Partenariat académique</strong> : Collaboration avec universités et centres de recherche</li>
+            </ul>
+
+            <h3 style="color: #00f3ff; margin-top: 25px;">✨ Avantages pour les partenaires :</h3>
+            <ul>
+                <li>Visibilité sur nos plateformes et communications</li>
+                <li>Accès prioritaire aux innovations développées</li>
+                <li>Contribution à un impact social mesurable</li>
+                <li>Déduction fiscale pour mécénat (selon législation)</li>
+                <li>Rapport annuel d'impact détaillé</li>
+            </ul>
+
+            <h3 style="color: #00f3ff; margin-top: 25px;">📧 Contact pour partenariat :</h3>
+            <p>Pour toute proposition de partenariat ou demande de contrat de subvention, contactez-nous :</p>
+            <p style="text-align: center;">
+                <a href="mailto:asartdev.contact@gmail.com" class="btn-contact">
+                    📧 asartdev.contact@gmail.com
+                </a>
+            </p>
+            <p style="text-align: center; margin-top: 10px;">
+                <a href="tel:0781586882" style="color: #00f3ff; text-decoration: none; font-size: 1.1em;">
+                    📱 07 81 58 68 82
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <!-- SDK PayPal -->
+    <script src="https://www.paypal.com/sdk/js?client-id=VOTRE_CLIENT_ID_ICI&currency=EUR&locale=fr_FR"></script>
+
+    <script>
+        // Montant sélectionné
+        let selectedAmount = 0;
+
+        // Gestion des boutons de montant prédéfini
+        document.querySelectorAll('.amount-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Retirer la sélection des autres boutons
+                document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
+                
+                // Sélectionner ce bouton
+                this.classList.add('selected');
+                selectedAmount = parseFloat(this.getAttribute('data-amount'));
+                
+                // Vider le champ personnalisé
+                document.getElementById('custom-amount-input').value = '';
+                
+                // Réinitialiser les boutons PayPal
+                renderPayPalButtons();
+            });
+        });
+
+        // Gestion du montant personnalisé
+        document.getElementById('custom-amount-input').addEventListener('input', function() {
+            // Retirer la sélection des boutons prédéfinis
+            document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
+            
+            selectedAmount = parseFloat(this.value) || 0;
+            
+            // Réinitialiser les boutons PayPal
+            if (selectedAmount > 0) {
+                renderPayPalButtons();
+            }
+        });
+
+        // Fonction pour afficher les boutons PayPal
+        function renderPayPalButtons() {
+            // Vider le conteneur
+            document.getElementById('paypal-button-container').innerHTML = '';
+
+            if (selectedAmount <= 0) {
+                document.getElementById('paypal-button-container').innerHTML = 
+                    '<p style="text-align: center; color: #00f3ff; padding: 20px;">👆 Veuillez sélectionner un montant ci-dessus</p>';
+                return;
+            }
+
+            // Créer les boutons PayPal
+            paypal.Buttons({
+                style: {
+                    layout: 'vertical',
+                    color: 'blue',
+                    shape: 'rect',
+                    label: 'paypal',
+                    height: 55
+                },
+                
+                createOrder: function(data, actions) {
+                    const donorMessage = document.getElementById('donor-message').value;
+                    
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: selectedAmount.toFixed(2),
+                                currency_code: 'EUR'
+                            },
+                            description: 'Don à AsArt\'sDev' + (donorMessage ? ' - ' + donorMessage : ''),
+                            custom_id: 'donation_' + Date.now()
+                        }],
+                        application_context: {
+                            shipping_preference: 'NO_SHIPPING'
+                        }
+                    });
+                },
+                
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        console.log('Transaction réussie:', details);
+                        
+                        // Masquer le formulaire
+                        document.getElementById('donation-form').style.display = 'none';
+                        
+                        // Afficher le message de remerciement
+                        document.getElementById('thank-you-section').classList.add('show');
+                        
+                        // Scroll vers le haut
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        
+                        // Optionnel : envoyer à votre serveur
+                        // fetch('/api/save-donation.php', {
+                        //     method: 'POST',
+                        //     headers: { 'Content-Type': 'application/json' },
+                        //     body: JSON.stringify(details)
+                        // });
+                    });
+                },
+                
+                onError: function(err) {
+                    console.error('Erreur PayPal:', err);
+                    alert('Une erreur est survenue. Veuillez réessayer.');
+                },
+                
+                onCancel: function(data) {
+                    console.log('Transaction annulée:', data);
+                    alert('Vous avez annulé le paiement.');
+                }
+            }).render('#paypal-button-container');
+        }
+
+        // Initialiser avec un message pour sélectionner un montant
+        document.getElementById('paypal-button-container').innerHTML = 
+            '<p style="text-align: center; color: #00f3ff; padding: 20px; font-size: 1.1em;">👆 Veuillez sélectionner un montant ci-dessus pour afficher les boutons PayPal</p>';
+
+        // Fonctions Modal Partenariat
+        function openPartnershipModal() {
+            document.getElementById('partnership-modal').classList.add('show');
+            document.body.style.overflow = 'hidden'; // Empêcher le scroll
+        }
+
+        function closePartnershipModal() {
+            document.getElementById('partnership-modal').classList.remove('show');
+            document.body.style.overflow = 'auto'; // Réactiver le scroll
+        }
+
+        // Fermer le modal en cliquant en dehors
+        document.getElementById('partnership-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePartnershipModal();
+            }
+        });
+
+        // Fermer avec la touche Échap
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closePartnershipModal();
+            }
+        });
+    </script>
+</body>
+</html>
