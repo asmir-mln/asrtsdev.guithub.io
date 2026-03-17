@@ -337,6 +337,39 @@ CREATE INDEX idx_contacts_statut ON contacts_secure(statut);
 CREATE INDEX idx_contacts_ip ON contacts_secure(ip_adresse);
 CREATE UNIQUE INDEX uq_contacts_hash ON contacts_secure(payload_hash);
 
+CREATE TABLE IF NOT EXISTS transactions_secure (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom_crypt TEXT NOT NULL,
+    email_crypt TEXT NOT NULL,
+    nda_accepte TINYINT(1) NOT NULL,
+    ip_client VARCHAR(50) NOT NULL,
+    preuve_photo LONGBLOB NOT NULL,
+    montant DECIMAL(10,2) DEFAULT 0,
+    methode_paiement VARCHAR(50),
+    statut ENUM('pending','confirmed') DEFAULT 'pending',
+    date_creation DATETIME DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE INDEX idx_transactions_statut ON transactions_secure(statut);
+CREATE INDEX idx_transactions_date ON transactions_secure(date_creation);
+CREATE INDEX idx_transactions_ip ON transactions_secure(ip_client);
+
+CREATE TABLE IF NOT EXISTS brevets_secure (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom_crypt TEXT NOT NULL,
+    email_crypt TEXT NOT NULL,
+    nda_accepte TINYINT(1) NOT NULL,
+    ip_client VARCHAR(50) NOT NULL,
+    preuve_photo LONGBLOB NOT NULL,
+    type_innovation VARCHAR(100),
+    statut ENUM('pending','en_cours','finalise') DEFAULT 'pending',
+    date_creation DATETIME DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE INDEX idx_brevets_statut ON brevets_secure(statut);
+CREATE INDEX idx_brevets_date ON brevets_secure(date_creation);
+CREATE INDEX idx_brevets_ip ON brevets_secure(ip_client);
+
 -- Triggers compteur automatique du nombre de formulaires
 DELIMITER //
 

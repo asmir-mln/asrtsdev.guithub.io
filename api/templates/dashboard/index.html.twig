@@ -9,6 +9,20 @@
 <h1>Dashboard Ministeres - Ultra Top</h1>
 <h2>Total profit simule : {{ totalProfit|number_format(0, ',', ' ') }} €</h2>
 
+<section style="margin:20px 0 26px; padding:16px; border-radius:12px; border:1px solid #1e3a8a; background:#0b1220;">
+    <h3 style="margin-bottom:12px;">Videos d'ouverture</h3>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px;">
+        <video controls preload="metadata" style="width:100%; border-radius:10px; background:#000;">
+            <source src="{{ asset('images/ministere/5110f43cc568447cb1a9fd28253c857b.MOV') }}" type="video/mp4">
+            Votre navigateur ne supporte pas la lecture video.
+        </video>
+        <video controls preload="metadata" style="width:100%; border-radius:10px; background:#000;">
+            <source src="{{ asset('images/ministere/5abedd2e94e14258966db3897986533f.MOV') }}" type="video/mp4">
+            Votre navigateur ne supporte pas la lecture video.
+        </video>
+    </div>
+</section>
+
 <div class="alert alert-warning p-3" style="padding:12px; border-radius:10px; background:#3f3a12; color:#fff7c2; border:1px solid #6b5f1a; margin:20px 0;">
     <strong>A titre indicatif :</strong> Les prix peuvent varier selon les fluctuations du marche et le cout des matieres premieres. <br>
     Debut operationnel prevu : <strong>2030</strong> <br>
@@ -53,6 +67,33 @@
 <h3>Graphique des profits</h3>
 <canvas id="graphProfits" width="400" height="150"></canvas>
 
+<h3 style="margin-top:28px;">Articles ministeriels</h3>
+<section style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:14px; margin-bottom:18px;">
+    <article style="background:#111827; border:1px solid #374151; border-radius:12px; overflow:hidden;">
+        <img src="{{ asset('images/ministere/007bba93-af16-4d52-9af2-33ac99ba896e.png') }}" alt="Innovation militaire pour les affaires armees" style="width:100%; height:180px; object-fit:cover;">
+        <div style="padding:12px;">
+            <h4 style="margin:0 0 6px;">Ministere des Affaires armees</h4>
+            <p style="margin:0;">Innovation militaire orientee protection du terrain et efficacite operationnelle.</p>
+        </div>
+    </article>
+
+    <article style="background:#111827; border:1px solid #374151; border-radius:12px; overflow:hidden;">
+        <img src="{{ asset('images/ministere/432b7e00-cbea-41bb-9d34-3123389204c0.png') }}" alt="Innovation medicale pour le ministere de la sante" style="width:100%; height:180px; object-fit:cover;">
+        <div style="padding:12px;">
+            <h4 style="margin:0 0 6px;">Ministere de la Sante</h4>
+            <p style="margin:0;">Innovation medicale pour assistance, diagnostic et suivi des patients.</p>
+        </div>
+    </article>
+
+    <article style="background:#111827; border:1px solid #374151; border-radius:12px; overflow:hidden;">
+        <img src="{{ asset('images/ministere/c3b2f0fd-b8a9-4f78-bc21-35b889f55617.png') }}" alt="Innovation handicap pour le ministere social" style="width:100%; height:180px; object-fit:cover;">
+        <div style="padding:12px;">
+            <h4 style="margin:0 0 6px;">Ministere du Social</h4>
+            <p style="margin:0;">Innovation handicap pour accessibilite, autonomie et inclusion sociale.</p>
+        </div>
+    </article>
+</section>
+
 <h3>Innovations par ministere</h3>
 <div id="carouselInnovations" class="owl-carousel owl-theme">
     {% for innovation in innovations %}
@@ -60,7 +101,19 @@
             <h5>{{ innovation.ministere }}</h5>
             <h4>{{ innovation.innovation }}</h4>
             <p>{{ innovation.description }}</p>
-            {% if innovation.image %}
+            {% set ministereNom = innovation.ministere|lower %}
+            {% set imageMinistere = '' %}
+            {% if 'arme' in ministereNom or 'defense' in ministereNom %}
+                {% set imageMinistere = 'images/ministere/007bba93-af16-4d52-9af2-33ac99ba896e.png' %}
+            {% elseif 'sante' in ministereNom or 'medical' in ministereNom %}
+                {% set imageMinistere = 'images/ministere/432b7e00-cbea-41bb-9d34-3123389204c0.png' %}
+            {% elseif 'social' in ministereNom or 'handicap' in ministereNom %}
+                {% set imageMinistere = 'images/ministere/c3b2f0fd-b8a9-4f78-bc21-35b889f55617.png' %}
+            {% endif %}
+
+            {% if imageMinistere %}
+                <img src="{{ asset(imageMinistere) }}" alt="{{ innovation.innovation }}" class="img-fluid rounded">
+            {% elseif innovation.image %}
                 <img src="{{ asset('uploads/' ~ innovation.image) }}" alt="{{ innovation.innovation }}" class="img-fluid rounded">
             {% endif %}
             <p><strong>Cout:</strong> {{ innovation.cout }} €</p>
