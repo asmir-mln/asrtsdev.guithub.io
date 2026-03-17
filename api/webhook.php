@@ -9,12 +9,8 @@
 header('Content-Type: application/json');
 
 function loadStripeConfig() {
-    $configPath = __DIR__ . '/config.php';
-    if (!file_exists($configPath)) {
-        return null;
-    }
-
-    $config = require $configPath;
+    require_once __DIR__ . '/load-secure-config.php';
+    $config = loadSecureConfig();
     $mode = $config['stripe']['mode'] ?? 'test';
     return [
         'secret_key' => $config['stripe'][$mode]['secret_key'] ?? null,
@@ -28,7 +24,7 @@ $stripeWebhookSecret = $stripeConfig['webhook_secret'] ?? null;
 
 if (!$stripeSecretKey || strpos($stripeSecretKey, 'VOTRE_CLE') !== false || !$stripeWebhookSecret || strpos($stripeWebhookSecret, 'VOTRE') !== false) {
     http_response_code(500);
-    echo json_encode(['error' => 'Configuration Stripe webhook manquante. Créez api/config.php avec vos clés.']);
+    echo json_encode(['error' => 'Configuration Stripe webhook manquante. Ajoutez vos cles dans api/.env.co ou api/config.php.']);
     exit;
 }
 

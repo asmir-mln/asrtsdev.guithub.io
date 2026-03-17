@@ -17,12 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 function loadStripeSecretKey() {
-    $configPath = __DIR__ . '/config.php';
-    if (!file_exists($configPath)) {
-        return null;
-    }
-
-    $config = require $configPath;
+    require_once __DIR__ . '/load-secure-config.php';
+    $config = loadSecureConfig();
     $mode = $config['stripe']['mode'] ?? 'test';
     return $config['stripe'][$mode]['secret_key'] ?? null;
 }
@@ -30,7 +26,7 @@ function loadStripeSecretKey() {
 $stripeSecretKey = loadStripeSecretKey();
 if (!$stripeSecretKey || strpos($stripeSecretKey, 'VOTRE_CLE') !== false) {
     http_response_code(500);
-    echo json_encode(['error' => 'Configuration Stripe manquante. Créez api/config.php avec vos clés.']);
+    echo json_encode(['error' => 'Configuration Stripe manquante. Ajoutez vos cles dans api/.env.co ou api/config.php.']);
     exit;
 }
 

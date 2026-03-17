@@ -13,6 +13,8 @@ node_modules/
 api/config.php
 config.php
 .env
+api/.env.co
+.env.co
 
 # Logs de paiement et transactions
 logs/
@@ -29,3 +31,13 @@ test-data/
 # Données de commandes sensibles
 api/data/
 api/data/*.json
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###

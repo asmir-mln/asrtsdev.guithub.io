@@ -370,6 +370,35 @@ CREATE INDEX idx_brevets_statut ON brevets_secure(statut);
 CREATE INDEX idx_brevets_date ON brevets_secure(date_creation);
 CREATE INDEX idx_brevets_ip ON brevets_secure(ip_client);
 
+CREATE TABLE IF NOT EXISTS orders_records (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id VARCHAR(40) NOT NULL UNIQUE,
+    nom VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    telephone VARCHAR(50) NULL,
+    adresse TEXT NULL,
+    produit VARCHAR(255) NOT NULL,
+    prix DECIMAL(10,2) NOT NULL DEFAULT 0,
+    quantite INT NOT NULL DEFAULT 1,
+    panier_json LONGTEXT NULL,
+    subtotal DECIMAL(10,2) NOT NULL DEFAULT 0,
+    remise DECIMAL(10,2) NOT NULL DEFAULT 0,
+    frais_envoi DECIMAL(10,2) NOT NULL DEFAULT 0,
+    frais_service DECIMAL(10,2) NOT NULL DEFAULT 0,
+    total DECIMAL(10,2) NOT NULL DEFAULT 0,
+    message LONGTEXT NULL,
+    statut VARCHAR(120) NOT NULL DEFAULT 'En attente de paiement',
+    paiement_recu TINYINT(1) NOT NULL DEFAULT 0,
+    ip_adresse VARCHAR(45) NULL,
+    user_agent LONGTEXT NULL,
+    date_creation DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    date_mise_a_jour DATETIME NULL ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE INDEX idx_orders_records_email ON orders_records(email);
+CREATE INDEX idx_orders_records_statut ON orders_records(statut);
+CREATE INDEX idx_orders_records_date ON orders_records(date_creation);
+
 -- Triggers compteur automatique du nombre de formulaires
 DELIMITER //
 
