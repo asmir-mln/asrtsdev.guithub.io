@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axe de developpement - Edition & recit | AsArt'sDev</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../logo-style.css">
+    <style>
+        body {
+            background: linear-gradient(180deg, #081224 0%, #0f223f 100%);
+            color: #e9f2ff;
+        }
+
+        .page-wrap {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        .intro {
+            margin-top: 20px;
+            padding: 24px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(120, 190, 255, 0.25);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .intro h1 {
+            color: #9ed1ff;
+            margin-bottom: 8px;
+        }
+
+        .intro h2 {
+            color: #d7ebff;
+            margin-bottom: 8px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 22px;
+            margin-top: 22px;
+        }
+
+        .story-card,
+        .carousel-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(120, 190, 255, 0.2);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+        }
+
+        .story-card h3,
+        .carousel-card h3 {
+            color: #9ed1ff;
+            margin-bottom: 12px;
+        }
+
+        .story-text {
+            max-height: 74vh;
+            overflow: auto;
+            padding-right: 6px;
+        }
+
+        .story-text p {
+            margin-bottom: 12px;
+            color: #f0f6ff;
+        }
+
+        .carousel {
+            position: relative;
+        }
+
+        .carousel-viewport {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #081020;
+            border: 1px solid rgba(120, 190, 255, 0.25);
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transform: scale(1.02);
+            transition: opacity 360ms ease, transform 360ms ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 12px;
+            gap: 8px;
+        }
+
+        .btn-nav {
+            border: 1px solid rgba(120, 190, 255, 0.5);
+            background: rgba(8, 22, 40, 0.9);
+            color: #d7ebff;
+            padding: 8px 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .dots {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: rgba(180, 220, 255, 0.35);
+            border: 0;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: #72c2ff;
+        }
+
+        @media (max-width: 980px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .story-text {
+                max-height: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="asartsdev-logo" title="Retour a l'accueil AsArt'sDev" aria-label="AsArt'sDev, retour a l'accueil du site">
+        <div class="asartsdev-logo-icon"><span>A</span></div>
+        <div class="asartsdev-logo-text">
+            <span class="asartsdev-logo-brand">AsArt'sDev</span>
+            <span class="asartsdev-logo-tagline">Axe de developpement</span>
+        </div>
+    </a>
+
+    <main class="page-wrap">
+        <section class="intro">
+            <h1>Axe de developpement</h1>
+            <h2>Edition & recit</h2>
+            <p>Une presentation immersive de mon parcours, avec article narratif et galerie chronologique en carrousel.</p>
+        </section>
+
+        <section class="content-grid">
+            <article class="story-card">
+                <h3>Du rejet a la renaissance</h3>
+                <div class="story-text">
+                    <p><strong>Du rejet a la renaissance : le combat d'une vie entre dyslexie, HPI et creation</strong></p>
+                    <p>J'ai ecrit mon premier livre a l'age de 10 ans.</p>
+                    <p>A cet age-la, je ne connaissais ni les regles parfaites de grammaire, ni les attentes du monde litteraire. J'avais simplement une chose : une imagination debordante, une envie de raconter, de creer, de donner vie a une histoire qui vivait deja tres fort dans ma tete.</p>
+                    <p>Mais tres vite, ce reve s'est heurte a la realite. On ne m'a pas cru. On n'a pas vu l'histoire. On n'a pas ressenti l'emotion. On n'a pas cherche a comprendre l'univers que j'avais cree.</p>
+                    <p>A la place, on a vu les fautes, les erreurs, les phrases bancales. Et a cause de ca, on m'a traite de menteur, de voleur, comme si un enfant comme moi ne pouvait pas etre a l'origine de quelque chose d'aussi grand.</p>
+                    <p>Ce moment a tout casse. Ce n'est pas juste mon texte qu'on a rejete. C'est ma legitimite a creer, mon droit d'exister en tant qu'auteur. Alors j'ai arrete d'ecrire. Pas parce que je n'aimais plus ca, mais parce que ca faisait trop mal.</p>
+                    <p>La dyslexie n'etait pas comprise. Elle etait jugee. Pendant longtemps, j'ai laisse cette partie de moi s'eteindre.</p>
+                    <p>Puis un jour, bien plus tard, ce souvenir est revenu. Pas comme une douleur cette fois, mais comme une evidence. Cette histoire n'avait jamais disparu. Elle etait restee la, intacte, fidele, puissante.</p>
+                    <p>Alors j'ai decide de recommencer, mais differemment. J'ai repris cette histoire d'enfant en respectant son scenario d'origine, son essence, son epoque. Je l'ai accompagnee, enrichie, mise en forme avec l'experience et la maturite.</p>
+                    <p>Car entre-temps, j'avais compris certaines choses : je suis dyslexique, mais je suis aussi HPI et HPE. Ce melange est a la fois une force et un combat permanent.</p>
+                    <p>Une hypersensibilite qui amplifie tout. Une pensee rapide, arborescente, intense. Et en face, des difficultes d'ecriture, de structuration, de normes.</p>
+                    <p>Pendant longtemps, ces contradictions m'ont freine. Aujourd'hui, elles me definissent. Ce livre n'est pas juste une histoire. C'est un symbole.</p>
+                    <p>Celui d'un enfant qu'on n'a pas cru. D'un adolescent qui a abandonne. Et d'un adulte qui a decide de reprendre le controle.</p>
+                    <p>Ce projet, c'est plus qu'un livre. C'est la preuve que ce qu'on nous enleve peut un jour devenir ce qui nous construit.</p>
+                    <p><strong>Aujourd'hui, je n'ecris plus pour etre valide. J'ecris pour etre vrai.</strong></p>
+                </div>
+            </article>
+
+            <aside class="carousel-card">
+                <h3>Parcours en images (carrousel)</h3>
+                <div class="carousel" aria-label="Carrousel des images du parcours">
+                    <div class="carousel-viewport" id="carouselViewport">
+                        <figure class="slide active"><img src="../images/axes-edition/slide-1.jpg" alt="Slide 1 - creation et conception" loading="lazy"></figure>
+                        <figure class="slide"><img src="../images/axes-edition/slide-2.png" alt="Slide 2 - impact reel" loading="lazy"></figure>
+                        <figure class="slide"><img src="../images/axes-edition/slide-3.png" alt="Slide 3 - utilisation et CGV" loading="lazy"></figure>
+                        <figure class="slide"><img src="../images/axes-edition/slide-4.png" alt="Slide 4 - prototype ergonomique" loading="lazy"></figure>
+                        <figure class="slide"><img src="../images/axes-edition/slide-5.png" alt="Slide 5 - parcours visuel" loading="lazy"></figure>
+                        <figure class="slide"><img src="../images/axes-edition/slide-6.png" alt="Slide 6 - parcours visuel" loading="lazy"></figure>
+                        <figure class="slide"><img src="../images/axes-edition/slide-7.png" alt="Slide 7 - parcours visuel" loading="lazy"></figure>
+                    </div>
+                    <div class="controls">
+                        <button class="btn-nav" id="prevBtn" type="button" aria-label="Image precedente">Precedent</button>
+                        <div class="dots" id="dots"></div>
+                        <button class="btn-nav" id="nextBtn" type="button" aria-label="Image suivante">Suivant</button>
+                    </div>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <script>
+        (function () {
+            const slides = Array.from(document.querySelectorAll('.slide'));
+            const dotsRoot = document.getElementById('dots');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            let index = 0;
+            let timer = null;
+
+            function renderDots() {
+                dotsRoot.innerHTML = '';
+                slides.forEach((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.className = 'dot' + (i === index ? ' active' : '');
+                    dot.type = 'button';
+                    dot.setAttribute('aria-label', 'Aller a l\'image ' + (i + 1));
+                    dot.addEventListener('click', () => {
+                        index = i;
+                        update();
+                        restartAuto();
+                    });
+                    dotsRoot.appendChild(dot);
+                });
+            }
+
+            function update() {
+                slides.forEach((el, i) => el.classList.toggle('active', i === index));
+                renderDots();
+            }
+
+            function next() {
+                index = (index + 1) % slides.length;
+                update();
+            }
+
+            function prev() {
+                index = (index - 1 + slides.length) % slides.length;
+                update();
+            }
+
+            function restartAuto() {
+                if (timer) {
+                    clearInterval(timer);
+                }
+                timer = setInterval(next, 3500);
+            }
+
+            prevBtn.addEventListener('click', function () {
+                prev();
+                restartAuto();
+            });
+
+            nextBtn.addEventListener('click', function () {
+                next();
+                restartAuto();
+            });
+
+            update();
+            restartAuto();
+        })();
+    </script>
+</body>
+</html>

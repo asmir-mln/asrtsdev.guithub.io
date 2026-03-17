@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA, DevOps & Architecture - AsArt'sDev</title>
+    <link rel="stylesheet" href="../logo-style.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf0 100%);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .ia-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 20px;
+            background: linear-gradient(180deg, rgba(102,126,234,0.1) 0%, rgba(211,47,47,0.05) 100%);
+            border-radius: 12px;
+        }
+        
+        .ia-header h1 {
+            font-size: 42px;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .ia-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .content-container {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 50px;
+            align-items: start;
+            margin-bottom: 60px;
+        }
+        
+        .content-text {
+            line-height: 1.9;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .content-text h2 {
+            font-size: 26px;
+            color: #667eea;
+            margin-bottom: 20px;
+            margin-top: 30px;
+        }
+        
+        .content-text h2:first-child {
+            margin-top: 0;
+        }
+        
+        .content-text p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .content-text ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .content-text li {
+            padding: 8px 0 8px 30px;
+            position: relative;
+            margin-bottom: 10px;
+        }
+        
+        .content-text li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(102,126,234,0.08);
+            border-left: 4px solid #667eea;
+            border-radius: 8px;
+        }
+        
+        .highlight {
+            font-size: 16px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .side-image {
+            position: sticky;
+            top: 20px;
+        }
+        
+        .side-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+        }
+        
+        .tech-applications {
+            background: white;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-top: 80px;
+        }
+        
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .app-card {
+            padding: 30px;
+            background: linear-gradient(135deg, #f0f4ff 0%, #fff 100%);
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(102,126,234,0.2);
+            border-color: #667eea;
+        }
+        
+        .app-card h3 {
+            color: #667eea;
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+        
+        .app-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+        
+        .nav-back {
+            margin-bottom: 30px;
+        }
+        
+        .nav-back a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-back a:hover {
+            gap: 12px;
+            color: #d32f2f;
+        }
+        
+        .cta-section {
+            text-align: center;
+            margin-top: 80px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(102,126,234,0.1) 0%, rgba(211,47,47,0.1) 100%);
+            border-radius: 12px;
+        }
+        
+        .cta-section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .cta-section p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        
+        @media (max-width: 768px) {
+            .content-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .side-image {
+                position: static;
+            }
+            
+            .ia-header h1 {
+                font-size: 32px;
+            }
+            
+            .tech-applications {
+                padding: 30px 20px;
+            }
+            
+            .content-text {
+                font-size: 15px;
+            }
+            
+            .content-text h2 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="nav-back">
+            <a href="../index.html">← Retour à l'accueil</a>
+        </div>
+        
+        <div class="ia-header">
+            <h1>🌍 IA, DevOps & Architecture</h1>
+            <p>Une vision née de l'adversité, transformée en technologie universelle</p>
+        </div>
+        
+        <div class="content-container">
+            <div class="content-text">
+                <h2>Une vision née de l'adversité</h2>
+                
+                <p>Tout a commencé par un obstacle.</p>
+                
+                <p>Une <strong>dyslexie</strong> qui m'a accompagné toute ma vie. Un frein dans un monde où tout repose sur l'écrit, sur la norme, sur la rapidité de compréhension.</p>
+                
+                <p>Puis est survenu un événement marquant. <strong>Un accident, qui m'a valu une perte partielle de la vue.</strong></p>
+                
+                <p>Là où certains auraient vu une limite, j'y ai vu une nécessité :</p>
+                
+                <div class="highlights">
+                    <div class="highlight">👉 comprendre</div>
+                    <div class="highlight">👉 analyser</div>
+                    <div class="highlight">👉 reconstruire autrement</div>
+                </div>
+                
+                <p>Mon vécu, combiné à mes compétences, m'a permis de poser un regard différent sur notre monde. <strong>Un regard simple, mais essentiel :</strong></p>
+                
+                <p style="font-size: 17px; font-weight: 600; padding: 15px; background: rgba(102,126,234,0.15); border-radius: 8px; border-left: 4px solid #667eea;">
+                    Il existe une erreur fondamentale dans notre manière de concevoir les technologies.
+                </p>
+                
+                <p>Nous n'avons pas pensé l'ingénierie pour tous. <strong>Alors, nous allons la corriger.</strong></p>
+                
+                <h2>🧠 Une innovation née d'un besoin réel</h2>
+                
+                <p>J'ai commencé par créer des <strong>prompts intelligents</strong>, conçus pour permettre une navigation simple, fluide et accessible aux personnes dyslexiques.</p>
+                
+                <p>Ce n'était qu'un début.</p>
+                
+                <p>Très vite, une évidence s'est imposée :</p>
+                
+                <div class="highlights">
+                    <div class="highlight">👉 Cette technologie pouvait aller beaucoup plus loin</div>
+                </div>
+                
+                <h2>♿ Améliorer la vie, transformer le quotidien</h2>
+                
+                <p>Nous avons élargi notre vision pour répondre à un objectif plus grand : <strong>améliorer concrètement la vie des personnes en situation de handicap.</strong></p>
+                
+                <p>Puis, étape par étape, nous avons poussé encore plus loin.</p>
+                
+                <p>Aujourd'hui, nous développons une <strong>technologie capable de s'adapter à chaque besoin spécifique :</strong></p>
+                
+                <ul>
+                    <li>🏥 une aide de précision pour les chirurgiens</li>
+                    <li>👁️ un compagnon intelligent pour les personnes aveugles</li>
+                    <li>🔊 un soutien visuel complémentaire pour les personnes sourdes</li>
+                    <li>🧩 et bien d'autres applications encore…</li>
+                </ul>
+                
+                <h2>🚀 Vers une technologie universelle</h2>
+                
+                <p>Ce qui était au départ une solution ciblée devient aujourd'hui une &lt;strong&gt;technologie ultra-futuriste universelle&lt;/strong&gt;, pensée pour s'adapter à chacun.</p>
+                
+                <p>Notre approche est simple :</p>
+                
+                <div class="highlights">
+                    <div class="highlight">👉 partir des besoins les plus complexes</div>
+                    <div class="highlight">👉 pour créer des solutions utiles à tous</div>
+                </div>
+                
+                <p style="font-style: italic; margin-top: 20px; padding-top: 20px; border-top: 2px solid #667eea;">
+                    Car une innovation conçue pour le handicap devient souvent une révolution pour l'ensemble de la société.
+                </p>
+                
+                <h2>🔒 Une vision maîtrisée</h2>
+                
+                <p>Nous construisons un écosystème puissant, mais stratégique.</p>
+                
+                <p><strong>Certaines avancées resteront confidentielles.</strong> Tous nos projets ne seront pas révélés publiquement.</p>
+                
+                <p>Ceci est stratégique et délibéré. La protection intellectuelle est au cœur de notre modèle.</p>
+            </div>
+            
+            <div class="side-image">
+                <img src="../images/axes-vision/ia-tech.png" alt="IA, DevOps & Architecture - Technologiea universelle" onerror="this.src='../images/session-mars-2026/placeholder-original.png'">
+            </div>
+        </div>
+        
+        <div class="tech-applications">
+            <h2 style="color: #667eea; font-size: 28px; margin-bottom: 30px;">Domaines d'application</h2>
+            
+            <div class="applications-grid">
+                <div class="app-card">
+                    <h3>🏥 Médecine de précision</h3>
+                    <p>Assistance chirurgicale, diagnostic augmenté et prédiction de résultats médicaux basée sur IA.</p>
+                </div>
+                
+                <div class="app-card">
+                    <h3>♿ Accessibilité universelle</h3>
+                    <p>Interfaces adaptatives pour personnes en situation de handicap, navigation intuitive et inclusive.</p>
+                </div>
+                
+                <div class="app-card">
+                    <h3>⚙️ DevOps & Infrastructure</h3>
+                    <p>Automatisation intelligente, gestion des risques et orchestration cloud hautement performante.</p>
+                </div>
+                
+                <div class="app-card">
+                    <h3>🧠 Cognitive Computing</h3>
+                    <p>Systèmes d'apprentissage adaptatif qui comprennent et s'ajustent aux besoins individuels.</p>
+                </div>
+                
+                <div class="app-card">
+                    <h3>🌐 Architecture distribuée</h3>
+                    <p>Systèmes décentralisés, résilience maximale et gouvernance technologique innovante.</p>
+                </div>
+                
+                <div class="app-card">
+                    <h3>📊 Data & Analytics</h3>
+                    <p>Intelligence décisionnelle, prédictive et prescriptive pour la transformation numérique.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <h2>📩 Nous contacter</h2>
+            <p>Si vous souhaitez en savoir plus, collaborer ou suivre cette évolution, n'hésitez pas à nous contacter.</p>
+            <a href="../donation.php" style="display: inline-block; padding: 12px 30px; background: #667eea; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.background='#5568d3'" onmouseout="this.style.background='#667eea'">Nous contacter</a>
+        </div>
+    </main>
+</body>
+</html>

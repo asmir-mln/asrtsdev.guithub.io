@@ -355,30 +355,13 @@
             padding: 0 15px;
         }
 
-        /* Visuels de parcours sans redondance d'image */
-        .parcours-visual {
+        /* Photos du parcours */
+        .parcours-photo {
             height: 260px;
             width: 100%;
             border-radius: 10px;
-            display: flex;
-            align-items: flex-end;
-            padding: 16px;
-            color: #e8f7ff;
-            font-weight: 700;
-            letter-spacing: 0.2px;
-            box-shadow: inset 0 -80px 90px rgba(0, 0, 0, 0.28);
-        }
-
-        .parcours-visual.p1 {
-            background: linear-gradient(135deg, #12325a 0%, #1f4f87 50%, #0f2540 100%);
-        }
-
-        .parcours-visual.p2 {
-            background: linear-gradient(135deg, #1a2a4d 0%, #2f4d8b 55%, #1f3361 100%);
-        }
-
-        .parcours-visual.p3 {
-            background: linear-gradient(135deg, #0f2941 0%, #246a85 55%, #15364d 100%);
+            object-fit: cover;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .parcours-item {
@@ -620,7 +603,7 @@
             <h2>Mon parcours en 3 images</h2>
             <div class="livres-grid">
                 <article class="livre-card parcours-item">
-                    <div class="parcours-visual p1" aria-label="Visuel autodidaxie">Résilience & apprentissage</div>
+                    <img class="parcours-photo" src="images/parcours/parcours-1.jpg.png" alt="Panel 1 : la création, conception de l'IA en environnement de développement" onerror="this.src='images/session-mars-2026/placeholder-original.png'">
                     <div class="parcours-text">
                         <h3>1) Autodidacte dyslexique</h3>
                         <p>J'ai appris à transformer la dyslexie en force mentale: analyser, décoder et mémoriser différemment.</p>
@@ -628,7 +611,7 @@
                 </article>
 
                 <article class="livre-card parcours-item">
-                    <div class="parcours-visual p2" aria-label="Visuel logique scientifique">Curiosité & structuration</div>
+                    <img class="parcours-photo" src="images/parcours/parcours-2.jpg.png" alt="Panel 2 : impact réel, assistance intelligente et guidage utilisateur" onerror="this.src='images/session-mars-2026/placeholder-original.png'">
                     <div class="parcours-text">
                         <h3>2) Écriture et logique scientifique</h3>
                         <p>Malgré les doutes, l'écriture précoce et les matières scientifiques ont révélé une pensée structurée et créative.</p>
@@ -636,7 +619,7 @@
                 </article>
 
                 <article class="livre-card parcours-item">
-                    <div class="parcours-visual p3" aria-label="Visuel vision technologique">Innovation & impact terrain</div>
+                    <img class="parcours-photo" src="images/parcours/parcours-3.jpg.png" alt="Prototype porté en situation réelle avec ergonomie et autonomie maximale" onerror="this.src='images/session-mars-2026/placeholder-original.png'">
                     <div class="parcours-text">
                         <h3>3) Vision technologique</h3>
                         <p>Développement de solutions orientées accessibilité, assistance médicale et innovation de terrain.</p>
@@ -659,14 +642,17 @@
                 <div class="service-item">
                     <h3>📚 Édition & récit</h3>
                     <p>Transmission d'expérience, documentation et narration de terrain.</p>
+                    <p><a href="axes-developpement/edition-ecrit.html" class="btn-primary" style="display:inline-block; margin-top:8px;">Ouvrir l'axe</a></p>
                 </div>
                 <div class="service-item">
                     <h3>🧠 IA, DevOps, architecture</h3>
                     <p>Conception de systèmes robustes et automatisation de solutions.</p>
+                    <p><a href="axes-developpement/ia-devops.html" class="btn-primary" style="display:inline-block; margin-top:8px;">Ouvrir l'axe</a></p>
                 </div>
                 <div class="service-item">
                     <h3>🤝 Investisseurs & partenaires</h3>
                     <p>Partenariats privés/publics, mécénat et soutien associatif.</p>
+                    <p><a href="axes-developpement/investisseurs.html" class="btn-primary" style="display:inline-block; margin-top:8px;">Ouvrir l'axe</a></p>
                 </div>
             </div>
         </section>

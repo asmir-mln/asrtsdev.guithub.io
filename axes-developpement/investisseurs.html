@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investisseurs & Partenaires - AsArt'sDev</title>
+    <link rel="stylesheet" href="../logo-style.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf0 100%);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .investisseurs-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 20px;
+            background: linear-gradient(180deg, rgba(211,47,47,0.05) 0%, rgba(102,126,234,0.05) 100%);
+            border-radius: 12px;
+        }
+        
+        .investisseurs-header h1 {
+            font-size: 42px;
+            color: #d32f2f;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .investisseurs-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .vision-container {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 50px;
+            align-items: start;
+            margin-bottom: 60px;
+        }
+        
+        .vision-text {
+            line-height: 1.9;
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .vision-text h2 {
+            font-size: 28px;
+            color: #d32f2f;
+            margin-bottom: 25px;
+            margin-top: 30px;
+        }
+        
+        .vision-text h2:first-child {
+            margin-top: 0;
+        }
+        
+        .vision-text p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .vision-text ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .vision-text li {
+            padding: 8px 0 8px 30px;
+            position: relative;
+            margin-bottom: 10px;
+        }
+        
+        .vision-text li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #d32f2f;
+            font-weight: bold;
+        }
+        
+        .highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(211,47,47,0.08);
+            border-left: 4px solid #d32f2f;
+            border-radius: 8px;
+        }
+        
+        .highlight {
+            font-size: 16px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .vision-image {
+            position: sticky;
+            top: 20px;
+        }
+        
+        .vision-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+        }
+        
+        .partenaires-section {
+            margin-top: 80px;
+            padding: 50px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .partenaires-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .partenaire-card {
+            padding: 30px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #fff 100%);
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .partenaire-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            border-color: #d32f2f;
+        }
+        
+        .partenaire-card h3 {
+            color: #d32f2f;
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+        
+        .partenaire-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+        
+        .nav-back {
+            margin-bottom: 30px;
+        }
+        
+        .nav-back a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-back a:hover {
+            gap: 12px;
+            color: #d32f2f;
+        }
+        
+        @media (max-width: 768px) {
+            .vision-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .vision-image {
+                position: static;
+            }
+            
+            .investisseurs-header h1 {
+                font-size: 32px;
+            }
+            
+            .partenaires-section {
+                padding: 30px 20px;
+            }
+            
+            .vision-text {
+                font-size: 15px;
+            }
+            
+            .vision-text h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="nav-back">
+            <a href="../index.html">← Retour à l'accueil</a>
+        </div>
+        
+        <div class="investisseurs-header">
+            <h1>🚀 Vision AsArt'sDev – Discours Officiel</h1>
+            <p>Une ambition mondiale : positionner la France comme leader technologique à l'horizon 2050</p>
+        </div>
+        
+        <div class="vision-container">
+            <div class="vision-text">
+                <h2>Révolution technologique en cours</h2>
+                
+                <p>Chez <strong>AsArt'sDev</strong>, nous posons les bases d'une révolution.</p>
+                
+                <p>Au cours des 10 prochaines années, nous allons déposer une série de brevets majeurs, construits autour de <strong>7 projets stratégiques</strong>. Ces projets ne sont pas de simples innovations : ils représentent une rupture technologique profonde avec le monde tel que nous le connaissons aujourd'hui.</p>
+                
+                <div class="highlights">
+                    <div class="highlight">👉 Notre ambition est claire : positionner la France comme leader technologique mondial à l'horizon 2050</div>
+                </div>
+                
+                <h2>Un virage à 180 degrés</h2>
+                
+                <p>Nous avons fait un choix fort. <strong>Un virage à 180 degrés.</strong></p>
+                
+                <p>Nous mettons fin à une logique dépassée basée sur :</p>
+                
+                <ul>
+                    <li>l'obsolescence programmée</li>
+                    <li>la surconsommation</li>
+                    <li>les modèles économiques destructeurs</li>
+                </ul>
+                
+                <h2>Écosystème durable et responsable</h2>
+                
+                <p>À la place, nous construisons un écosystème fondé sur :</p>
+                
+                <div class="highlights">
+                    <div class="highlight">🌱 la durabilité</div>
+                    <div class="highlight">⚡ l'innovation responsable</div>
+                    <div class="highlight">🧠 l'intelligence technologique au service de l'humain</div>
+                </div>
+                
+                <h2>Objectif 2050</h2>
+                
+                <p>Notre objectif est d'atteindre, <strong>d'ici 2050, une avance technologique estimée à plus de 150 ans</strong> sur les standards actuels, tout en structurant un écosystème complet AsArt'sDev.</p>
+                
+                <p>Ce système reposera sur :</p>
+                
+                <ul>
+                    <li>des technologies interconnectées</li>
+                    <li>des innovations complémentaires</li>
+                    <li>de nombreux brevets additionnels venant renforcer notre position</li>
+                </ul>
+                
+                <h2>Vision ambitieuse et assumée</h2>
+                
+                <div class="highlights">
+                    <div class="highlight">👉 Devenir une référence mondiale incontournable</div>
+                    <div class="highlight">👉 Imposer un nouveau standard technologique à l'échelle internationale</div>
+                </div>
+                
+                <p style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #d32f2f;">
+                    Ce que nous construisons aujourd'hui, ce n'est pas seulement une entreprise. <strong>C'est un nouveau modèle de société.</strong>
+                </p>
+            </div>
+            
+            <div class="vision-image">
+                <img src="../images/axes-vision/vision-2050.png" alt="Vision AsArt'sDev 2050 - Roadmap des 7 projets majeurs" onerror="this.src='../images/session-mars-2026/placeholder-original.png'">
+            </div>
+        </div>
+        
+        <div class="partenaires-section">
+            <h2 style="color: #d32f2f; font-size: 28px; margin-bottom: 30px;">Types de partenariats</h2>
+            
+            <div class="partenaires-grid">
+                <div class="partenaire-card">
+                    <h3>🏢 Partenaires privés</h3>
+                    <p>Investisseurs industriels, fonds de capital-risque et entreprises technologiques cherchant à s'associer aux innovations AsArt'sDev.</p>
+                </div>
+                
+                <div class="partenaire-card">
+                    <h3>🏛️ Partenaires publics</h3>
+                    <p>Collectivités territoriales, organismes de recherche et agences gouvernementales orientées vers la transformation numérique.</p>
+                </div>
+                
+                <div class="partenaire-card">
+                    <h3>🤲 Mécénat & soutien</h3>
+                    <p>Associations, fondations et organismes sans but lucratif intéressés par l'impact social et l'accessibilité technologique.</p>
+                </div>
+                
+                <div class="partenaire-card">
+                    <h3>🔬 Partenaires académiques</h3>
+                    <p>Universités, écoles d'ingénieures et centres de recherche collaborant sur les projets stratégiques AsArt'sDev.</p>
+                </div>
+                
+                <div class="partenaire-card">
+                    <h3>🌍 Partenaires internationaux</h3>
+                    <p>Organisations mondiales cherchant à bénéficier de nos innovations et à contribuer au projet global.</p>
+                </div>
+                
+                <div class="partenaire-card">
+                    <h3>📞 Contactez-nous</h3>
+                    <p>Pour explorer une collaboration, recevez le dossier complet ou discuter d'opportunités de financement, contactez AsArt'sDev directement.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 80px; padding: 40px; background: linear-gradient(135deg, rgba(211,47,47,0.1) 0%, rgba(102,126,234,0.1) 100%); border-radius: 12px;">
+            <h2 style="color: #d32f2f; margin-bottom: 15px;">Prêt à collaborer ?</h2>
+            <p style="color: #666; margin-bottom: 20px; font-size: 16px;">Découvrez comment devenir partenaire d'AsArt'sDev et contribuer à cette révolution technologique.</p>
+            <a href="../donation.php" style="display: inline-block; padding: 12px 30px; background: #d32f2f; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.background='#a82020'" onmouseout="this.style.background='#d32f2f'">Voir les modalités de partenariat</a>
+        </div>
+    </main>
+</body>
+</html>
