@@ -7,7 +7,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\Investisseur;
 use App\Entity\Commande;
 use App\Entity\Donation;
 use App\Entity\ReminderCommande;
@@ -28,6 +30,33 @@ class AdminController extends AbstractController
     }
 
     /**
+     * @Route("/validation/{id}", name="validation", methods={"GET"})
+     */
+    public function valider(int $id): Response
+    {
+        $investisseur = $this->em->getRepository(Investisseur::class)->find($id);
+
+        if (!$investisseur) {
+            throw $this->createNotFoundException('Investisseur introuvable');
+        }
+
+        $investisseur->setValide(true);
+
+        $privateLink = $this->generateUrl(
+            'contact_acces_prive',
+            ['token' => $investisseur->getToken()],
+            UrlGeneratorInterface::ABSOLUTE_URL
+        );
+
+        // Email avec lien prive + token a envoyer a l'investisseur.
+        $this->em->flush();
+
+        $this->addFlash('success', 'Investisseur valide et lien prive envoye');
+
+        return $this->redirectToRoute('admin_dashboard');
+    }
+
+    /**
      * 📊 Dashboard admin - Vue d'ensemble
      * 
      * @Route("/dashboard", name="dashboard", methods={"GET"})
@@ -36,6 +65,7 @@ class AdminController extends AbstractController
     {
         $commandesRepo = $this->em->getRepository(Commande::class);
         $donationsRepo = $this->em->getRepository(Donation::class);
+        $investisseurs = $this->em->getRepository(Investisseur::class)->findBy([], ['id' => 'DESC']);
 
         // Statistiques
         $stats = [
@@ -59,6 +89,7 @@ class AdminController extends AbstractController
             'stats' => $stats,
             'donations' => $donations,
             'reminders' => $reminders,
+            'investisseurs' => $investisseurs,
         ]);
     }
 

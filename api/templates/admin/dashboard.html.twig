@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Dashboard - Investisseurs Ultra{% endblock %}
+
+{% block body %}
+<h1>Admin Dashboard - Investisseurs Ultra</h1>
+
+<table>
+    <tr>
+        <th>Entreprise</th>
+        <th>Montant</th>
+        <th>Score IA</th>
+        <th>Total</th>
+        <th>Statut</th>
+        <th>IP</th>
+    </tr>
+    {% for inv in investisseurs %}
+        <tr>
+            <td>{{ inv.entreprise }}</td>
+            <td>{{ inv.montant|number_format(0, ',', ' ') }} €</td>
+            <td>{{ inv.iaScore }}</td>
+            <td>{{ inv.totalScore }}</td>
+            <td>
+                {% if inv.valide %}✅ Validé
+                {% else %}❌ Non validé
+                {% endif %}
+            </td>
+            <td>{{ inv.ipAccess }}</td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="6">Aucun investisseur enregistré.</td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}

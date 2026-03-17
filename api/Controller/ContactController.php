@@ -2,11 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Investisseur;
+use App\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Service\NotificationService;
 use App\Service\ReportService;
 use Psr\Log\LoggerInterface;
@@ -19,15 +23,139 @@ class ContactController extends AbstractController
     private $notificationService;
     private $reportService;
     private $logger;
+    private $em;
 
     public function __construct(
         NotificationService $notificationService,
         ReportService $reportService,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        EntityManagerInterface $em
     ) {
         $this->notificationService = $notificationService;
         $this->reportService = $reportService;
         $this->logger = $logger;
+        $this->em = $em;
+    }
+
+    /**
+     * 🏢 Formulaire dédié investisseurs sérieux
+     *
+     * @Route("/contact-investisseur", name="investisseur", methods={"GET", "POST"})
+     */
+    public function contactInvestisseur(Request $request): Response
+    {
+        $form = $this->createForm(ContactType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+
+            if (($data['montant'] ?? 0) < 50000) {
+                $this->addFlash('error', 'Seules les demandes serieuses sont acceptees.');
+                return $this->redirectToRoute('contact_investisseur');
+            }
+
+            $iaScore = 0.0;
+            $totalScore = 0.0;
+
+            // Score financier
+            if (($data['montant'] ?? 0) > 100000) {
+                $totalScore += 2;
+            }
+            if (($data['montant'] ?? 0) > 500000) {
+                $totalScore += 3;
+            }
+
+            $strategieText = (string) ($data['strategie'] ?? '');
+
+            // Analyse texte strategie (heuristique locale en attendant un branchement SDK OpenAI).
+            if (strlen($strategieText) > 100) {
+                $iaScore += 2;
+            }
+            if (preg_match('/startup|innov(ation|er)|scale/i', $strategieText)) {
+                $iaScore += 1;
+            }
+
+            $totalScore += $iaScore;
+
+            // NDA signe
+            if ($form['nda']->getData()) {
+                $totalScore += 1;
+            }
+
+            // Score minimum requis
+            if ($totalScore < 5) {
+                $this->addFlash('error', 'Profil non retenu (score IA insuffisant)');
+                return $this->redirectToRoute('contact_investisseur');
+            }
+
+            // Upload fichier justificatif
+            $file = $form['justificatif']->getData();
+            $filename = null;
+            if ($file) {
+                $filename = uniqid('', true) . '.' . $file->guessExtension();
+
+                $uploadDir = $this->getParameter('uploads_dir');
+                if (!is_dir($uploadDir)) {
+                    mkdir($uploadDir, 0775, true);
+                }
+
+                try {
+                    $file->move($uploadDir, $filename);
+                } catch (FileException $exception) {
+                    $this->addFlash('error', 'Impossible de televerser le justificatif financier.');
+                    return $this->redirectToRoute('contact_investisseur');
+                }
+            }
+
+            // Generer acces prive (token) pour validation admin.
+            $token = bin2hex(random_bytes(32));
+
+            $investisseur = new Investisseur();
+            $investisseur->setEntreprise((string) ($data['entreprise'] ?? ''));
+            $investisseur->setMontant((float) ($data['montant'] ?? 0));
+            $investisseur->setToken($token);
+            $investisseur->setTokenExpire((new \DateTime())->modify('+48 hours'));
+            $investisseur->setIpAccess($request->server->get('REMOTE_ADDR'));
+            $investisseur->setValide(false);
+            $investisseur->setStrategie($strategieText);
+            $investisseur->setJustificatif($filename);
+            $investisseur->setNdaSigne((bool) $form['nda']->getData());
+            $investisseur->setIaScore($iaScore);
+            $investisseur->setTotalScore($totalScore);
+
+            $this->em->persist($investisseur);
+            $this->em->flush();
+
+            // Ici vous pouvez brancher un envoi email ou une persistence en base.
+            $this->addFlash('success', 'Votre demande a ete envoyee. Nous vous contacterons apres etude.');
+
+            return $this->redirectToRoute('contact_investisseur');
+        }
+
+        return $this->render('contact/index.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/acces/{token}", name="acces_prive", methods={"GET"})
+     */
+    public function acces(string $token): Response
+    {
+        $investisseur = $this->em->getRepository(Investisseur::class)->findOneBy(['token' => $token]);
+
+        if (
+            !$investisseur
+            || !$investisseur->isValide()
+            || ($investisseur->getTokenExpire() !== null && $investisseur->getTokenExpire() < new \DateTime())
+        ) {
+            throw $this->createAccessDeniedException('Acces refuse ou lien expire.');
+        }
+
+        return $this->render('private/dashboard.html.twig', [
+            'investisseur' => $investisseur,
+        ]);
     }
 
     /**

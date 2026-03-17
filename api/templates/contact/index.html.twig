@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Contact Investisseur - AsArt'sDev</h1>
+
+<p>
+Acces reserve aux partenaires serieux souhaitant participer a des projets technologiques majeurs.
+</p>
+
+{{ form_start(form) }}
+    {{ form_row(form.entreprise) }}
+    {{ form_row(form.raisonSociale) }}
+    {{ form_row(form.siret) }}
+    {{ form_row(form.nom) }}
+    {{ form_row(form.prenom) }}
+    {{ form_row(form.montant) }}
+    {{ form_row(form.justificatif) }}
+    {{ form_row(form.strategie) }}
+    {{ form_row(form.nda) }}
+
+    <button class="btn btn-primary">Envoyer</button>
+{{ form_end(form) }}
+
+<h2>Conditions d'acces</h2>
+
+<p>
+En soumettant ce formulaire, vous acceptez les conditions strictes ci-dessous.
+</p>
+
+<ul>
+<li>Accord de confidentialite (NDA)</li>
+<li>Clause de non-divulgation</li>
+<li>Clause de non-concurrence</li>
+<li>Engagement de serieux financier</li>
+</ul>
+
+{% for message in app.flashes('error') %}
+    <div style="color:red;">{{ message }}</div>
+{% endfor %}
+
+{% for message in app.flashes('success') %}
+    <div style="color:green;">{{ message }}</div>
+{% endfor %}
+
+{% endblock %}

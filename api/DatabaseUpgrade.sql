@@ -84,9 +84,6 @@ INSERT INTO cadeaux (nom_cadeau, description, montant_minimum, quantite_disponib
 ('🏆 Reconnaissance publique', 'Nom sur page dédiée des mécènes', 500.00, -1),
 ('👑 Partenariat stratégique', 'Consultation + logo + visibilité permanente', 5000.00, 10);
 
--- ============================================
--- 4. TABLE AUDIT IP
--- ============================================
 CREATE TABLE IF NOT EXISTS audit_ip (
     id INT AUTO_INCREMENT PRIMARY KEY,
     ip_adresse VARCHAR(45) NOT NULL,
@@ -103,8 +100,29 @@ CREATE INDEX idx_ip_action ON audit_ip(ip_adresse, date_action);
 CREATE INDEX idx_type_action ON audit_ip(type_action);
 
 -- ============================================
--- 5. VIEW ADMIN - DONATIONS OVERVIEW
+-- 5. TABLE INVESTISSEURS
 -- ============================================
+CREATE TABLE IF NOT EXISTS investisseurs (
+     id INT AUTO_INCREMENT PRIMARY KEY,
+     entreprise VARCHAR(255) NOT NULL,
+     montant DECIMAL(12, 2) NOT NULL,
+     valide BOOLEAN DEFAULT FALSE,
+     token VARCHAR(64) UNIQUE NULL,
+     email VARCHAR(255) NULL,
+     justificatif VARCHAR(255) NULL,
+     strategie LONGTEXT NULL,
+     ia_score DECIMAL(6, 2) DEFAULT 0,
+     total_score DECIMAL(6, 2) DEFAULT 0,
+     ip_access VARCHAR(45) NULL,
+     nda_signe BOOLEAN DEFAULT FALSE,
+     token_expire DATETIME NULL,
+     date_creation DATETIME DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE INDEX idx_investisseurs_valide ON investisseurs(valide);
+CREATE INDEX idx_investisseurs_ip ON investisseurs(ip_access);
+CREATE INDEX idx_investisseurs_date ON investisseurs(date_creation);
+
 CREATE OR REPLACE VIEW donations_admin_view AS
 SELECT 
     d.id,
@@ -126,9 +144,6 @@ SELECT
 FROM donations d
 ORDER BY d.date_donation DESC;
 
--- ============================================
--- 6. VIEW ADMIN - COMMANDES + REMINDERS
--- ============================================
 CREATE OR REPLACE VIEW commandes_reminders_view AS
 SELECT 
     c.id,
@@ -145,9 +160,6 @@ LEFT JOIN reminder_commandes r ON c.id = r.commande_id
 GROUP BY c.id
 ORDER BY c.date_creation DESC;
 
--- ============================================
--- 7. TABLE MESSAGES REMINDERS (TEMPLATES)
--- ============================================
 CREATE TABLE IF NOT EXISTS reminder_templates (
     id INT AUTO_INCREMENT PRIMARY KEY,
     type VARCHAR(100) NOT NULL UNIQUE,
@@ -183,10 +195,6 @@ INSERT INTO reminder_templates (type, titre, sujet_email, contenu_template) VALU
  'Avez-vous reçu votre contrepartie?',
  'Bonjour {{nomDonateur}},\n\nNous espérons que vous avez reçu votre cadeau {{nomCadeau}} en bon état!\n\nPourriez-vous nous le confirmer? Merci!');
 
--- ============================================
--- 8. MODIFICATION TABLE COMMANDES
--- ============================================
--- Note: Ces colonnes peuvent être ajoutées à la table 'commandes' existante:
 
 ALTER TABLE commandes ADD COLUMN IF NOT EXISTS 
     ip_donateur VARCHAR(45) NULL AFTER notes;
@@ -197,18 +205,13 @@ ALTER TABLE commandes ADD COLUMN IF NOT EXISTS
 ALTER TABLE commandes ADD COLUMN IF NOT EXISTS 
     code_suivi_anonyme VARCHAR(32) UNIQUE NULL AFTER type_donation;
 
--- ============================================
--- 9. DONNÉES DE TEST
--- ============================================
 
--- Test donation anonyme
 INSERT INTO commandes (numero_commande, type_projet, montant, statut, type_donation, ip_donateur) 
 VALUES ('DON-2026-TEST-001', 'donation', 25.00, 'confirmee', 'anonyme', '192.168.1.100');
 
 INSERT INTO donations (commande_id, montant, ip_adresse, code_suivi, eligible_cadeau) 
 VALUES (LAST_INSERT_ID(), 25.00, '192.168.1.100', 'ANON-' . UUID(), FALSE);
 
--- Test donation avec info complète
 INSERT INTO commandes (numero_commande, type_projet, montant, statut, type_donation, ip_donateur) 
 VALUES ('DON-2026-TEST-002', 'donation', 100.00, 'confirmee', 'complete', '203.0.113.50');
 
@@ -217,18 +220,13 @@ INSERT INTO donations (commande_id, montant, nom_donateur, email_donateur, telep
 VALUES (LAST_INSERT_ID(), 100.00, 'Asmir Milianni', 'asmir@asartsdev.com', '0781586882',
         'Paris, France', '203.0.113.50', 'ASMIR-001', TRUE, 'confirmee');
 
--- Test reminder
 INSERT INTO reminder_commandes (commande_id, type_reminder, message, statut) 
 VALUES (1, 'creation', 'Donation de 25€ reçue - Anonyme - Pas de cadeau', 'envoye');
 
 INSERT INTO reminder_commandes (commande_id, type_reminder, message, statut) 
 VALUES (2, 'creation', 'Donation de 100€ reçue de Asmir Milianni - Eligible cadeau VIP', 'envoye');
 
--- ============================================
--- TRIGGERS AUTOMATIQUES
--- ============================================
 
--- Trigger: Auto-création reminder au paiement confirmé
 DELIMITER //
 
 CREATE TRIGGER after_commande_confirmee
@@ -245,9 +243,6 @@ END //
 
 DELIMITER ;
 
--- ============================================
--- AUDIT LOG
--- ============================================
 
 CREATE TABLE IF NOT EXISTS audit_log (
     id INT AUTO_INCREMENT PRIMARY KEY,
