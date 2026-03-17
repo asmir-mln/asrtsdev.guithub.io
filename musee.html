@@ -46,7 +46,7 @@
       opacity: 0.8;
     }
 
-    #museum {
+    #museum-collection {
       display: flex;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
@@ -55,15 +55,15 @@
       perspective: 1500px;
     }
 
-    #museum::-webkit-scrollbar {
+    #museum-collection::-webkit-scrollbar {
       height: 8px;
     }
 
-    #museum::-webkit-scrollbar-track {
+    #museum-collection::-webkit-scrollbar-track {
       background: rgba(255,255,255,0.1);
     }
 
-    #museum::-webkit-scrollbar-thumb {
+    #museum-collection::-webkit-scrollbar-thumb {
       background: rgba(255,255,255,0.3);
       border-radius: 10px;
     }
@@ -359,6 +359,12 @@
     <p><strong>Vision Technologique</strong> : innovation inclusive, IA éthique et solutions open-source au service de tous.</p>
   </section>
 
+  <section style="max-width:1100px; margin:18px auto 0 auto; padding:16px 20px; border-radius:12px; background:linear-gradient(135deg, rgba(212,175,55,0.22), rgba(0,0,0,0.28)); border:1px solid rgba(244,208,63,0.45);">
+    <h2 style="color:#f4d03f; margin-bottom:8px;">Annonce Officielle - Musee Finalise</h2>
+    <p style="margin:0 0 8px 0; line-height:1.7;">Le musee virtuel AsArt'sDev est finalise et presente des editions numeriques originales prêtes a la consultation et au partenariat.</p>
+    <p style="margin:0; line-height:1.7;"><strong>Remerciements :</strong> Merci a toutes les personnes, partenaires et visiteurs qui soutiennent ce projet artistique et technologique.</p>
+  </section>
+
   <div id="museum-collection" data-type="oeuvre-resilience">
     <!-- Tableaux générés dynamiquement -->
   </div>
@@ -422,7 +428,7 @@
       {
         id: "oeuvre-enfance-cycle",
         nom: "Max et Milla — Le Cycle des 10 Ans",
-        img: "images/session-mars-2026/placeholder-original.png",
+        img: "images/axes-edition/slide-1.jpg",
         description: "Histoire vraie d'un parcours d'enfance marqué par l'autodidaxie et la dyslexie, transformée en force mentale. Cette œuvre illustre le début d'un cycle de résilience et de reconstruction.",
         prix: "15,00 €",
         edition: "Édition limitée : 1000 exemplaires",
@@ -431,7 +437,7 @@
       {
         id: "oeuvre-reconstruction-vie",
         nom: "Les Trois Vies d'Asmir",
-        img: "images/session-mars-2026/placeholder-original.png",
+        img: "images/parcours/parcours-1.jpg.png",
         description: "Autobiographie adulte en trois actes : l'enfance dans la rue, la survie par hypervigilance, et la reconstruction par l'écriture. Version manuscrite signée de la main de l'auteur dyslexique.",
         prix: "39,99 €",
         edition: "Édition limitée : 500 exemplaires | <strong>Acompte 30%</strong> requis",
@@ -440,7 +446,7 @@
       {
         id: "oeuvre-vision-tech-inclusive",
         nom: "Vision Technologique",
-        img: "images/session-mars-2026/placeholder-original.png",
+        img: "images/parcours/parcours-3.jpg.png",
         description: "Représentation de l'innovation inclusive : IA éthique, accessibilité pour malvoyants, solutions médicales open-source. Cette œuvre symbolise le labo de demain à Paris.",
         prix: "Sur devis — Partenariat",
         edition: "Édition limitée : 300 exemplaires | <strong>Acompte 30%</strong> (preuve de sérieux)",
@@ -460,7 +466,7 @@
       
       container.innerHTML = `
         <div class="tableau" data-oeuvre="${tableau.id}">
-          <img src="${tableau.img}" alt="${tableau.nom}. ${tableau.description}" loading="lazy">
+          <img src="${tableau.img}" alt="${tableau.nom}. ${tableau.description}" loading="lazy" onerror="this.src='images/axes-edition/slide-2.png'">
           <div class="info">
             <h3>${tableau.nom}</h3>
             <p id="desc-${tableau.id}">${tableau.description}</p>
@@ -516,7 +522,6 @@
     console.log('Œuvres:', tableaux.map(t => `[${t.id}]`).join(' → '));
     console.log('Author: Asmir Milianni | Gallery Curator');
     console.log('Build: 09.03.2026');
-    });
 
     // Effet de rotation 3D au mouvement de la souris
     document.addEventListener('mousemove', (e) => {
