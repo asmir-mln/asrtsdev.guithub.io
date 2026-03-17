@@ -258,4 +258,115 @@ CREATE TABLE IF NOT EXISTS audit_log (
     INDEX idx_timestamp (timestamp)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- ============================================
+-- 11. BDD ULTRA SECURISEE - FORMULAIRES
+-- ============================================
+-- Objectif:
+-- - Meme base de donnees
+-- - 2 tables metier separees (versements / contacts)
+-- - Colonnes specifiques par type de formulaire
+-- - Tracabilite forte (IP, User-Agent, hash)
+-- - Compteur automatique du nombre de formulaires
+
+CREATE TABLE IF NOT EXISTS formulaires_compteurs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    type_formulaire ENUM('versement', 'contact') NOT NULL UNIQUE,
+    nombre_formulaires BIGINT UNSIGNED NOT NULL DEFAULT 0,
+    date_modification DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO formulaires_compteurs (type_formulaire, nombre_formulaires)
+VALUES ('versement', 0), ('contact', 0)
+ON DUPLICATE KEY UPDATE type_formulaire = VALUES(type_formulaire);
+
+CREATE TABLE IF NOT EXISTS versements_secure (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    reference_uuid CHAR(36) NOT NULL UNIQUE COMMENT 'UUID de suivi externe',
+    montant_centimes BIGINT UNSIGNED NOT NULL COMMENT 'Stockage entier pour eviter erreurs flottantes',
+    devise CHAR(3) NOT NULL DEFAULT 'EUR',
+    mode_versement ENUM('carte', 'virement', 'paypal', 'autre') NOT NULL,
+    nom_payeur VARCHAR(255) NULL,
+    email_payeur VARCHAR(255) NULL,
+    telephone_payeur VARCHAR(30) NULL,
+    statut ENUM('recu', 'verifie', 'rejete', 'rembourse') NOT NULL DEFAULT 'recu',
+
+    -- Securite / integrite
+    ip_adresse VARCHAR(45) NOT NULL,
+    user_agent LONGTEXT NULL,
+    payload_chiffre LONGTEXT NULL COMMENT 'Donnees sensibles chiffrees applicativement',
+    payload_hash CHAR(64) NOT NULL COMMENT 'SHA-256 pour controle integrite',
+
+    date_creation DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    date_verification DATETIME NULL,
+
+    CONSTRAINT chk_versements_montant CHECK (montant_centimes > 0)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE INDEX idx_versements_date ON versements_secure(date_creation);
+CREATE INDEX idx_versements_email ON versements_secure(email_payeur);
+CREATE INDEX idx_versements_statut ON versements_secure(statut);
+CREATE INDEX idx_versements_ip ON versements_secure(ip_adresse);
+CREATE UNIQUE INDEX uq_versements_hash ON versements_secure(payload_hash);
+
+CREATE TABLE IF NOT EXISTS contacts_secure (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    reference_uuid CHAR(36) NOT NULL UNIQUE COMMENT 'UUID de suivi externe',
+    type_contact ENUM('standard', 'pro', 'investisseur', 'partenaire') NOT NULL DEFAULT 'standard',
+    nom VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    telephone VARCHAR(30) NULL,
+    entreprise VARCHAR(255) NULL,
+    sujet VARCHAR(255) NULL,
+    message LONGTEXT NOT NULL,
+    statut ENUM('recu', 'traite', 'archive', 'spam') NOT NULL DEFAULT 'recu',
+
+    -- Securite / integrite
+    ip_adresse VARCHAR(45) NOT NULL,
+    user_agent LONGTEXT NULL,
+    payload_chiffre LONGTEXT NULL COMMENT 'Donnees sensibles chiffrees applicativement',
+    payload_hash CHAR(64) NOT NULL COMMENT 'SHA-256 pour controle integrite',
+
+    date_creation DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    date_traitement DATETIME NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE INDEX idx_contacts_date ON contacts_secure(date_creation);
+CREATE INDEX idx_contacts_email ON contacts_secure(email);
+CREATE INDEX idx_contacts_type ON contacts_secure(type_contact);
+CREATE INDEX idx_contacts_statut ON contacts_secure(statut);
+CREATE INDEX idx_contacts_ip ON contacts_secure(ip_adresse);
+CREATE UNIQUE INDEX uq_contacts_hash ON contacts_secure(payload_hash);
+
+-- Triggers compteur automatique du nombre de formulaires
+DELIMITER //
+
+CREATE TRIGGER trg_count_versements_after_insert
+AFTER INSERT ON versements_secure
+FOR EACH ROW
+BEGIN
+    UPDATE formulaires_compteurs
+    SET nombre_formulaires = nombre_formulaires + 1
+    WHERE type_formulaire = 'versement';
+END //
+
+CREATE TRIGGER trg_count_contacts_after_insert
+AFTER INSERT ON contacts_secure
+FOR EACH ROW
+BEGIN
+    UPDATE formulaires_compteurs
+    SET nombre_formulaires = nombre_formulaires + 1
+    WHERE type_formulaire = 'contact';
+END //
+
+DELIMITER ;
+
+-- Vue de pilotage: nombre de formulaires par type
+CREATE OR REPLACE VIEW formulaires_stats_view AS
+SELECT
+    type_formulaire,
+    nombre_formulaires,
+    date_modification
+FROM formulaires_compteurs
+ORDER BY type_formulaire;
+
 COMMIT;
