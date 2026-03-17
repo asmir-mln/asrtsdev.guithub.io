@@ -143,9 +143,20 @@ https://asartsdev.pages.dev
 ```
 
 ### Installation locale
+
+#### Option A — XAMPP (Windows, recommandé)
+1. Télécharger et installer [XAMPP](https://www.apachefriends.org/)
+2. Copier le dossier du projet dans `C:\xampp\htdocs\asrtsdev.guithub.io\`
+3. Démarrer **Apache** dans le panneau XAMPP
+4. Ouvrir dans le navigateur :
+   ```
+   http://localhost/asrtsdev.guithub.io/
+   ```
+
+#### Option B — Serveur PHP intégré
 ```bash
-git clone https://github.com/asartsdev/asartsdev.github.io.git
-cd asartsdev.github.io
+git clone https://github.com/asmir-mln/asrtsdev.guithub.io.git
+cd asrtsdev.guithub.io
 
 # Serveur PHP local
 php -S localhost:8000
@@ -153,6 +164,15 @@ php -S localhost:8000
 # Accès
 http://localhost:8000
 ```
+
+#### Option C — npm start
+```bash
+npm start
+# Lance : php -S localhost:8000
+# Accès : http://localhost:8000
+```
+
+> **Note :** Le fichier `.htaccess` inclus configure automatiquement Apache/XAMPP (encodage UTF-8, sécurité, cache).
 
 ---
 
