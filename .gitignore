@@ -26,6 +26,6 @@ vendor/
 # Fichiers de test avec vraies données
 test-data/
 
-# Données de commandes sensibles
-api/data/
+# Données de commandes sensibles (garder le dossier, ignorer les données)
 api/data/*.json
+!api/data/.gitkeep
