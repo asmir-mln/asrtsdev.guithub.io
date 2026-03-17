@@ -13,6 +13,7 @@ node_modules/
 api/config.php
 config.php
 .env
+.env.local
 
 # Logs de paiement et transactions
 logs/
