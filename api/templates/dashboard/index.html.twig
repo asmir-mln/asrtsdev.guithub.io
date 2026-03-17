@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard Ministeres - Ultra Top{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.theme.default.min.css">
+
+<h1>Dashboard Ministeres - Ultra Top</h1>
+<h2>Total profit simule : {{ totalProfit|number_format(0, ',', ' ') }} €</h2>
+
+<h3>Profits par ministere</h3>
+<table class="table table-striped">
+    <tr><th>Ministere</th><th>Profit (€)</th></tr>
+    {% for p in profits %}
+        <tr>
+            <td>{{ p.ministere }}</td>
+            <td>{{ p.profit|number_format(0, ',', ' ') }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<h3>Innovations par ministere</h3>
+<div id="carouselInnovations" class="owl-carousel owl-theme">
+    {% for innovation in innovations %}
+        <div class="item card p-3 m-2 shadow" style="background:#111827; border-radius:12px;">
+            <h5>{{ innovation.ministere }}</h5>
+            <h4>{{ innovation.innovation }}</h4>
+            <p>{{ innovation.description }}</p>
+            {% if innovation.image %}
+                <img src="{{ asset('uploads/' ~ innovation.image) }}" alt="{{ innovation.innovation }}" class="img-fluid rounded">
+            {% endif %}
+            <p><strong>Cout:</strong> {{ innovation.cout }} €</p>
+            <p><strong>Marge:</strong> {{ innovation.marge }} €</p>
+        </div>
+    {% endfor %}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js"></script>
+<script>
+$(function() {
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        responsive: {
+            0: { items: 1 },
+            600: { items: 2 },
+            1000: { items: 3 }
+        }
+    });
+});
+</script>
+{% endblock %}
