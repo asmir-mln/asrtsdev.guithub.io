@@ -9,6 +9,36 @@
 <h1>Dashboard Ministeres - Ultra Top</h1>
 <h2>Total profit simule : {{ totalProfit|number_format(0, ',', ' ') }} €</h2>
 
+<div class="alert alert-warning p-3" style="padding:12px; border-radius:10px; background:#3f3a12; color:#fff7c2; border:1px solid #6b5f1a; margin:20px 0;">
+    <strong>A titre indicatif :</strong> Les prix peuvent varier selon les fluctuations du marche et le cout des matieres premieres. <br>
+    Debut operationnel prevu : <strong>2030</strong> <br>
+    Objectif : terminer les 4 premiers brevets avant <strong>2036</strong>. <br>
+    Tout le materiel et les plans sont prets, il ne reste plus qu'a trouver les financements et monter les appareils.
+</div>
+
+<p>Ce projet impacte tous les secteurs cles de l'evolution de l'Union Europeenne : economie, culture, defense, industrie et BTP.</p>
+
+<div class="don-bar-container" style="width: 100%; background-color: #eee; border-radius: 10px; margin:20px 0; overflow:hidden;">
+    <div id="don-bar" style="width:0%; height:30px; background-color:#4CAF50; text-align:center; color:white; line-height:30px; border-radius:10px;">
+        0%
+    </div>
+</div>
+<p id="don-status">Montant collecte : 0 €</p>
+
+<section class="projet-ultra" style="margin:22px 0; padding:16px; border:1px solid #334155; border-radius:10px; background:#0f1a2e;">
+    <h2>Projet strategique EU - Impact multi-sectoriel</h2>
+    <p>
+        Ce projet touche tous les secteurs de l'evolution europeenne : economie, culture, defense, industrie et BTP.
+        Chaque action est pensee pour maximiser l'impact social et economique.
+    </p>
+    <ul>
+        <li>Debut operationnel : 2030</li>
+        <li>4 premiers brevets finalises : avant 2036</li>
+        <li>Materiel et plans prets - financement a securiser</li>
+        <li>Suivi en temps reel de l'importance des dons et de la progression du projet</li>
+    </ul>
+</section>
+
 <h3>Profits par ministere</h3>
 <table class="table table-striped">
     <tr><th>Ministere</th><th>Profit (€)</th></tr>
@@ -19,6 +49,9 @@
         </tr>
     {% endfor %}
 </table>
+
+<h3>Graphique des profits</h3>
+<canvas id="graphProfits" width="400" height="150"></canvas>
 
 <h3>Innovations par ministere</h3>
 <div id="carouselInnovations" class="owl-carousel owl-theme">
@@ -38,6 +71,7 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 $(function() {
     $('.owl-carousel').owlCarousel({
@@ -48,6 +82,45 @@ $(function() {
             0: { items: 1 },
             600: { items: 2 },
             1000: { items: 3 }
+        }
+    });
+
+    // Simulation de progression des dons en temps reel
+    let objectif = 1000000;
+    let collecte = 0;
+
+    function miseAJourDons() {
+        let ajout = Math.floor(Math.random() * 5000);
+        collecte += ajout;
+        if (collecte > objectif) {
+            collecte = objectif;
+        }
+
+        let pourcentage = Math.floor((collecte / objectif) * 100);
+        $('#don-bar').css('width', pourcentage + '%').text(pourcentage + '%');
+        $('#don-status').text('Montant collecte : ' + collecte.toLocaleString() + ' €');
+
+        if (collecte < objectif) {
+            setTimeout(miseAJourDons, 2000);
+        }
+    }
+
+    miseAJourDons();
+
+    const ctx = document.getElementById('graphProfits').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [{% for p in profits %}'{{ p.ministere }}'{% if not loop.last %}, {% endif %}{% endfor %}],
+            datasets: [{
+                label: 'Profit (€)',
+                data: [{% for p in profits %}{{ p.profit }}{% if not loop.last %}, {% endif %}{% endfor %}],
+                backgroundColor: '#4CAF50'
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { display: false } }
         }
     });
 });
